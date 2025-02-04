@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Builder</title>
+    <!-- Font Awesome CDN for Icons (Version 6.4.0) -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: #faf9ff;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column; /* Stack navbar, main content, and footer vertically */
+            height: 100vh;
+            overflow: hidden; /* Prevent body scrolling */
+        }
+        /* Navbar Styles */
+        .navbar {
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(to right, #6561e0, #61a3ff); /* Gradient background */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px; /* Increased padding for better spacing */
+            position: fixed; /* Fix the navbar at the top */
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+        .navbar-left, .navbar-center, .navbar-right {
+            display: flex;
+            align-items: center;
+        }
+        .navbar-left .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff; /* Changed to white for contrast */
+        }
+        .navbar-center {
+            flex: 1;
+            justify-content: center;
+            font-size: 1rem;
+            color: #fff; /* Changed to white for contrast */
+            gap: 10px;
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+        .navbar-center .fas.fa-mug-hot {
+            color: #fff; /* Changed to white for consistency */
+            font-size: 1.2rem; /* Adjust icon size if necessary */
+        }
+        .navbar .contact-button {
+            padding: 8px 16px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            background: #fff; /* Changed to white for contrast against gradient */
+            color: #6561e0; /* Adjusted text color to match theme */
+            cursor: pointer;
+            transition: background 0.3s ease, color 0.3s ease;
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+        .navbar .contact-button:hover {
+            background: #5750c0;
+            color: #fff;
+        }
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 80px 60px 80px 60px; /* Top padding for navbar and bottom padding for footer */
+            box-sizing: border-box;
+            overflow: auto; /* Allow scrolling if content overflows */
+        }
+        .left-container {
+            max-width: 50%;
+            text-align: left;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 25px;
+            background: linear-gradient(to right, #6561e0, #61a3ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: titleSlide 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        @keyframes titleSlide {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .hero h1 span {
+            color: black;
+            font-weight: bold;
+        }
+        .hero p {
+            font-size: 1.5rem;
+            color: #555;
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.3s forwards;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        .button-container {
+            display: flex;
+            gap: 20px;
+            opacity: 0;
+            animation: buttonEntrance 1s ease 0.6s forwards;
+        }
+        @keyframes buttonEntrance {
+            from { transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .button, .outline-button {
+            padding: 18px 36px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+        .button {
+            color: #fff;
+            border: none;
+            background: linear-gradient(45deg, #6561e0, #61a3ff, #6561e0);
+            background-size: 400% 400%;
+            animation: gradientAnimation 3s infinite linear;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .outline-button {
+            color: #6561e0;
+            border: 3px solid #6561e0;
+            background: transparent;
+        }
+        .outline-button:hover {
+            background: #ff0000;
+            color: white;
+            border-color: #ff0000;
+            transform: translateY(-2px);
+        }
+        .steps-card {
+            width: 400px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(101, 97, 224, 0.15);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transform: translateY(50px) scale(0.95);
+            opacity: 0;
+            animation: cardEntrance 1s cubic-bezier(0.4, 0, 0.2, 1) 0.9s forwards;
+            position: relative;
+            overflow: hidden;
+        }
+        .steps-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, 
+                rgba(101, 97, 224, 0.05) 0%,
+                rgba(255, 255, 255, 0.1) 50%,
+                rgba(101, 97, 224, 0.05) 100%
+            );
+            animation: shimmer 8s infinite linear;
+        }
+        @keyframes cardEntrance {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        @keyframes shimmer {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.6);
+            margin-bottom: 20px;
+            transform: translateX(100%);
+            opacity: 0;
+            animation: stepSlideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .step:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 20px rgba(101, 97, 224, 0.1);
+        }
+        @keyframes stepSlideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .step:nth-child(1) { animation-delay: 1.2s; }
+        .step:nth-child(2) { animation-delay: 1.5s; }
+        .step:nth-child(3) { animation-delay: 1.8s; }
+        .step-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #6561e0, #61a3ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            flex-shrink: 0;
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .step-text {
+            font-size: 16px;
+            color: #333;
+            position: relative;
+        }
+        .step-text::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #6561e0;
+            transition: width 0.3s ease;
+        }
+        .step:hover .step-text::after {
+            width: 100%;
+        }
+        .youtube-icon {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
+        }
+        .outline-button:hover .youtube-icon {
+            transform: scale(1.1);
+        }
+        /* Download animation */
+        @keyframes downloadPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .step:nth-child(2) .step-icon {
+            animation: 
+                iconFloat 3s ease-in-out infinite,
+                downloadPulse 2s ease infinite;
+        }
+        /* Footer Styles */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background: transparent; /* Match the body background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #888; /* Gray color */
+            font-size: 0.8rem;
+            z-index: 1000; /* Ensure it stays above other elements if necessary */
+        }
+      @media only screen and (max-width: 480px) {
+  /* Adjust overall layout */
+  body {
+    flex-direction: column;
+    height: auto;
+    overflow-y: auto;
+  }
+
+  /* Navbar adjustments */
+  .navbar {
+    height: 50px;
+    padding: 0 15px;
+  }
+  .navbar-left .logo {
+    font-size: 1.2rem;
+  }
+  .navbar-center {
+    font-size: 0.9rem;
+    gap: 5px;
+  }
+  .navbar .contact-button {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+
+  /* Main content adjustments */
+  .main-content {
+    flex-direction: column;
+    padding: 60px 20px;
+    align-items: center;
+  }
+  .left-container {
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  .button-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Steps card adjustments */
+  .steps-card {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .step {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .step-icon {
+    margin-bottom: 10px;
+  }
+
+  /* Footer adjustments */
+  .footer {
+    font-size: 0.7rem;
+    height: 25px;
+  }
+}
+
+    </style>
+</head>
+  <script>
+  // Create a new link element
+  const faviconLink = document.createElement('link');
+  
+  // Set the attributes for the favicon
+  faviconLink.rel = 'icon';
+  faviconLink.type = 'image/png';
+  faviconLink.href = 'https://i.ibb.co/rKjzTzWM/Bella-70.png';
+  
+  // Append the link element to the document head
+  document.head.appendChild(faviconLink);
+</script>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <div class="logo">Boss in Pajamas</div>
+        </div>
+        <div class="navbar-center">
+            <span>Grab your favorite drink and create your website</span>
+            <i class="fas fa-mug-hot" aria-hidden="true"></i>
+            <!-- Backup Icon for Testing -->
+            <!-- <i class="fas fa-coffee" aria-hidden="true"></i> -->
+        </div>
+        <div class="navbar-right">
+            <button class="contact-button" onclick="location.href='contact.html'">Contact</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="left-container">
+            <div class="hero">
+                <h1>Build Your Dream Website <span>for just €12</span></h1>
+                <p>No monthly fees, no subscriptions, just 12€ and you own your website forever. Unlimited products, full control, easy setup in minutes.</p>
+            </div>
+            <div class="button-container">
+                <button class="button" onclick="location.href='builder.html'">Create Your Website</button>
+                <button class="outline-button" onclick="location.href='tutorial.html'">
+                    <img src="https://i.ibb.co/hC6CQzs/Bella-62.png" alt="YouTube" class="youtube-icon"> Watch Tutorial
+                </button>
+            </div>
+        </div>
+        <div class="steps-card">
+            <div class="step">
+                <div class="step-icon">1</div>
+                <div class="step-text">Create your website (add logo, images, Products, etc.)</div>
+            </div>
+            <div class="step">
+                <div class="step-icon">2</div>
+                <div class="step-text">Download your website File</div>
+            </div>
+            <div class="step">
+                <div class="step-icon">3</div>
+                <div class="step-text">Upload that File to a free hosting like Blogger, Netlify, Github.. Watch the Video for Easy Setup!</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        @2025 Boss in Pajamas
+    </footer>
+</body>
+</html>
