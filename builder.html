@@ -2692,6 +2692,12 @@ function buildProductModalScript(){
       }
     };
   }
+
+    document.getElementById('productCurrency').addEventListener('change', function() {
+  defaultCurrency = this.value;
+  defaultCurrencyCode = this.getAttribute('data-code') || '';
+});
+
 </script>
 
 
