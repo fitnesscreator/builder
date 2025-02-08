@@ -1395,12 +1395,15 @@ document.addEventListener('DOMContentLoaded', function() {
       <span class="currency-name">${currency.name}</span>
     `;
     item.addEventListener('click', (e) => {
-      e.stopPropagation();  // Prevent the click from bubbling up
-      currencyInput.value = `${currency.code} - ${currency.name}`;
-      currencyInput.setAttribute('data-code', currency.code);
-      currencyList.classList.remove('visible');
-      updatePreview();
-    });
+  e.stopPropagation();  // Prevent the click from bubbling up
+  currencyInput.value = `${currency.code} - ${currency.name}`;
+  currencyInput.setAttribute('data-code', currency.code);
+  // Update global variables so they persist in addProduct()
+  defaultCurrency = currencyInput.value;
+  defaultCurrencyCode = currency.code;
+  currencyList.classList.remove('visible');
+  updatePreview();
+});
     currencyList.appendChild(item);
   });
 
