@@ -1106,6 +1106,7 @@
   var defaultCurrencyCode = '';  // to store the currency’s data-code
   var defaultPaymentMethod = '';
   var defaultPaypalEmail = "";
+  var downloadCount = 0;
 
   // ============== CURRENCY DATA ==============
     const currencyData = [
@@ -1719,6 +1720,25 @@ function renderAddedProductsList() {
   }
 
   function downloadSite(){
+  // Check if download limit has been reached
+  if(downloadCount >= 4){
+    alert("Oops, iBrahim! You've reached the 4-download limit. No more downloads for you!");
+    return;
+  }
+  
+  // Increment the download count
+  downloadCount++;
+  
+  // Optionally disable the download button on the 4th download
+  if(downloadCount === 4) {
+    var downloadBtn = document.getElementById("downloadBtn");
+    if(downloadBtn){
+      downloadBtn.disabled = true;
+      downloadBtn.textContent = "Download limit reached";
+    }
+  }
+  
+  // Build finalHTML if not built yet
   if (!finalHTML.trim()){
     finalHTML = buildFinalHTML();
   }
@@ -1732,9 +1752,8 @@ function renderAddedProductsList() {
   // Add index.html inside the created folder
   folder.file("index.html", finalHTML);
   
-  // Generate the zip file as a blob and trigger the download
+  // Generate the zip file as a blob and trigger the download using FileSaver.js
   zip.generateAsync({ type: "blob" }).then(function(content) {
-    // Use FileSaver.js to prompt the user to save the file
     saveAs(content, "My Website.zip");
   });
 }
