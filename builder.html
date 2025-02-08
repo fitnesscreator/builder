@@ -1718,7 +1718,7 @@ function renderAddedProductsList() {
     return top;
   }
 
-  (function downloadSite(){
+  function downloadSite(){
   if (!finalHTML.trim()){
     finalHTML = buildFinalHTML();
   }
@@ -1726,8 +1726,8 @@ function renderAddedProductsList() {
   // Create a new instance of JSZip
   var zip = new JSZip();
   
-  // Create a folder inside the zip archive (name it as you wish)
-  var folder = zip.folder("MyFolder");  // Change "MyFolder" to your preferred folder name
+  // Create a folder inside the zip archive
+  var folder = zip.folder("MyFolder");  // Change "MyFolder" as needed
   
   // Add index.html inside the created folder
   folder.file("index.html", finalHTML);
@@ -1737,7 +1737,7 @@ function renderAddedProductsList() {
     // Use FileSaver.js to prompt the user to save the file
     saveAs(content, "My Website.zip");
   });
-})();
+}
 
 
 
