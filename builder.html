@@ -1564,10 +1564,10 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('otherPaymentLink').value = '';
   // Instead of simply clearing the PayPal Email field, retain it if paypalEmail is the selected payment method:
   if (paymentMethod !== 'paypalEmail') {
-  document.getElementById('paypalEmailInput').value = '';
-} else {
-  document.getElementById('paypalEmailInput').value = defaultPaypalEmail;
-}
+    document.getElementById('paypalEmailInput').value = '';
+  } else {
+    document.getElementById('paypalEmailInput').value = defaultPaypalEmail;
+  }
   updateAddProductFormFields();
 
   imageCount = 1;
