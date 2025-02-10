@@ -369,6 +369,57 @@
     height: 25px;
   }
 }
+      
+      @media only screen and (max-width: 768px) {
+    /* Hide all elements except the mobile message */
+    body > *:not(.mobile-message) {
+        display: none !important;
+    }
+
+    /* Display a full-screen message with the logo */
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #faf9ff;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .mobile-message {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 90%;
+    }
+
+    .mobile-message img {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 20px;
+    }
+
+    .mobile-message h1 {
+        font-size: 1.5rem;
+        color: #6561e0;
+        margin-bottom: 10px;
+    }
+
+    .mobile-message p {
+        font-size: 1rem;
+        color: #333;
+    }
+}
+
+/* Ensure the mobile message is hidden on larger screens */
+@media only screen and (min-width: 769px) {
+    .mobile-message {
+        display: none !important;
+    }
+} 
 
     </style>
 </head>
@@ -386,6 +437,12 @@
 </script>
 
 <body>
+  
+  <div class="mobile-message">
+    <img src="https://i.ibb.co/XNg8tLy/Bella-89.png" alt="Boss in Pajamas Logo">
+    <h1>Boss in Pajamas</h1>
+    <p>Ops! Creating a great website requires using a computer, so please switch to your computer. Happy building!</p>
+</div>
 
     <!-- Navigation Bar -->
     <nav class="navbar">
