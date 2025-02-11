@@ -759,6 +759,37 @@
   color: #333; /* Change this to your desired paragraph color */
   text-align: left;
 }
+    
+    /* Styles for About Section Color Pickers */
+.icon-container {
+    display: flex;
+    gap: 20px; /* Space between buttons */
+}
+.icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #ccc; /* Light gray border */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #fff; /* Default background color */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+.custom-t-icon {
+    font-size: 40px;
+    font-weight: bold;
+    color: #666; /* Light gray for the "T" icon */
+}
+.fa-brush {
+    font-size: 40px;
+    color: #666; /* Light gray for the brush icon */
+}
+/* Hide the color picker inputs */
+.color-picker {
+    display: none;
+}
+
 
   
   </style>
@@ -968,18 +999,31 @@
         <div id="addedReviewsList"></div>
       </form>
       <!-- About Us -->
-      <form id="aboutForm">
-        <h2>About Us Section</h2>
-        <label>About Title
-          <input id="aboutTitle" type="text" placeholder="Who We Are" required spellcheck="false" maxlength="60">
-        </label>
-        <label>About Paragraph
-          <textarea id="aboutParagraph" rows="3" placeholder="Our story..." required spellcheck="false" maxlength="500"></textarea>
-        </label>
-        <label>About Image URL
-          <input id="aboutImage" type="text" placeholder="https://example.com/about.jpg" required spellcheck="false" maxlength="300">
-        </label>
-      </form>
+<form id="aboutForm">
+  <h2>About Us Section</h2>
+  <label>About Title
+    <input id="aboutTitle" type="text" placeholder="Who We Are" required spellcheck="false" maxlength="60">
+  </label>
+  <label>About Paragraph
+    <textarea id="aboutParagraph" rows="3" placeholder="Our story..." required spellcheck="false" maxlength="500"></textarea>
+  </label>
+  <label>About Image URL
+    <input id="aboutImage" type="text" placeholder="https://example.com/about.jpg" required spellcheck="false" maxlength="300">
+  </label>
+  <label>About Section Colors</label>
+<div id="aboutColorsContainer" class="icon-container">
+  <!-- Background Color Picker Button -->
+  <div class="icon-wrapper" onclick="document.getElementById('aboutBgColorPicker').click()">
+    <i class="fas fa-brush"></i>
+    <input type="color" id="aboutBgColorPicker" class="color-picker" value="#ffffff" onchange="updateAboutColors()">
+  </div>
+  <!-- Text Color Picker Button -->
+  <div class="icon-wrapper" onclick="document.getElementById('aboutTextColorPicker').click()">
+    <div class="custom-t-icon">T</div>
+    <input type="color" id="aboutTextColorPicker" class="color-picker" value="#333333" onchange="updateAboutColors()">
+  </div>
+</div>
+</form>
       <!-- Contact Us -->
       <form id="contactUsForm">
         <h2 class="section-title">Contact Us</h2>
@@ -1115,6 +1159,7 @@
   var defaultPaymentMethod = '';
   var defaultPaypalEmail = "";
   var downloadCount = 0;
+  var aboutData = { title:'', paragraph:'', image:'', bgColor: '#ffffff', textColor: '#333333' };
 
   // ============== CURRENCY DATA ==============
     const currencyData = [
@@ -1697,6 +1742,8 @@ function renderAddedProductsList() {
     aboutData.title     = document.getElementById('aboutTitle').value.trim();
     aboutData.paragraph = document.getElementById('aboutParagraph').value.trim();
     aboutData.image     = document.getElementById('aboutImage').value.trim();
+    aboutData.bgColor = document.getElementById('aboutBgColorPicker').value;
+aboutData.textColor = document.getElementById('aboutTextColorPicker').value;
 
     // contact data
     contactData.intro       = document.getElementById('contactIntro').value.trim();
@@ -1727,6 +1774,13 @@ function renderAddedProductsList() {
       payBtn.classList.remove('enabled');
     }
   }
+    
+    function updateAboutColors() {
+  // Update aboutData with the chosen colors
+  aboutData.bgColor = document.getElementById('aboutBgColorPicker').value;
+  aboutData.textColor = document.getElementById('aboutTextColorPicker').value;
+  updatePreview(); // Refresh the preview to apply the new colors
+}
 
   function buildFinalHTML(){
     var top = "<!DOCTYPE html><html><head><meta charset='UTF-8'><title></title>";
@@ -2210,17 +2264,24 @@ a{text-decoration:none;color:#2196f3}a:hover{opacity:0.8}img{max-width:100%;heig
   }
 
   function buildAboutSection(){
-    if(!aboutData.title && !aboutData.paragraph && !aboutData.image) return "";
-    var a = "<section class='about-section' id='about'><div class='about-left'>";
-    a += "<h2>"+escapeHTML(aboutData.title||"Who We Are")+"</h2>";
-    a += "<p>"+escapeHTML(aboutData.paragraph||"We are a small business...")+"</p>";
-    a += "</div><div class='about-right'>";
-    if(aboutData.image){
-      a += "<img src='"+escapeHTML(aboutData.image)+"' alt='About Image'>";
-    }
-    a += "</div></section>";
-    return a;
+  if(!aboutData.title && !aboutData.paragraph && !aboutData.image) return "";
+  // Only apply background color on the section
+  var styleAttr = "";
+  if(aboutData.bgColor) { 
+    styleAttr += "background-color:" + aboutData.bgColor + ";"; 
   }
+  var a = "<section class='about-section' id='about' style='" + styleAttr + "'>";
+  a += "<div class='about-left'>";
+  // Apply text color directly on the heading and paragraph
+  a += "<h2 style='color:" + aboutData.textColor + ";'>" + escapeHTML(aboutData.title||"Who We Are") + "</h2>";
+  a += "<p style='color:" + aboutData.textColor + ";'>" + escapeHTML(aboutData.paragraph||"Our story...") + "</p>";
+  a += "</div><div class='about-right'>";
+  if(aboutData.image){
+    a += "<img src='" + escapeHTML(aboutData.image) + "' alt='About Image'>";
+  }
+  a += "</div></section>";
+  return a;
+}
 
   function buildContactSection(){
     var anyFilled = contactData.intro || contactData.instagram || contactData.tiktok ||
