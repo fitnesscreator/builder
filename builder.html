@@ -777,12 +777,16 @@
     cursor: pointer; /* Pointer cursor on hover */
 }
 .custom-t-icon {
-    font-size: 40px;
+    font-size: 25px;
     font-weight: bold;
     color: #666; /* Light gray for the "T" icon */
 }
 .fa-brush {
-    font-size: 40px;
+    font-size: 25px;
+    color: #666; /* Light gray for the brush icon */
+}
+.fa-sliders-h {
+    font-size: 20px;
     color: #666; /* Light gray for the brush icon */
 }
 /* Hide the color picker inputs */
@@ -975,7 +979,24 @@
 </div>
         
         <button type="button" onclick="addProduct()">Add Product</button>
-        <div id="addedProductsList"></div>
+<label>Buy now button styles</label>
+<div id="productButtonStyleContainer" class="icon-container" style="margin: 10px 0;">
+  <!-- Background Color Picker for Buy Now Button -->
+  <div class="icon-wrapper" onclick="document.getElementById('buyNowBgColorPicker').click()">
+    <i class="fas fa-brush"></i>
+    <input type="color" id="buyNowBgColorPicker" class="color-picker" value="#007bff" onchange="updateProductBuyNowStyles()">
+  </div>
+  <!-- Text Color Picker for Buy Now Button -->
+  <div class="icon-wrapper" onclick="document.getElementById('buyNowTextColorPicker').click()">
+    <div class="custom-t-icon">T</div>
+    <input type="color" id="buyNowTextColorPicker" class="color-picker" value="#fff" onchange="updateProductBuyNowStyles()">
+  </div>
+  <!-- Corner Radius Adjuster for Buy Now Button -->
+  <div class="icon-wrapper" id="cornerPickerWrapper">
+    <i class="fas fa-sliders-h"></i>
+  </div>
+</div>
+<div id="addedProductsList"></div>
       </form>
       <!-- Add Reviews -->
       <form id="addReviewForm">
@@ -1137,6 +1158,24 @@
     </div>
   </div>
   
+  <!-- Border Radius Modal -->
+<div id="borderRadiusModal" class="modal" style="display:none; justify-content: center; align-items: center;">
+  <div class="modal-content" style="max-width:300px; text-align: center;">
+    <h3>Adjust Rounded Corners</h3>
+    <!-- Border preview box with "Buy Now" text -->
+    <div id="borderPreview" style="margin: 20px auto; width: 100px; height: 50px; border: 1px solid #ccc; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #333;">
+      Buy Now
+    </div>
+    <!-- Slider to adjust border radius -->
+    <input type="range" id="borderRadiusSlider" min="0" max="30" value="4" style="width: 80%;">
+    <br><br>
+    <!-- Save button -->
+    <button id="saveBorderRadiusBtn" style="background: #388eff;padding: 8px 16px;">Save</button>
+  </div>
+</div>
+
+
+  
   <!-- Popup Message -->
   <div id="popupMessage" class="popup-message">
     <span class="close">&times;</span>
@@ -1160,6 +1199,9 @@
   var defaultPaypalEmail = "";
   var downloadCount = 0;
   var aboutData = { title:'', paragraph:'', image:'', bgColor: '#ffffff', textColor: '#333333' };
+  var productBuyNowBgColor = "#007bff"; // default background color for Buy Now button
+  var productBuyNowTextColor = "#fff";  // default text color for Buy Now button
+  var productBuyNowBorderRadius = 4;    // default border radius (in pixels)
 
   // ============== CURRENCY DATA ==============
     const currencyData = [
@@ -1871,8 +1913,8 @@ a{text-decoration:none;color:#2196f3}a:hover{opacity:0.8}img{max-width:100%;heig
 .product-content{padding:15px}\n\
 .product-content h3{margin:0 0 8px;font-size:1.2rem;font-weight:600;color:#222}\n\
 .product-content h2{margin:0 0 10px;font-size:1rem;font-weight:500;color:#28a745}\n\
-.buy-now{display:block;width:100%;padding:10px 0;background:#007bff;color:#fff;text-align:center;border-radius:4px;font-weight:600;transition:background 0.3s}\n\
-.buy-now:hover{background:#0056b3}\n\
+.buy-now{display:block;width:100%;padding:10px 0;background:" + productBuyNowBgColor + ";color:" + productBuyNowTextColor + ";text-align:center;border-radius:" + productBuyNowBorderRadius + "px;font-weight:600;transition:background 0.3s}\n\
+.buy-now:hover{background-color:" + shadeColor(productBuyNowBgColor, -10) + ";}\n\
 .reviews-section{background:#fff;padding:40px 20px;text-align:center}\n\
 .reviews-section h2{margin-bottom:30px;font-size:1.8rem;color:#555}\n\
 .review-container{display:flex;justify-content:center;flex-wrap:wrap;gap:20px}\n\
@@ -2240,7 +2282,7 @@ a{text-decoration:none;color:#2196f3}a:hover{opacity:0.8}img{max-width:100%;heig
       html += "<div class='product-content'>";
       html += (p.title ? "<h3>"+escapeHTML(p.title)+"</h3>" : "<h3>Untitled Product</h3>");
       html += "<h2>"+ symbol + escapeHTML(p.price||"0") +"</h2>";
-      html += "<a class='buy-now' href='#'>Buy Now</a>";
+      html += "<a class='buy-now' style='background-color:" + productBuyNowBgColor + "; color:" + productBuyNowTextColor + "; border-radius:" + productBuyNowBorderRadius + "px;' href='#'>Buy Now</a>";
       html += "</div></div>";
     }
     return "<section id='products'><div class='products-grid'>"+html+"</div></section>";
@@ -2966,6 +3008,36 @@ m += "})();";
   m += "</scr" + "ipt>";
   return m;
 }
+    
+    function updateProductBuyNowStyles(){
+  productBuyNowBgColor = document.getElementById('buyNowBgColorPicker').value;
+  productBuyNowTextColor = document.getElementById('buyNowTextColorPicker').value;
+  // Read the border radius from the slider in the modal
+  productBuyNowBorderRadius = document.getElementById('borderRadiusSlider').value;
+  
+  // Update the border preview element (using the correct ID)
+  document.getElementById('borderPreview').style.borderRadius = productBuyNowBorderRadius + "px";
+  
+  // Refresh the website preview so the changes take effect
+  updatePreview();
+}
+
+
+    
+function shadeColor(color, percent) {
+  var num = parseInt(color.slice(1),16),
+      amt = Math.round(2.55 * percent),
+      R = (num >> 16) + amt,
+      G = (num >> 8 & 0x00FF) + amt,
+      B = (num & 0x0000FF) + amt;
+  return "#" + (
+    0x1000000 +
+    (R < 255 ? (R < 1 ? 0 : R) : 255) * 0x10000 +
+    (G < 255 ? (G < 1 ? 0 : G) : 255) * 0x100 +
+    (B < 255 ? (B < 1 ? 0 : B) : 255)
+  ).toString(16).slice(1);
+}
+
 
 
 
@@ -3249,6 +3321,32 @@ m += "})();";
   defaultCurrency = this.value;
   defaultCurrencyCode = this.getAttribute('data-code') || '';
 });
+    
+    document.getElementById('cornerPickerWrapper').addEventListener('click', function(e) {
+  // Set the slider to the current border radius value
+  document.getElementById('borderRadiusSlider').value = productBuyNowBorderRadius;
+  // Set the preview box’s border radius to match
+  document.getElementById('borderPreview').style.borderRadius = productBuyNowBorderRadius + "px";
+  // Open the modal
+  document.getElementById('borderRadiusModal').style.display = 'flex';
+});
+
+
+document.getElementById('saveBorderRadiusBtn').addEventListener('click', function() {
+  // Update the global variable with the slider's value
+  productBuyNowBorderRadius = document.getElementById('borderRadiusSlider').value;
+  // Call the update function to refresh the preview (this function should rebuild your final HTML preview)
+  updateProductBuyNowStyles();
+  // Close the modal
+  document.getElementById('borderRadiusModal').style.display = 'none';
+});
+
+    document.getElementById('borderRadiusSlider').addEventListener('input', function(){
+  document.getElementById('borderPreview').style.borderRadius = this.value + "px";
+});
+
+
+
 
 </script>
 
