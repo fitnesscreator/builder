@@ -781,8 +781,8 @@
     font-weight: bold;
     color: #666; /* Light gray for the "T" icon */
 }
-.fa-brush {
-    font-size: 25px;
+.fa-paint-brush {
+    font-size: 18px;
     color: #666; /* Light gray for the brush icon */
 }
 .fa-sliders-h {
@@ -856,21 +856,38 @@
         <button type="button" id="uploadBtn" onclick="redirectToUpload()">Upload <span class="arrow">&#10148;</span></button>
       </form>
       <!-- Hero & Logo Section -->
-      <form id="heroLogoForm">
-        <h2>Hero & Logo Section</h2>
-        <label>Logo Image URL
-          <input id="logo" type="text" placeholder="https://example.com/logo.png" required spellcheck="false" maxlength="300">
-        </label>
-        <label>Hero Banner Image URL
-          <input id="banner" type="text" placeholder="https://example.com/hero.jpg" required spellcheck="false" maxlength="300">
-        </label>
-        <label>Hero Title
-          <textarea id="heroText" rows="2" placeholder="Your amazing headline" required spellcheck="false" maxlength="70"></textarea>
-        </label>
-        <label>CTA Button Text
-          <input id="ctaText" type="text" placeholder="Shop Now!" required spellcheck="false" maxlength="30">
-        </label>
-      </form>
+<form id="heroLogoForm">
+  <h2>Hero & Logo Section</h2>
+  <label>Logo Image URL
+    <input id="logo" type="text" placeholder="https://example.com/logo.png" required spellcheck="false" maxlength="300">
+  </label>
+  <label>Hero Banner Image URL
+    <input id="banner" type="text" placeholder="https://example.com/hero.jpg" required spellcheck="false" maxlength="300">
+  </label>
+  <label>Hero Title
+    <textarea id="heroText" rows="2" placeholder="Your amazing headline" required spellcheck="false" maxlength="70"></textarea>
+  </label>
+  <label>Hero Title Color
+    <div class="icon-wrapper" onclick="document.getElementById('heroTitleColorPicker').click()">
+      <div class="custom-t-icon">T</div>
+      <input type="color" id="heroTitleColorPicker" class="color-picker" value="#000000" onchange="updateHeroTitleColor()">
+    </div>
+  </label>
+  <label>CTA Button Text
+    <input id="ctaText" type="text" placeholder="Shop Now!" required spellcheck="false" maxlength="30">
+  </label>
+  <label>CTA Button Colors</label>
+<div class="cta-color-options" style="display: flex; align-items: center; gap: 10px;">
+  <div class="icon-wrapper" onclick="document.getElementById('ctaBgColorPicker').click()">
+    <i class="fas fa-paint-brush"></i>
+    <input type="color" id="ctaBgColorPicker" class="color-picker" value="#007bff" onchange="updateCTAButtonColors()">
+  </div>
+  <div class="icon-wrapper" onclick="document.getElementById('ctaTextColorPicker').click()">
+    <div class="custom-t-icon">T</div>
+    <input type="color" id="ctaTextColorPicker" class="color-picker" value="#ffffff" onchange="updateCTAButtonColors()">
+  </div>
+</div>
+</form>
       <!-- Add Products -->
       <form id="addProductForm">
         <h2 class="section-title">Add Products</h2>
@@ -983,7 +1000,7 @@
 <div id="productButtonStyleContainer" class="icon-container" style="margin: 10px 0;">
   <!-- Background Color Picker for Buy Now Button -->
   <div class="icon-wrapper" onclick="document.getElementById('buyNowBgColorPicker').click()">
-    <i class="fas fa-brush"></i>
+    <i class="fas fa-paint-brush"></i>
     <input type="color" id="buyNowBgColorPicker" class="color-picker" value="#007bff" onchange="updateProductBuyNowStyles()">
   </div>
   <!-- Text Color Picker for Buy Now Button -->
@@ -1035,7 +1052,7 @@
 <div id="aboutColorsContainer" class="icon-container">
   <!-- Background Color Picker Button -->
   <div class="icon-wrapper" onclick="document.getElementById('aboutBgColorPicker').click()">
-    <i class="fas fa-brush"></i>
+    <i class="fas fa-paint-brush"></i>
     <input type="color" id="aboutBgColorPicker" class="color-picker" value="#ffffff" onchange="updateAboutColors()">
   </div>
   <!-- Text Color Picker Button -->
@@ -1206,6 +1223,15 @@
   var productBuyNowBgColor = "#007bff"; // default background color for Buy Now button
   var productBuyNowTextColor = "#fff";  // default text color for Buy Now button
   var productBuyNowBorderRadius = 4;    // default border radius (in pixels)
+  var heroData = { 
+  logo: '', 
+  banner: '', 
+  heroText: '', 
+  ctaText: '', 
+  heroTitleColor: '#000000',  // default hero title color (black)
+  ctaBgColor: '#007bff',        // default CTA button background color
+  ctaTextColor: '#ffffff'       // default CTA button text color
+};
 
   // ============== CURRENCY DATA ==============
     const currencyData = [
@@ -2222,33 +2248,33 @@ a{text-decoration:none;color:#2196f3}a:hover{opacity:0.8}img{max-width:100%;heig
   }
 
   function buildHero(){
-    if(!heroData.banner){
-      // minimal hero
-      var minimal = "";
-      minimal += "<section class='hero-banner' style='background:none; min-height:200px;'>";
-      minimal += "<div class='hero-overlay'>";
-      if(heroData.heroText){
-        minimal += "<h1 class='hero-title'>"+escapeHTML(heroData.heroText)+"</h1>";
-      }
-      if(heroData.ctaText){
-        minimal += "<a class='hero-cta' href='#products'>"+escapeHTML(heroData.ctaText)+"</a>";
-      }
-      minimal += "</div></section>";
-      return minimal;
-    }
-    // big hero
-    var bkg = escapeHTML(heroData.banner);
-    var s   = "<section class='hero-banner' style=\"background-image:url('"+bkg+"');\">";
-    s += "<div class='hero-overlay'>";
+  if(!heroData.banner){
+    // minimal hero
+    var minimal = "";
+    minimal += "<section class='hero-banner' style='background:none; min-height:200px;'>";
+    minimal += "<div class='hero-overlay'>";
     if(heroData.heroText){
-      s += "<h1 class='hero-title'>"+escapeHTML(heroData.heroText)+"</h1>";
+      minimal += "<h1 class='hero-title' style='color:" + (heroData.heroTitleColor || '#000000') + ";'>" + escapeHTML(heroData.heroText) + "</h1>";
     }
     if(heroData.ctaText){
-      s += "<a class='hero-cta' href='#products'>"+escapeHTML(heroData.ctaText)+"</a>";
+      minimal += "<a class='hero-cta' style='background-color:" + (heroData.ctaBgColor || '#007bff') + "; color:" + (heroData.ctaTextColor || '#ffffff') + ";' href='#products'>" + escapeHTML(heroData.ctaText) + "</a>";
     }
-    s += "</div></section>";
-    return s;
+    minimal += "</div></section>";
+    return minimal;
   }
+  // big hero
+  var bkg = escapeHTML(heroData.banner);
+  var s   = "<section class='hero-banner' style=\"background-image:url('" + bkg + "');\">";
+  s += "<div class='hero-overlay'>";
+  if(heroData.heroText){
+    s += "<h1 class='hero-title' style='color:" + (heroData.heroTitleColor || '#000000') + ";'>" + escapeHTML(heroData.heroText) + "</h1>";
+  }
+  if(heroData.ctaText){
+    s += "<a class='hero-cta' style='background-color:" + (heroData.ctaBgColor || '#007bff') + "; color:" + (heroData.ctaTextColor || '#ffffff') + ";' href='#products'>" + escapeHTML(heroData.ctaText) + "</a>";
+  }
+  s += "</div></section>";
+  return s;
+}
 
   function buildProductsSection(){
     if(products.length === 0){
@@ -3025,6 +3051,18 @@ m += "})();";
   // Refresh the website preview so the changes take effect
   updatePreview();
 }
+    
+    function updateHeroTitleColor(){
+  heroData.heroTitleColor = document.getElementById('heroTitleColorPicker').value;
+  updatePreview();
+}
+
+function updateCTAButtonColors(){
+  heroData.ctaBgColor = document.getElementById('ctaBgColorPicker').value;
+  heroData.ctaTextColor = document.getElementById('ctaTextColorPicker').value;
+  updatePreview();
+}
+
 
 
     
