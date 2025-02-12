@@ -763,7 +763,7 @@
     /* Styles for About Section Color Pickers */
 .icon-container {
     display: flex;
-    gap: 20px; /* Space between buttons */
+    gap: 10px; /* Space between buttons */
 }
 .icon-wrapper {
     display: flex;
@@ -793,6 +793,37 @@
 .color-picker {
     display: none;
 }
+    
+    /* New styles for the font dropdown */
+.dropdown-menu {
+  min-width: 120px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  max-height: 200px;
+  overflow-y: auto;
+}
+.dropdown-menu div {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.dropdown-menu div:hover {
+  background: #f0f0f0;
+}
+    
+    .cta-color-options {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+    
+    .flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+
+
 
 
   
@@ -802,6 +833,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
   <!-- Then include FileSaver.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Indie+Flower&family=Shadows+Into+Light&family=Dancing+Script&family=Homemade+Apple&family=Caveat&family=Sacramento&family=Gloria+Hallelujah&family=Handlee&family=Reenie+Beanie&family=Pacifico&family=Lobster&family=Amatic+SC&family=Satisfy&family=Cookie&display=swap" rel="stylesheet">
+
 
   <script>
   // Create a new link element
@@ -867,27 +900,38 @@
   <label>Hero Title
     <textarea id="heroText" rows="2" placeholder="Your amazing headline" required spellcheck="false" maxlength="70"></textarea>
   </label>
-  <label>Hero Title Color
-    <div class="icon-wrapper" onclick="document.getElementById('heroTitleColorPicker').click()">
-      <div class="custom-t-icon">T</div>
-      <input type="color" id="heroTitleColorPicker" class="color-picker" value="#000000" onchange="updateHeroTitleColor()">
+  <label>Hero Title Color &amp; Font</label>
+<div class="flex-row" style="position: relative;">
+  <!-- Color Picker Button -->
+  <div class="icon-wrapper" onclick="document.getElementById('heroTitleColorPicker').click()">
+    <div class="custom-t-icon">T</div>
+    <input type="color" id="heroTitleColorPicker" class="color-picker" value="#000000" onchange="updateHeroTitleColor()">
+  </div>
+  <!-- Font Button -->
+  <div class="icon-wrapper" id="heroFontButton" onclick="event.stopPropagation(); toggleFontDropdown()">
+    Font
+  </div>
+    <!-- Dropdown Menu (initially hidden) -->
+    <div id="fontDropdown" class="dropdown-menu" style="display: none; position: absolute; top: 100%; left: 0; background:#fff; border: 1px solid #ddd; border-radius:4px; padding: 5px; z-index: 1000;">
+      <!-- Font options will be populated by JavaScript -->
     </div>
-  </label>
+  </div>
   <label>CTA Button Text
     <input id="ctaText" type="text" placeholder="Shop Now!" required spellcheck="false" maxlength="30">
   </label>
   <label>CTA Button Colors</label>
-<div class="cta-color-options" style="display: flex; align-items: center; gap: 10px;">
-  <div class="icon-wrapper" onclick="document.getElementById('ctaBgColorPicker').click()">
-    <i class="fas fa-paint-brush"></i>
-    <input type="color" id="ctaBgColorPicker" class="color-picker" value="#007bff" onchange="updateCTAButtonColors()">
+  <div class="cta-color-options">
+    <div class="icon-wrapper" onclick="document.getElementById('ctaBgColorPicker').click()">
+      <i class="fas fa-paint-brush"></i>
+      <input type="color" id="ctaBgColorPicker" class="color-picker" value="#007bff" onchange="updateCTAButtonColors()">
+    </div>
+    <div class="icon-wrapper" onclick="document.getElementById('ctaTextColorPicker').click()">
+      <div class="custom-t-icon">T</div>
+      <input type="color" id="ctaTextColorPicker" class="color-picker" value="#ffffff" onchange="updateCTAButtonColors()">
+    </div>
   </div>
-  <div class="icon-wrapper" onclick="document.getElementById('ctaTextColorPicker').click()">
-    <div class="custom-t-icon">T</div>
-    <input type="color" id="ctaTextColorPicker" class="color-picker" value="#ffffff" onchange="updateCTAButtonColors()">
-  </div>
-</div>
 </form>
+
       <!-- Add Products -->
       <form id="addProductForm">
         <h2 class="section-title">Add Products</h2>
@@ -1232,6 +1276,7 @@
   ctaBgColor: '#007bff',        // default CTA button background color
   ctaTextColor: '#ffffff'       // default CTA button text color
 };
+    var heroTitleFont = "Roboto"; // default font (keep the current hero title font as default)
 
   // ============== CURRENCY DATA ==============
     const currencyData = [
@@ -1855,31 +1900,36 @@ aboutData.textColor = document.getElementById('aboutTextColorPicker').value;
 }
 
   function buildFinalHTML(){
-    var top = "<!DOCTYPE html><html><head><meta charset='UTF-8'><title></title>";
-    top += "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
-    top += "<link href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap' rel='stylesheet'>";
-    top += buildGlobalCSS();
+  var top = "<!DOCTYPE html><html><head><meta charset='UTF-8'><title></title>";
+  top += "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
+  // Use the currently selected font for the hero title:
+  top += "<link href='https://fonts.googleapis.com/css2?family=" 
+         + heroTitleFont.split(" ").join("+")
+         + ":wght@400;500;700&display=swap' rel='stylesheet'>";
+  top += buildGlobalCSS();
 
-    // Fav icon
-    if(heroData.logo.trim() !== ""){
-      top += "<link rel='shortcut icon' href='" + escapeHTML(heroData.logo.trim()) + "'>";
-    }
-    if(contactData.googleAnalytics){
-      top += "\n<!-- Google Analytics -->\n" + contactData.googleAnalytics + "\n";
-    }
-    top += "</head><body>";
-
-    top += buildTopHeader();
-    top += buildHero();
-    top += buildProductsSection();
-    top += buildReviewsSection();
-    top += buildAboutSection();
-    top += buildContactSection();
-    top += buildProductModalScript(); // Insert the product modal script
-
-    top += "</body></html>";
-    return top;
+  // Fav icon
+  if(heroData.logo.trim() !== ""){
+    top += "<link rel='shortcut icon' href='" + escapeHTML(heroData.logo.trim()) + "'>";
   }
+  if(contactData.googleAnalytics){
+    top += "\n<!-- Google Analytics -->\n" + contactData.googleAnalytics + "\n";
+  }
+  top += "</head><body>";
+
+  top += buildTopHeader();
+  top += buildHero();
+  top += buildProductsSection();
+  top += buildReviewsSection();
+  top += buildAboutSection();
+  top += buildContactSection();
+  top += buildProductModalScript(); // Insert the product modal script
+
+  top += "</body></html>";
+  return top;
+}
+
+
 
   function downloadSite(){
   // Check if download limit has been reached
@@ -1924,7 +1974,7 @@ aboutData.textColor = document.getElementById('aboutTextColorPicker').value;
 
   function buildGlobalCSS(){
   var s = "<style>html{scroll-behavior:smooth;}*{box-sizing:border-box;transition:all 0.2s ease;}\n\
-html,body{margin:0;padding:0;font-family:'Roboto',sans-serif;background:#ffffff;color:#333;line-height:1.6;}\n\
+html,body { margin: 0; padding: 0; font-family: 'Roboto', sans-serif; background: #ffffff; color: #333; line-height: 1.6; }\n\
 a{text-decoration:none;color:#2196f3}a:hover{opacity:0.8}img{max-width:100%;height:auto;display:block}\n\
 .top-header{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,0.1);padding:15px 10px;text-align:center}\n\
 .logo-wrapper{display:inline-block}\n\
@@ -2254,8 +2304,8 @@ a{text-decoration:none;color:#2196f3}a:hover{opacity:0.8}img{max-width:100%;heig
     minimal += "<section class='hero-banner' style='background:none; min-height:200px;'>";
     minimal += "<div class='hero-overlay'>";
     if(heroData.heroText){
-      minimal += "<h1 class='hero-title' style='color:" + (heroData.heroTitleColor || '#000000') + ";'>" + escapeHTML(heroData.heroText) + "</h1>";
-    }
+  minimal += "<h1 class='hero-title' style='color:" + (heroData.heroTitleColor || '#000000') + "; font-family:" + heroTitleFont + ";'>" + escapeHTML(heroData.heroText) + "</h1>";
+}
     if(heroData.ctaText){
       minimal += "<a class='hero-cta' style='background-color:" + (heroData.ctaBgColor || '#007bff') + "; color:" + (heroData.ctaTextColor || '#ffffff') + ";' href='#products'>" + escapeHTML(heroData.ctaText) + "</a>";
     }
@@ -2267,8 +2317,8 @@ a{text-decoration:none;color:#2196f3}a:hover{opacity:0.8}img{max-width:100%;heig
   var s   = "<section class='hero-banner' style=\"background-image:url('" + bkg + "');\">";
   s += "<div class='hero-overlay'>";
   if(heroData.heroText){
-    s += "<h1 class='hero-title' style='color:" + (heroData.heroTitleColor || '#000000') + ";'>" + escapeHTML(heroData.heroText) + "</h1>";
-  }
+  s += "<h1 class='hero-title' style='color:" + (heroData.heroTitleColor || '#000000') + "; font-family:" + heroTitleFont + ";'>" + escapeHTML(heroData.heroText) + "</h1>";
+}
   if(heroData.ctaText){
     s += "<a class='hero-cta' style='background-color:" + (heroData.ctaBgColor || '#007bff') + "; color:" + (heroData.ctaTextColor || '#ffffff') + ";' href='#products'>" + escapeHTML(heroData.ctaText) + "</a>";
   }
@@ -3081,6 +3131,52 @@ function shadeColor(color, percent) {
 }
 
 
+function toggleFontDropdown() {
+  var dropdown = document.getElementById('fontDropdown');
+  if (dropdown.style.display === "none" || dropdown.style.display === "") {
+    dropdown.style.display = "block";
+  } else {
+    dropdown.style.display = "none";
+  }
+}
+
+
+
+function selectHeroFont(fontName) {
+  heroTitleFont = fontName;      // update global variable
+  updatePreview();               // refresh preview so new font is applied
+  document.getElementById('fontDropdown').style.display = "none"; // close dropdown
+}
+
+// Populate the dropdown with font options on page load
+window.addEventListener('load', function(){
+  // List of fonts (default "Roboto" is first)
+  var fonts = [
+    "Roboto", "Patrick Hand", "Indie Flower", "Shadows Into Light", 
+    "Dancing Script", "Homemade Apple", "Caveat", "Sacramento", 
+    "Gloria Hallelujah", "Handlee", "Reenie Beanie", 
+    "Pacifico", "Lobster", "Amatic SC", "Satisfy", "Cookie"
+  ];
+  var dropdown = document.getElementById('fontDropdown');
+  fonts.forEach(function(font) {
+    var option = document.createElement('div');
+    option.textContent = font;
+    option.style.fontFamily = font; // preview the font
+    option.onclick = function() {
+      selectHeroFont(font);
+    };
+    dropdown.appendChild(option);
+  });
+});
+
+// Close the dropdown if clicking outside of it
+document.addEventListener('click', function(e) {
+  var dropdown = document.getElementById('fontDropdown');
+  var fontButton = document.getElementById('heroFontButton');
+  if (dropdown && !dropdown.contains(e.target) && e.target !== fontButton) {
+    dropdown.style.display = "none";
+  }
+});
 
 
 
