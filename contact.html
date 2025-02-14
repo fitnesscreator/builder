@@ -28,7 +28,7 @@
     .navbar {
       width: 100%;
       height: 60px;
-      background: linear-gradient(to right, #6561e0, #61a3ff);
+      background: linear-gradient(to right, #ff3096, #ff8f5a);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -49,10 +49,8 @@
       font-size: 1.5rem;
       font-weight: bold;
       color: #fff;
+      text-decoration: none;
     }
-    .navbar-left .logo {
-  text-decoration: none; /* Removes underline */
-}
     .navbar-center {
       flex: 1;
       justify-content: center;
@@ -72,13 +70,13 @@
       border: none;
       border-radius: 5px;
       background: #fff;
-      color: #6561e0;
+      color: #ff3096;
       cursor: pointer;
       transition: background 0.3s ease, color 0.3s ease;
       white-space: nowrap;
     }
     .navbar .contact-button:hover {
-      background: #5750c0;
+      background: #fe2c55;
       color: #fff;
     }
     /* Main Content Styles */
@@ -93,7 +91,7 @@
     }
     .contact-card {
       background: rgba(255, 255, 255, 0.9);
-      border: 2px solid rgba(101, 97, 224, 0.15);
+      border: 2px solid rgba(255, 57, 150, 0.3);
       border-radius: 20px;
       padding: 40px;
       width: 100%;
@@ -111,7 +109,7 @@
       text-align: center;
       font-size: 2rem;
       margin-bottom: 20px;
-      background: linear-gradient(to right, #6561e0, #61a3ff);
+      background: linear-gradient(to right, #ff3096, #ff8f5a);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -128,7 +126,7 @@
     .contact-form textarea {
       padding: 10px;
       font-size: 1rem;
-      border: 2px solid rgba(101, 97, 224, 0.3);
+      border: 2px solid rgba(255, 57, 150, 0.3);
       border-radius: 5px;
       outline: none;
       transition: border 0.3s ease;
@@ -138,7 +136,7 @@
     }
     .contact-form input:focus,
     .contact-form textarea:focus {
-      border-color: #6561e0;
+      border-color: #ff3096;
     }
     .contact-form textarea {
       resize: vertical;
@@ -151,7 +149,7 @@
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      background: linear-gradient(45deg, #6561e0, #61a3ff, #6561e0);
+      background: linear-gradient(45deg, #fe2c55, #ff3096, #ff8f5a);
       color: #fff;
       background-size: 400% 400%;
       transition: background 0.3s ease;
@@ -228,8 +226,8 @@
   <!-- Navigation Bar -->
   <nav class="navbar">
     <div class="navbar-left">
-  <a href="index.html" class="logo">Boss in Pajamas</a>
-</div>
+      <a href="index.html" class="logo">Boss in Pajamas</a>
+    </div>
     <div class="navbar-center">
       <span>Grab your favorite drink and create your website</span>
       <i class="fas fa-mug-hot" aria-hidden="true"></i>
