@@ -444,6 +444,39 @@
   font-size: 12px;
   color: #888;
 }
+    
+    /* Custom CSS for the "Select Payment Method" button */
+#paymentMethodBtn {
+  background-color: #5e91ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 0.9rem;
+  text-transform: normal;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#paymentMethodBtn:hover {
+  background-color: #4a7bd4;
+  transform: scale(1.03);
+}
+
+#paymentMethodBtn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(94, 145, 255, 0.5);
+}
+    
+    /* When a payment method is selected */
+#paymentMethodBtn.selected {
+  background-color: #4caf50; /* A nice green */
+  color: #fff;
+  border: none;
+}
+
+
 
 
     #howtocreatepaypalbutton {
@@ -943,11 +976,124 @@
 #browseButton:hover {
   background: #fe2c55;
 }
+    
+    /* Modal Overlay */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Subtle dark overlay */
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Modal Content */
+.modal-content {
+  background: #fff;
+  border-radius: 16px; /* Extra smooth corners */
+  padding: 40px 50px;
+  width: 800px; /* Fixed width of 800px */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  position: relative;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  text-align: left;
+  animation: slideDown 0.4s ease-out;
+  overflow: hidden;
+  border: 1px solid #e6e6e6;
+}
+
+/* Close Button */
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s ease;
+}
+
+.modal-close:hover {
+  color: #333;
+}
+
+/* Modal Header */
+.modal h2 {
+  margin: 0 0 25px;
+  font-size: 2rem;
+  text-align: center;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Payment Options List */
+.payment-options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.payment-options li {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px 25px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s, transform 0.2s;
+  text-align: left;
+}
+
+.payment-options li:hover {
+  background: #e7f3ff; /* Light blue background on hover */
+  border-color: #2575d6; /* Darker blue border on hover */
+  transform: translateY(-2px);
+}
 
 
+.payment-options li h3 {
+  margin: 0 0 12px;
+  font-size: 1.4rem;
+  color: #222;
+  display: flex;
+  align-items: center;
+}
 
+.payment-options li h3 img {
+  width: 28px;
+  height: 28px;
+  vertical-align: middle;
+  margin-right: 12px;
+}
 
+.payment-options li p {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
 
+.payment-options li small {
+  font-size: 0.90rem;
+  color: black;
+  display: block;
+  margin-top: 8px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
 
 
   
@@ -1335,19 +1481,8 @@
       <span>Select Payment Method</span>
     </div>
     <div class="payment-method-select">
-      <select id="productPaymentMethod" required>
-        <option value="paypalEmail">PayPal Email</option>
-        <optgroup label="With this option, you lose inventory control, sales will keep coming even if you’re sold out"></optgroup>
-
-        <option value="paypalEmbed">PayPal Button Embed Code</option>
-        <optgroup label="You control your inventory by setting stock limits as you create your button"></optgroup>
-
-        <option value="paypalLink">PayPal Button Link</option>
-        <optgroup label="You control your inventory by setting stock limits as you create your button"></optgroup>
-
-        <option value="other">Other Payment Button link or Checkout Page link</option>
-        <optgroup label="Example: Stripe, Sumup, Square..."></optgroup>
-      </select>
+      <button type="button" id="paymentMethodBtn">Select Payment Method</button>
+<input type="hidden" id="productPaymentMethod" name="productPaymentMethod" value="paypalEmail">
     </div>
   </label>
 
@@ -1728,6 +1863,67 @@
     <button id="browseButton">Browse Files</button>
   </div>
 </div>
+  
+ <!-- Payment Method Modal -->
+<div id="paymentMethodModal" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" id="closePaymentMethodModal">&times;</span>
+    <h2>Select Payment Method</h2>
+    <ul class="payment-options">
+      <li data-value="paypalEmail" data-label="PayPal Email">
+        <h3>
+          <img src="https://i.ibb.co/67p1dsJm/paypal-icon-logo-png-transparent.png" alt="PayPal Icon">
+          PayPal Email
+        </h3>
+        <p>
+          Uses your PayPal email to automatically create a checkout.
+          <strong>Note:</strong> With PayPal Email, you lose control over stock and sales will keep coming even if you Sold Out.
+        </p>
+        <small>Product Options: Selectable – Customers can choose options like size, color, etc.</small>
+      </li>
+      <li data-value="paypalEmbed" data-label="PayPal Button Embed Code">
+        <h3>
+          <img src="https://i.ibb.co/67p1dsJm/paypal-icon-logo-png-transparent.png" alt="PayPal Icon">
+          PayPal Button Embed Code
+        </h3>
+        <p>
+          Embeds a PayPal button directly on your site.
+          <strong>Create this button in your PayPal account, set a Stock Limit for each product, and copy its embed code Here.</strong>
+        </p>
+        <small>Product Options: Selectable – Customers can choose options like size, color, etc.</small>
+      </li>
+      <li data-value="paypalLink" data-label="PayPal Button Link">
+        <h3>
+          <img src="https://i.ibb.co/67p1dsJm/paypal-icon-logo-png-transparent.png" alt="PayPal Icon">
+          PayPal Button Link
+        </h3>
+        <p>
+          Provides a direct URL to a PayPal checkout.
+          <strong>Create this button in your PayPal account and paste its link here.</strong>
+        </p>
+        <small>Product Options: Not Selectable – Options are shown but cannot be selected.</small>
+      </li>
+      <li data-value="other" data-label="Other Payment Button Link">
+        <h3>
+          <img src="https://i.ibb.co/cCtHLKs/Bella-58.png" alt="Stripe Icon">
+          <img src="https://i.ibb.co/V3gG6tw/Bella-56.png" alt="Sumup Icon">
+          <img src="https://i.ibb.co/QJY6Cp7/Bella-57.png" alt="Square Icon">
+          <img src="https://i.ibb.co/m496tmj/Bella-53.png" alt="Checkout Icon">
+          Other Payment Button Link
+        </h3>
+        <p>
+          Uses a payment button from another platform (like Stripe, Square, etc.).
+          <strong>Create the button on that platform and paste its link here.</strong>
+        </p>
+        <small>Product Options: Not Selectable – Options are shown but cannot be selected.</small>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+
+
 
 
   
@@ -4115,6 +4311,47 @@ document.getElementById('aboutImage').addEventListener('input', function() {
   updatePreview();
 });
 
+
+document.getElementById('paymentMethodBtn').addEventListener('click', function() {
+  document.getElementById('paymentMethodModal').style.display = 'block';
+});
+
+document.getElementById('closePaymentMethodModal').addEventListener('click', function() {
+  document.getElementById('paymentMethodModal').style.display = 'none';
+});
+
+document.querySelectorAll('#paymentMethodModal ul li').forEach(function(item) {
+  item.addEventListener('click', function() {
+    var value = this.getAttribute('data-value');
+    document.getElementById('productPaymentMethod').value = value;
+    // Do not update the button text—keep it static as "Select Payment Method"
+    document.getElementById('paymentMethodModal').style.display = 'none';
+    
+    // Trigger any change event if needed:
+    var event = new Event('change');
+    document.getElementById('productPaymentMethod').dispatchEvent(event);
+  });
+});
+    
+    document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('#paymentMethodModal ul li').forEach(function(item) {
+    item.addEventListener('click', function() {
+      var value = this.getAttribute('data-value');
+      document.getElementById('productPaymentMethod').value = value;
+      
+      // Update the button appearance and text
+      var paymentBtn = document.getElementById('paymentMethodBtn');
+      paymentBtn.classList.add('selected');
+      paymentBtn.innerHTML = 'Payment method selected  <i class="fas fa-check"></i>';
+      
+      document.getElementById('paymentMethodModal').style.display = 'none';
+      
+      // Optionally, trigger a change event if needed
+      var event = new Event('change');
+      document.getElementById('productPaymentMethod').dispatchEvent(event);
+    });
+  });
+});
 
 
    
