@@ -1103,7 +1103,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
   <!-- Then include FileSaver.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Indie+Flower&family=Shadows+Into+Light&family=Dancing+Script&family=Homemade+Apple&family=Caveat&family=Sacramento&family=Gloria+Hallelujah&family=Handlee&family=Reenie+Beanie&family=Pacifico&family=Lobster&family=Amatic+SC&family=Satisfy&family=Cookie&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Open+Sans&family=Lato&family=Montserrat&family=Source+Sans+Pro&family=Raleway&family=Ubuntu&family=Poppins&family=Merriweather&family=Oswald&family=Patrick+Hand&family=Indie+Flower&family=Shadows+Into+Light&family=Dancing+Script&family=Homemade+Apple&family=Caveat&family=Sacramento&family=Gloria+Hallelujah&family=Handlee&family=Reenie+Beanie&family=Pacifico&family=Lobster&family=Amatic+SC&family=Satisfy&family=Cookie&display=swap" rel="stylesheet">
 
 
   <script>
@@ -3865,12 +3865,33 @@ function selectHeroFont(fontName) {
 
 // Populate the dropdown with font options on page load
 window.addEventListener('load', function(){
-  // List of fonts (default "Roboto" is first)
+  // List of fonts: 10 modern fonts from your snippet + the extra fonts
   var fonts = [
-    "Roboto", "Patrick Hand", "Indie Flower", "Shadows Into Light", 
-    "Dancing Script", "Homemade Apple", "Caveat", "Sacramento", 
-    "Gloria Hallelujah", "Handlee", "Reenie Beanie", 
-    "Pacifico", "Lobster", "Amatic SC", "Satisfy", "Cookie"
+    "Roboto",          // modern
+    "Open Sans",       // modern
+    "Lato",            // modern
+    "Montserrat",      // modern
+    "Source Sans Pro", // modern
+    "Raleway",         // modern
+    "Ubuntu",          // modern
+    "Poppins",         // modern
+    "Merriweather",    // modern
+    "Oswald",          // modern
+    "Patrick Hand",    // extra
+    "Indie Flower",    // extra
+    "Shadows Into Light", // extra
+    "Dancing Script",  // extra
+    "Homemade Apple",  // extra
+    "Caveat",          // extra
+    "Sacramento",      // extra
+    "Gloria Hallelujah", // extra
+    "Handlee",         // extra
+    "Reenie Beanie",   // extra
+    "Pacifico",        // extra
+    "Lobster",         // extra
+    "Amatic SC",       // extra
+    "Satisfy",         // extra
+    "Cookie"           // extra
   ];
   var dropdown = document.getElementById('fontDropdown');
   fonts.forEach(function(font) {
@@ -3883,6 +3904,7 @@ window.addEventListener('load', function(){
     dropdown.appendChild(option);
   });
 });
+
 
 // Close the dropdown if clicking outside of it
 document.addEventListener('click', function(e) {
