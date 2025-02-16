@@ -957,7 +957,25 @@
   padding: 20px;
   margin: 10px 0;
   height: 230px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
+
+#uploadDropArea i {
+  font-size: 5rem;
+  color: #ccc;
+  transition: transform 0.3s, color 0.3s;
+}
+
+#uploadDropArea:hover i {
+  color: #ff3096;
+  transform: scale(1.1);
+}
+
 
 /* Hide the file input */
 #uploadFileInput {
@@ -978,6 +996,7 @@
 #browseButton:hover {
   background: #fe2c55;
 }
+
     
     /* Modal Overlay */
 .modal {
@@ -1855,13 +1874,15 @@
   <div class="modal-content">
     <span class="modal-close" id="uploadModalClose">&times;</span>
     <h2>Upload Photo</h2>
-    <div id="uploadDropArea">
-      Drag &amp; Drop your photo here
+    <div id="uploadDropArea" onclick="document.getElementById('uploadFileInput').click();">
+      <i class="fas fa-cloud-upload-alt"></i>
+      <p>Drag &amp; Drop your photo here</p>
     </div>
     <input type="file" id="uploadFileInput" accept="image/*" />
-    <button id="browseButton">Browse Files</button>
+    <button id="browseButton" onclick="document.getElementById('uploadFileInput').click();">Browse Files</button>
   </div>
 </div>
+
   
  <!-- Payment Method Modal -->
 <div id="paymentMethodModal" class="modal">
