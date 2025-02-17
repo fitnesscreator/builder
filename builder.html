@@ -2194,6 +2194,36 @@
 
   return true;
 }
+    
+    // Helper function to scale an image to a given percentage (e.g., 0.5 for 50%, 0.7 for 70%) and return its base64 string
+function scaleImage(file, scaleFactor, callback) {
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = new Image();
+    img.onload = function() {
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width * scaleFactor;
+      canvas.height = img.height * scaleFactor;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      const scaledDataUrl = canvas.toDataURL('image/png');
+      callback(scaledDataUrl);
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+// Define scaling factors for each upload button
+const scaleMapping = {
+  'uploadLogoBtn': 0.5,      // Logo: 50%
+  'uploadBannerBtn': 0.7,    // Hero Banner: 70%
+  'uploadImage1Btn': 0.7,    // 1st Product Image: 70%
+  'uploadImage2Btn': 0.7,    // 2nd Product Image: 70%
+  'uploadImage3Btn': 0.7,    // 3rd Product Image: 70%
+  'uploadAboutImgBtn': 0.7   // About Us Image: 70%
+};
+
+
 
 
   // ============== ON LOAD ==============
@@ -4477,25 +4507,22 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('uploadFileInput').addEventListener('change', function(e) {
   const file = e.target.files[0];
   if (file && window.currentUploadField) {
-    const reader = new FileReader();
-    reader.onload = function(event) {
-      const base64String = event.target.result;
-      window.uploadedImages[window.currentUploadField] = base64String;
-      if (window.backupImages[window.currentUploadField]) {
-        delete window.backupImages[window.currentUploadField];
-      }
-      updatePreviewForField(window.currentUploadField, base64String);
+    // Get the correct scale factor based on the current upload field
+    const factor = scaleMapping[window.currentUploadField] || 1;
+    scaleImage(file, factor, function(scaledBase64) {
+      window.uploadedImages[window.currentUploadField] = scaledBase64;
+      updatePreviewForField(window.currentUploadField, scaledBase64);
       const btn = document.getElementById(window.currentUploadField);
       if (btn) {
         btn.innerHTML = '<i class="fas fa-check" style="color: white;"></i>';
       }
       closeUploadModal();
-    };
-    reader.readAsDataURL(file);
-    // Clear the file input so the same file can be selected again
+    });
     this.value = "";
   }
 });
+
+
 
 
   // Drag & drop handling:
@@ -4509,27 +4536,26 @@ document.addEventListener('DOMContentLoaded', function() {
     dropArea.style.borderColor = '#ccc';
   });
   dropArea.addEventListener('drop', function(e) {
-    e.preventDefault();
-    dropArea.style.borderColor = '#ccc';
-    const file = e.dataTransfer.files[0];
-    if (file && window.currentUploadField) {
-      const reader = new FileReader();
-      reader.onload = function(event) {
-        const base64String = event.target.result;
-        window.uploadedImages[window.currentUploadField] = base64String;
-        if (window.backupImages[window.currentUploadField]) {
-          delete window.backupImages[window.currentUploadField];
-        }
-        updatePreviewForField(window.currentUploadField, base64String);
-        const btn = document.getElementById(window.currentUploadField);
-        if (btn) {
-          btn.innerHTML = '<i class="fas fa-check" style="color: white;"></i>';
-        }
-        closeUploadModal();
-      };
-      reader.readAsDataURL(file);
-    }
-  });
+  e.preventDefault();
+  dropArea.style.borderColor = '#ccc';
+  const file = e.dataTransfer.files[0];
+  if (file && window.currentUploadField) {
+    const factor = scaleMapping[window.currentUploadField] || 1;
+    scaleImage(file, factor, function(scaledBase64) {
+      window.uploadedImages[window.currentUploadField] = scaledBase64;
+      if (window.backupImages[window.currentUploadField]) {
+        delete window.backupImages[window.currentUploadField];
+      }
+      updatePreviewForField(window.currentUploadField, scaledBase64);
+      const btn = document.getElementById(window.currentUploadField);
+      if (btn) {
+        btn.innerHTML = '<i class="fas fa-check" style="color: white;"></i>';
+      }
+      closeUploadModal();
+    });
+  }
+});
+
 
   function updatePreviewForField(fieldId, base64String) {
     const fieldMapping = {
