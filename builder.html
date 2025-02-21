@@ -905,25 +905,21 @@
 
 /* Square upload button */
 .upload-btn {
-  width: 38px;            /* make it square by setting width = height */
-  height: 38px;
-  background-color: #fec7e0;
+  background-color: #fc9cd3;
   color: #fff;
   border: none;
-  outline: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 0.9rem;
+  text-transform: normal;
+  letter-spacing: 0.05em;
   cursor: pointer;
-  font-size: 1rem;
-  margin-left: 8px;       /* small gap from the input */
-  margin-top: 6px;
-  display: inline-flex;   /* center icon both vertically & horizontally */
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .upload-btn:hover {
   background-color: #ff66c4 !important;
+  transform: scale(1.03);
 }
 
 
@@ -1153,10 +1149,11 @@
   <!-- Logo Image Row -->
   <label>Upload Logo Image</label>
   <div class="input-row">
+    <!-- Hidden input instead of text -->
     <input
       id="logo"
-      type="text"
-      placeholder="Or Paste the Logo Link Here"
+      type="hidden"
+      value=""
       required
       spellcheck="false"
       maxlength="300"
@@ -1175,10 +1172,11 @@
   <!-- Hero Banner Image Row -->
   <label>Upload Your Hero Banner Image</label>
   <div class="input-row">
+    <!-- Hidden input instead of text -->
     <input
       id="banner"
-      type="text"
-      placeholder="Or Paste Its Link Here"
+      type="hidden"
+      value=""
       required
       spellcheck="false"
       maxlength="300"
@@ -1241,9 +1239,7 @@
         padding: 5px;
         z-index: 1000;
       "
-    >
-      <!-- Font options will be populated by JavaScript -->
-    </div>
+    ></div>
   </div>
 
   <label>CTA Button Text
@@ -1284,6 +1280,7 @@
 
 
 
+
       <!-- Add Products -->
 <form id="addProductForm">
   <h2 class="section-title">Add Products</h2>
@@ -1296,19 +1293,20 @@
       required
       spellcheck="false"
       maxlength="60"
-    >
+    />
   </label>
 
   <label>Upload Main Product Image</label>
   <div class="input-row">
+    <!-- Hidden input instead of text -->
     <input
       id="image1"
-      type="text"
-      placeholder="Or Paste its Link Here"
+      type="hidden"
+      value=""
       required
       spellcheck="false"
       maxlength="300"
-    >
+    />
     <button
       type="button"
       class="upload-btn"
@@ -1323,13 +1321,14 @@
   <div id="additionalImage2" style="display:none;">
     <label>Upload 2nd Product Image</label>
     <div class="input-row">
+      <!-- Hidden input instead of text -->
       <input
         id="image2"
-        type="text"
-        placeholder="Or Paste Its Link Here"
+        type="hidden"
+        value=""
         spellcheck="false"
         maxlength="300"
-      >
+      />
       <button
         type="button"
         class="upload-btn"
@@ -1345,13 +1344,14 @@
   <div id="additionalImage3" style="display:none;">
     <label>Upload 3rd Product Image</label>
     <div class="input-row">
+      <!-- Hidden input instead of text -->
       <input
         id="image3"
-        type="text"
-        placeholder="Or Paste its Link Here"
+        type="hidden"
+        value=""
         spellcheck="false"
         maxlength="300"
-      >
+      />
       <button
         type="button"
         class="upload-btn"
@@ -1381,7 +1381,7 @@
         placeholder="Select Currency"
         readonly
         spellcheck="false"
-      >
+      />
       <div class="currency-list" id="currencyList">
         <div class="currency-search">
           <input
@@ -1389,7 +1389,7 @@
             id="currencySearch"
             placeholder="Search Currency"
             spellcheck="false"
-          >
+          />
         </div>
       </div>
     </div>
@@ -1400,7 +1400,7 @@
       id="sold"
       type="text"
       placeholder="e.g. 500 (blank or 0 to hide)"
-    >
+    />
   </label>
 
   <label>Price
@@ -1411,7 +1411,7 @@
       required
       spellcheck="false"
       maxlength="15"
-    >
+    />
   </label>
 
   <label>Shipping Cost (set 0 for FREE)
@@ -1422,7 +1422,7 @@
       required
       spellcheck="false"
       maxlength="15"
-    >
+    />
   </label>
 
   <label>Returns
@@ -1438,7 +1438,7 @@
         placeholder="Example : Color"
         spellcheck="false"
         maxlength="30"
-      >
+      />
     </label>
 
     <input
@@ -1448,7 +1448,7 @@
       required
       spellcheck="false"
       maxlength="100"
-    >
+    />
   </label>
 
   <label>Selectable Options 2 🏷️
@@ -1458,7 +1458,7 @@
       placeholder="Example : Size"
       spellcheck="false"
       maxlength="30"
-    >
+    />
 
     <input
       id="sizeOptions"
@@ -1467,7 +1467,7 @@
       required
       spellcheck="false"
       maxlength="100"
-    >
+    />
   </label>
 
   <label>Description
@@ -1487,20 +1487,20 @@
       <img
         src="https://i.ibb.co/tC9LHLG/Bella-52.png"
         alt="PayPal"
-      >
+      />
       <img
         src="https://i.ibb.co/cCtHLKs/Bella-58.png"
         alt="Stripe"
-      >
+      />
       <img
         src="https://i.ibb.co/m496tmj/Bella-53.png"
         alt="Checkout Page"
-      >
+      />
       <span>Select Payment Method</span>
     </div>
     <div class="payment-method-select">
       <button type="button" id="paymentMethodBtn">Select Payment Method</button>
-<input type="hidden" id="productPaymentMethod" name="productPaymentMethod" value="paypalEmail">
+      <input type="hidden" id="productPaymentMethod" name="productPaymentMethod" value="paypalEmail" />
     </div>
   </label>
 
@@ -1542,7 +1542,7 @@
         placeholder="https://example.com/checkout"
         spellcheck="false"
         maxlength="1000"
-      >
+      />
     </label>
   </div>
 
@@ -1557,7 +1557,7 @@
         placeholder="yourpaypal@email.com"
         spellcheck="false"
         maxlength="200"
-      >
+      />
     </label>
   </div>
 
@@ -1586,7 +1586,7 @@
         class="color-picker"
         value="#007bff"
         onchange="updateProductBuyNowStyles()"
-      >
+      />
     </div>
 
     <!-- Text Color Picker for Buy Now Button -->
@@ -1601,7 +1601,7 @@
         class="color-picker"
         value="#fff"
         onchange="updateProductBuyNowStyles()"
-      >
+      />
     </div>
 
     <!-- Corner Radius Adjuster for Buy Now Button -->
@@ -1615,6 +1615,7 @@
 
   <div id="addedProductsList"></div>
 </form>
+
 
 
 <!-- Add Reviews -->
@@ -1659,7 +1660,7 @@
 </form>
       <!-- About Us -->
 <form id="aboutForm">
-      <h2 class="section-title">About Us Section</h2>
+  <h2 class="section-title">About Us Section</h2>
 
   <label>About Title
     <input
@@ -1669,7 +1670,7 @@
       required
       spellcheck="false"
       maxlength="60"
-    >
+    />
   </label>
 
   <label>About Paragraph
@@ -1685,14 +1686,15 @@
 
   <label>Upload About Us Image</label>
   <div class="input-row">
+    <!-- Hidden input instead of text -->
     <input
       id="aboutImage"
-      type="text"
-      placeholder="Or Paste its Link Here"
+      type="hidden"
+      value=""
       required
       spellcheck="false"
       maxlength="300"
-    >
+    />
     <button
       type="button"
       class="upload-btn"
@@ -1718,7 +1720,7 @@
         class="color-picker"
         value="#ffffff"
         onchange="updateAboutColors()"
-      >
+      />
     </div>
     <!-- Text Color Picker Button -->
     <div
@@ -1732,10 +1734,11 @@
         class="color-picker"
         value="#333333"
         onchange="updateAboutColors()"
-      >
+      />
     </div>
   </div>
 </form>
+
 
 
       <!-- Contact Us -->
@@ -1771,13 +1774,26 @@
 <div class="payment-card">
   <section id="paymentSection" class="payment-section">
     <h2 class="section-title">Download your website</h2>
+    <video
+      autoplay
+      loop
+      muted
+      playsinline
+      style="border-radius: 15px; width: 300px; height: 300px; overflow: hidden;"
+    >
+      <source 
+        src="https://raw.githubusercontent.com/fitnesscreator/builder/main/Videos/Boss%20in%20Pajamas.mp4"
+        type="video/mp4"
+      >
+      Sorry, your browser doesn’t support embedded videos.
+    </video>
     <p>
   💾 <strong>What happens after payment?</strong><br>
   - You will get a <strong>ZIP file</strong> containing your website (<code>index.html</code>).<br>
   - Download it immediately after payment.<br><br>
   📤 <strong>How to publish your website?</strong><br>
   - Extract the folder from the ZIP file.<br>
-  - Drag and drop the folder to <strong><a href="https://www.netlify.com/" target="_blank" data-ignore-exit-confirm>Netlify.com</a></strong> for easy website publishing.<br><br>
+  - Drag and drop the folder to <strong><a href="https://www.netlify.com/" target="_blank" data-ignore-exit-confirm>Netlify.com</a></strong> for easy & Free website publishing.<br><br>
   📺 <strong><a href="https://www.youtube.com/watch?v=j2E6Now1Qec" target="_blank" data-ignore-exit-confirm>Watch how to Publish your website for Free</a></strong><br><br>
   <strong>The payment button will be available once you finish creating your website.</strong>
 </p>
@@ -1795,7 +1811,6 @@
     <!-- Download & Show Code buttons (hidden initially) -->
     <div class="download-row" id="downloadRow" style="display: none;">
       <button id="downloadBtn" onclick="downloadSite()" class="unlock-button">Download Website Folder</button>
-      <button id="showCodeBtn" onclick="openCodeModal()" class="unlock-button">Copy Website Code</button>
     </div>
   </section>
 </div>
@@ -1908,7 +1923,7 @@
         </h3>
         <p>
           Embeds a PayPal button directly on your site.
-          <strong>Create this button in your PayPal account, set a Stock Limit for each product, and copy its embed code Here.</strong>
+          <strong>Create this button in your PayPal account, set a Stock Limit for each product, Add Product Options, and copy its embed code to paste it Here.</strong>
         </p>
         <small>Product Options: Selectable – Customers can choose options like size, color, etc.</small>
       </li>
@@ -1962,7 +1977,48 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "pyh4snlwpe");
 </script>
+  
   <script>
+    
+    // A global counter to ensure uniqueness
+var uniqueCounter = 0;
+
+// Your original function that “cleans” the filename:
+function generateSafeFileName(name) {
+  return name
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')        // Replace spaces with dashes
+    .replace(/[^a-z0-9.-]/g, ''); // Remove any unsafe characters
+}
+
+// New helper to get a unique filename:
+function generateUniqueSafeFileName(name) {
+  uniqueCounter++;
+  
+  // 1. Find the file extension
+  let dotIndex = name.lastIndexOf(".");
+  let extension = "";
+  let baseName = name;
+  
+  if (dotIndex !== -1) {
+    // extension includes the dot, e.g. ".png"
+    extension = name.substring(dotIndex).toLowerCase();
+    // everything before that dot
+    baseName = name.substring(0, dotIndex);
+  }
+  
+  // 2. Clean up the base name (remove unsafe chars/spaces)
+  let safeBase = generateSafeFileName(baseName); // your existing “cleaner” function
+  
+  // 3. Return something like “bella-2025-02-14-1.png”
+  return safeBase + "-" + uniqueCounter + extension;
+}
+
+
+
+    
+    
   // Global variables to remember selections
   var defaultCurrency = '';
   var defaultCurrencyCode = '';  // to store the currency’s data-code
@@ -2195,33 +2251,26 @@
   return true;
 }
     
-    // Helper function to scale an image to a given percentage (e.g., 0.5 for 50%, 0.7 for 70%) and return its base64 string
-function scaleImage(file, scaleFactor, callback) {
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    const img = new Image();
-    img.onload = function() {
-      const canvas = document.createElement('canvas');
-      canvas.width = img.width * scaleFactor;
-      canvas.height = img.height * scaleFactor;
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      const scaledDataUrl = canvas.toDataURL('image/png');
-      callback(scaledDataUrl);
-    };
-    img.src = e.target.result;
-  };
-  reader.readAsDataURL(file);
-}
-// Define scaling factors for each upload button
-const scaleMapping = {
-  'uploadLogoBtn': 0.5,      // Logo: 50%
-  'uploadBannerBtn': 0.7,    // Hero Banner: 70%
-  'uploadImage1Btn': 0.7,    // 1st Product Image: 70%
-  'uploadImage2Btn': 0.7,    // 2nd Product Image: 70%
-  'uploadImage3Btn': 0.7,    // 3rd Product Image: 70%
-  'uploadAboutImgBtn': 0.7   // About Us Image: 70%
+
+// Ensure these are defined before any HTML uses them
+window.currentUploadField = null;
+window.uploadedImages = {};
+window.backupImages = {};
+
+window.openUploadModal = function(fieldId) {
+  console.log("openUploadModal called for " + fieldId);
+  // Your code to open the upload modal goes here.
+  document.getElementById('uploadModal').style.display = 'flex';
+  window.currentUploadField = fieldId;
 };
+    
+    // Add this helper to get the final image URL (for the downloaded website)
+function getFinalImageURL(fieldId, currentURL) {
+  if (window.uploadedFiles && window.uploadedFiles[fieldId]) {
+    return "Images/" + window.uploadedFiles[fieldId].name;
+  }
+  return currentURL;
+}
 
 
 
@@ -2386,9 +2435,42 @@ document.addEventListener('DOMContentLoaded', function() {
   function addProduct(){
   // Gather inputs
   var title         = document.getElementById('productTitle').value.trim();
-  var img1 = uploadedImages['uploadImage1Btn'] || document.getElementById('image1').value.trim();
-  var img2 = uploadedImages['uploadImage2Btn'] || document.getElementById('image2').value.trim();
-  var img3 = uploadedImages['uploadImage3Btn'] || document.getElementById('image3').value.trim();
+  
+  // For image1:
+var img1Blob = uploadedImages['uploadImage1Btn'] || document.getElementById('image1').value.trim();
+var img1File = (window.uploadedFiles && window.uploadedFiles['uploadImage1Btn']) ? window.uploadedFiles['uploadImage1Btn'] : null;
+var img1Final;
+if (img1File) {
+  img1Final = "Images/" + img1File.safeName;
+} else {
+  img1Final = img1Blob;
+}
+
+
+// For image2:
+var img2Blob = uploadedImages['uploadImage2Btn'] || document.getElementById('image2').value.trim();
+var img2File = (window.uploadedFiles && window.uploadedFiles['uploadImage2Btn']) ? window.uploadedFiles['uploadImage2Btn'] : null;
+var img2Final;
+if (img2File) {
+  img2Final = "Images/" + img2File.safeName;
+} else {
+  img2Final = img2Blob;
+}
+
+
+// For image3:
+var img3Blob = uploadedImages['uploadImage3Btn'] || document.getElementById('image3').value.trim();
+var img3File = (window.uploadedFiles && window.uploadedFiles['uploadImage3Btn']) ? window.uploadedFiles['uploadImage3Btn'] : null;
+var img3Final;
+if (img3File) {
+  img3Final = "Images/" + img3File.safeName;
+} else {
+  img3Final = img3Blob;
+}
+
+
+
+  
   var currencyInput = document.getElementById('productCurrency');
   var currencyCode  = currencyInput.getAttribute('data-code') || 'EUR';
   var sold          = document.getElementById('sold').value.trim();
@@ -2418,7 +2500,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Basic mandatory checks for existing fields
-  if (!title || !img1 || !price || !desc) {
+  if (!title || !img1Blob || !price || !desc) {
     alert("Please fill out all mandatory fields (Title, First Image, Price, and Description).");
     return;
   }
@@ -2447,10 +2529,34 @@ document.addEventListener('DOMContentLoaded', function() {
     return;
   }
 
-  // Gather images into an array
-  var imgs = [img1];
-  if(img2) imgs.push(img2);
-  if(img3) imgs.push(img3);
+  // Gather images into an array of objects with both preview and final URLs
+   var imgs = [];
+  if (img1Blob) {
+    var imageObj = { preview: img1Blob, final: img1Final, file: img1File };
+    imgs.push(imageObj);
+  }
+  if (img2Blob) {
+    var imageObj = { preview: img2Blob, final: img2Final, file: img2File };
+    imgs.push(imageObj);
+  }
+  if (img3Blob) {
+    var imageObj = { preview: img3Blob, final: img3Final, file: img3File };
+    imgs.push(imageObj);
+  }
+  
+  // Assign unique names to uploaded image files
+  var productIndex = products.length + 1; // Next product index
+  imgs.forEach(function(img, index) {
+    if (img.file) {
+      var originalName = img.file.name;
+      var ext = originalName.split('.').pop();
+      // Generate a name like "product-3-img-1.jpg"
+      img.uniqueName = "product-" + productIndex + "-img-" + (index + 1) + "." + ext;
+      // Update the final URL accordingly
+      img.final = "Images/" + img.uniqueName;
+    }
+  });
+
 
   // Set shipping value
   var shippingVal = "FREE";
@@ -2488,58 +2594,58 @@ document.addEventListener('DOMContentLoaded', function() {
   products.push(product);
 
   // Clear product input fields
-document.getElementById('productTitle').value = '';
-document.getElementById('image1').value = '';
-document.getElementById('image2').value = '';
-document.getElementById('image3').value = '';
+  document.getElementById('productTitle').value = '';
+  document.getElementById('image1').value = '';
+  document.getElementById('image2').value = '';
+  document.getElementById('image3').value = '';
 
-if (defaultCurrency) {
-  currencyInput.value = defaultCurrency;
-  currencyInput.setAttribute('data-code', defaultCurrencyCode);
-} else {
-  currencyInput.value = '';
-  currencyInput.removeAttribute('data-code');
-}
+  if (defaultCurrency) {
+    currencyInput.value = defaultCurrency;
+    currencyInput.setAttribute('data-code', defaultCurrencyCode);
+  } else {
+    currencyInput.value = '';
+    currencyInput.removeAttribute('data-code');
+  }
 
-document.getElementById('sold').value = '';
-document.getElementById('price').value = '';
-document.getElementById('shipping').value = '';
-document.getElementById('description').value = '';
-document.getElementById('colorOptions').value = '';
-document.getElementById('sizeOptions').value = '';
-document.getElementById('productLink').value = '';
-document.getElementById('productEmbed').value = '';
-document.getElementById('otherPaymentLink').value = '';
-if (paymentMethod !== 'paypalEmail') {
-  document.getElementById('paypalEmailInput').value = '';
-} else {
-  document.getElementById('paypalEmailInput').value = defaultPaypalEmail;
-}
+  document.getElementById('sold').value = '';
+  document.getElementById('price').value = '';
+  document.getElementById('shipping').value = '';
+  document.getElementById('description').value = '';
+  document.getElementById('colorOptions').value = '';
+  document.getElementById('sizeOptions').value = '';
+  document.getElementById('productLink').value = '';
+  document.getElementById('productEmbed').value = '';
+  document.getElementById('otherPaymentLink').value = '';
+  if (paymentMethod !== 'paypalEmail') {
+    document.getElementById('paypalEmailInput').value = '';
+  } else {
+    document.getElementById('paypalEmailInput').value = defaultPaypalEmail;
+  }
 
-updateAddProductFormFields();
+  updateAddProductFormFields();
 
-// Reset the upload fields for product images by deleting their entries 
-delete window.uploadedImages['uploadImage1Btn'];
-delete window.uploadedImages['uploadImage2Btn'];
-delete window.uploadedImages['uploadImage3Btn'];
-delete window.backupImages['uploadImage1Btn'];
-delete window.backupImages['uploadImage2Btn'];
-delete window.backupImages['uploadImage3Btn'];
+  // Reset the upload fields for product images by deleting their entries 
+  delete window.uploadedImages['uploadImage1Btn'];
+  delete window.uploadedImages['uploadImage2Btn'];
+  delete window.uploadedImages['uploadImage3Btn'];
+  delete window.backupImages['uploadImage1Btn'];
+  delete window.backupImages['uploadImage2Btn'];
+  delete window.backupImages['uploadImage3Btn'];
 
-// Reset the upload button icons for product images
-document.getElementById('uploadImage1Btn').innerHTML = '<i class="fas fa-cloud-upload-alt"></i>';
-document.getElementById('uploadImage2Btn').innerHTML = '<i class="fas fa-cloud-upload-alt"></i>';
-document.getElementById('uploadImage3Btn').innerHTML = '<i class="fas fa-cloud-upload-alt"></i>';
+  // Reset the upload button icons for product images
+  document.getElementById('uploadImage1Btn').innerHTML = '<i class="fas fa-cloud-upload-alt"></i>';
+  document.getElementById('uploadImage2Btn').innerHTML = '<i class="fas fa-cloud-upload-alt"></i>';
+  document.getElementById('uploadImage3Btn').innerHTML = '<i class="fas fa-cloud-upload-alt"></i>';
 
-// Reset image field count and hide additional fields
-imageCount = 1;
-document.getElementById('additionalImage2').style.display = 'none';
-document.getElementById('additionalImage3').style.display = 'none';
-document.getElementById('addImagesBtn').style.display = 'block';
+  // Reset image field count and hide additional fields
+  imageCount = 1;
+  document.getElementById('additionalImage2').style.display = 'none';
+  document.getElementById('additionalImage3').style.display = 'none';
+  document.getElementById('addImagesBtn').style.display = 'block';
 
-// Refresh the preview and update the added products list
-forceRefreshPreview();
-renderAddedProductsList();
+  // Refresh the preview and update the added products list
+  forceRefreshPreview();
+  renderAddedProductsList();
 }
 
 
@@ -2614,48 +2720,74 @@ function renderAddedProductsList() {
   }
 
   function updatePreview() {
-    // gather hero data
-    heroData.logo = uploadedImages['uploadLogoBtn'] || document.getElementById('logo').value.trim();
-    heroData.banner = uploadedImages['uploadBannerBtn'] || document.getElementById('banner').value.trim();
-    heroData.heroText = document.getElementById('heroText').value.trim();
-    heroData.ctaText  = document.getElementById('ctaText').value.trim();
+  // --- HERO DATA ---
 
-    // about data
-    aboutData.title     = document.getElementById('aboutTitle').value.trim();
-    aboutData.paragraph = document.getElementById('aboutParagraph').value.trim();
-    aboutData.image = uploadedImages['uploadAboutImgBtn'] || document.getElementById('aboutImage').value.trim();
-    aboutData.bgColor = document.getElementById('aboutBgColorPicker').value;
-aboutData.textColor = document.getElementById('aboutTextColorPicker').value;
+ // For the Logo:
+if (uploadedImages['uploadLogoBtn'] && window.uploadedFiles && window.uploadedFiles['uploadLogoBtn']) {
+  heroData.logoPreview = uploadedImages['uploadLogoBtn'];
+  heroData.logoFinal = "Images/" + window.uploadedFiles['uploadLogoBtn'].safeName;
+} else {
+  heroData.logoPreview = document.getElementById('logo').value.trim();
+  heroData.logoFinal = document.getElementById('logo').value.trim();
+}
 
-    // contact data
-    contactData.intro       = document.getElementById('contactIntro').value.trim();
-    contactData.instagram   = document.getElementById('contactInstagram').value.trim();
-    contactData.tiktok      = document.getElementById('contactTiktok').value.trim();
-    contactData.facebook    = document.getElementById('contactFacebook').value.trim();
-    contactData.xLink       = document.getElementById('contactX').value.trim();
-    contactData.youtube     = document.getElementById('contactYoutube').value.trim();
-    contactData.email       = document.getElementById('contactEmail').value.trim();
 
-    // build
-    finalHTML = buildFinalHTML();
 
-    // insert into iframe
-    var iframe = document.getElementById('previewFrame');
-    var doc    = iframe.contentDocument || iframe.contentWindow.document;
-    doc.open();
-    doc.write(finalHTML);
-    doc.close();
+  // For the Hero Banner:
+if (uploadedImages['uploadBannerBtn'] && window.uploadedFiles && window.uploadedFiles['uploadBannerBtn']) {
+  heroData.bannerPreview = uploadedImages['uploadBannerBtn'];
+  heroData.bannerFinal = "Images/" + window.uploadedFiles['uploadBannerBtn'].safeName;
+} else {
+  heroData.bannerPreview = document.getElementById('banner').value.trim();
+  heroData.bannerFinal = document.getElementById('banner').value.trim();
+}
 
-    // Payment button
-    var payBtn = document.getElementById('payBtn');
-    if(checkMandatory()) {
-      payBtn.disabled = false;
-      payBtn.classList.add('enabled');
-    } else {
-      payBtn.disabled = true;
-      payBtn.classList.remove('enabled');
-    }
+
+  heroData.heroText = document.getElementById('heroText').value.trim();
+  heroData.ctaText = document.getElementById('ctaText').value.trim();
+
+  // For the About Image:
+if (uploadedImages['uploadAboutImgBtn'] && window.uploadedFiles && window.uploadedFiles['uploadAboutImgBtn']) {
+  aboutData.imagePreview = uploadedImages['uploadAboutImgBtn'];
+  aboutData.imageFinal = "Images/" + window.uploadedFiles['uploadAboutImgBtn'].safeName;
+} else {
+  aboutData.imagePreview = document.getElementById('aboutImage').value.trim();
+  aboutData.imageFinal = document.getElementById('aboutImage').value.trim();
+}
+
+  aboutData.title = document.getElementById('aboutTitle').value.trim();
+  aboutData.paragraph = document.getElementById('aboutParagraph').value.trim();
+  aboutData.bgColor = document.getElementById('aboutBgColorPicker').value;
+  aboutData.textColor = document.getElementById('aboutTextColorPicker').value;
+
+  // --- CONTACT DATA ---
+  contactData.intro = document.getElementById('contactIntro').value.trim();
+  contactData.instagram = document.getElementById('contactInstagram').value.trim();
+  contactData.tiktok = document.getElementById('contactTiktok').value.trim();
+  contactData.facebook = document.getElementById('contactFacebook').value.trim();
+  contactData.xLink = document.getElementById('contactX').value.trim();
+  contactData.youtube = document.getElementById('contactYoutube').value.trim();
+  contactData.email = document.getElementById('contactEmail').value.trim();
+
+  // --- BUILD PREVIEW ---
+  const previewHTML = buildPreviewHTML();
+  const iframe = document.getElementById('previewFrame');
+  const doc = iframe.contentDocument || iframe.contentWindow.document;
+  doc.open();
+  doc.write(previewHTML);
+  doc.close();
+
+  // --- PAYMENT BUTTON ENABLE/DISABLE ---
+  var payBtn = document.getElementById('payBtn');
+  if (checkMandatory()) {
+    payBtn.disabled = false;
+    payBtn.classList.add('enabled');
+  } else {
+    payBtn.disabled = true;
+    payBtn.classList.remove('enabled');
   }
+}
+
     
     function updateAboutColors() {
   // Update aboutData with the chosen colors
@@ -2664,31 +2796,101 @@ aboutData.textColor = document.getElementById('aboutTextColorPicker').value;
   updatePreview(); // Refresh the preview to apply the new colors
 }
 
-  function buildFinalHTML(){
-  var top = "<!DOCTYPE html><html><head><meta charset='UTF-8'><title></title>";
+  // NEW: Build the PREVIEW HTML (uses .logoPreview, .bannerPreview, etc.)
+function buildPreviewHTML() {
+  let top = "<!DOCTYPE html><html><head><meta charset='UTF-8'><title>Live Preview</title>";
   top += "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
-  // Use the currently selected font for the hero title:
-  top += "<link href='https://fonts.googleapis.com/css2?family=" 
-         + heroTitleFont.split(" ").join("+")
-         + ":wght@400;500;700&display=swap' rel='stylesheet'>";
-  top += buildGlobalCSS();
 
-  // Fav icon
-  if(heroData.logo.trim() !== ""){
-    top += "<link rel='shortcut icon' href='" + escapeHTML(heroData.logo.trim()) + "'>";
-  }
-  if(contactData.googleAnalytics){
-    top += "\n<!-- Google Analytics -->\n" + contactData.googleAnalytics + "\n";
-  }
+  // Use the currently selected font for hero title, same as final:
+  top += "<link href='https://fonts.googleapis.com/css2?family="
+      + heroTitleFont.split(" ").join("+")
+      + ":wght@400;500;700&display=swap' rel='stylesheet'>";
+
+  // Include your global CSS:
+  top += buildGlobalCSS();
+  // No need for a favicon in the preview or Google Analytics
   top += "</head><body>";
 
-  top += buildTopHeader();
-  top += buildHero();
-  top += buildProductsSection();
-  top += buildReviewsSection();
-  top += buildAboutSection();
-  top += buildContactSection();
-  top += buildProductModalScript(); // Insert the product modal script
+  // *** Here we call the "preview" versions of the sections ***
+  top += buildTopHeaderPreview();
+  top += buildHeroPreview();
+  top += buildProductsSectionPreview();
+  top += buildReviewsSectionPreview();
+  top += buildAboutSectionPreview();
+  top += buildContactSectionPreview();
+
+  // For the preview, you typically do not need the full product modal script,
+  // but you *can* reuse it if you want the popup to appear in the preview.
+  // If you want it, include:
+  top += buildProductModalScript();
+
+  top += "</body></html>";
+  return top;
+}
+    
+    function buildProductsSectionPreview() {
+  // For example, you can return the same HTML as your final products section:
+  return buildProductsSection();
+}
+function buildReviewsSectionPreview() {
+  return buildReviewsSection();
+}
+function buildAboutSectionPreview() {
+  return buildAboutSectionFinal(); // or buildAboutSection() if you prefer
+}
+function buildContactSectionPreview() {
+  return buildContactSection();
+}
+
+    
+    function buildPreviewHTML() {
+  let top = "<!DOCTYPE html><html><head><meta charset='UTF-8'><title>Live Preview</title>";
+  top += "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
+  top += "<link href='https://fonts.googleapis.com/css2?family=" + heroTitleFont.split(" ").join("+") + ":wght@400;500;700&display=swap' rel='stylesheet'>";
+  top += buildGlobalCSS();
+  top += "</head><body>";
+  top += buildTopHeaderPreview();
+  top += buildHeroPreview();
+  top += buildProductsSectionPreview();
+  top += buildReviewsSectionPreview();
+  top += buildAboutSectionPreview();
+  top += buildContactSectionPreview();
+  top += buildProductModalScript();
+  top += "</body></html>";
+  return top;
+}
+
+    
+
+// Your existing function, now *unchanged*, still references .logoFinal, .bannerFinal, etc.
+function buildFinalHTML() {
+  var top = "<!DOCTYPE html><html><head><meta charset='UTF-8'>";
+  top += "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
+
+  top += "<link href='https://fonts.googleapis.com/css2?family="
+      + heroTitleFont.split(" ").join("+")
+      + ":wght@400;500;700&display=swap' rel='stylesheet'>";
+
+  top += buildGlobalCSS();
+
+  // Possibly add your favicon, analytics, etc.:
+  if (heroData.logo.trim() !== "") {
+    top += "<link rel='shortcut icon' href='" + escapeHTML(heroData.logoFinal) + "'>";
+  }
+  if (contactData.googleAnalytics) {
+    top += "\n<!-- Google Analytics -->\n" + contactData.googleAnalytics + "\n";
+  }
+
+  top += "</head><body>";
+
+  // *** Call the "final" versions below ***
+  top += buildTopHeaderFinal();
+  top += buildHeroFinal();
+  top += buildProductsSectionFinal();
+  top += buildReviewsSectionFinal();
+  top += buildAboutSectionFinal();
+  top += buildContactSectionFinal();
+  top += buildProductModalScript(); // keep the final script for real usage
 
   top += "</body></html>";
   return top;
@@ -2697,16 +2899,13 @@ aboutData.textColor = document.getElementById('aboutTextColorPicker').value;
 
 
   function downloadSite(){
-  // Check if download limit has been reached
   if(downloadCount >= 4){
     alert("Oops! You've reached the 4-download limit!");
     return;
   }
   
-  // Increment the download count
   downloadCount++;
   
-  // Optionally disable the download button on the 4th download
   if(downloadCount === 4) {
     var downloadBtn = document.getElementById("downloadBtn");
     if(downloadBtn){
@@ -2715,25 +2914,98 @@ aboutData.textColor = document.getElementById('aboutTextColorPicker').value;
     }
   }
   
-  // Build finalHTML if not built yet
+  // Rebuild finalHTML if needed. (Ensure buildFinalHTML uses final URLs – e.g. heroData.logoFinal, heroData.bannerFinal, aboutData.imageFinal, and for product images use img.final)
   if (!finalHTML.trim()){
     finalHTML = buildFinalHTML();
   }
   
-  // Create a new instance of JSZip
+  // Create a new JSZip instance and a root folder "MyWebsite"
   var zip = new JSZip();
+  var websiteFolder = zip.folder("MyWebsite");
   
-  // Create a folder inside the zip archive
-  var folder = zip.folder("MyWebsite");  // Change "MyFolder" as needed
+  // Add index.html to the root folder
+  websiteFolder.file("index.html", finalHTML);
   
-  // Add index.html inside the created folder
-  folder.file("index.html", finalHTML);
+  // Create an "Images" folder inside "MyWebsite"
+  var imagesFolder = websiteFolder.folder("Images");
   
-  // Generate the zip file as a blob and trigger the download using FileSaver.js
-  zip.generateAsync({ type: "blob" }).then(function(content) {
-    saveAs(content, "My Website.zip");
-  });
+  var filePromises = [];
+  
+  // 1. Process files that were uploaded via your file input
+  if(window.uploadedFiles) {
+    for (const key in window.uploadedFiles) {
+      const file = window.uploadedFiles[key];
+      filePromises.push(new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          // e.target.result is an ArrayBuffer that preserves the original file data
+          imagesFolder.file(file.safeName, e.target.result);
+          resolve();
+        };
+        reader.onerror = reject;
+        reader.readAsArrayBuffer(file);
+      }));
+    }
+  }
+  
+  // 2. For each product, process its images:
+  products.forEach((product, pIndex) => {
+  if (product.images && product.images.length > 0) {
+    product.images.forEach((img, i) => {
+      // If a file object exists, use FileReader to read its data
+      if (img.file) {
+  filePromises.push(new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      imagesFolder.file(img.uniqueName, e.target.result);
+      resolve();
+    };
+    reader.onerror = reject;
+    reader.readAsArrayBuffer(img.file);
+  }));
 }
+      // Else if the image is external, fetch it normally
+      else if (img.final && img.final.startsWith("http")) {
+        filePromises.push(
+          fetch(img.final)
+            .then(response => {
+              if (!response.ok) throw new Error("Network response was not ok");
+              return response.arrayBuffer();
+            })
+            .then(arrayBuffer => {
+              let ext = "jpg"; // default extension
+              let parts = img.final.split('.');
+              if (parts.length > 1) {
+                ext = parts[parts.length - 1].split(/[?#]/)[0];
+              }
+              let filename = "product" + (pIndex + 1) + "_img" + (i + 1) + "." + ext;
+              imagesFolder.file(filename, arrayBuffer);
+            })
+            .catch(err => {
+              console.error("Error fetching image from URL:", img.final, err);
+            })
+        );
+      }
+    });
+  }
+});
+
+  
+  // Wait for all file processing to complete, then generate and trigger the ZIP download.
+  Promise.all(filePromises)
+    .then(() => {
+      zip.generateAsync({ type: "blob" }).then(function(content) {
+        saveAs(content, "My Website.zip");
+      });
+    })
+    .catch(err => {
+      console.error("Error reading files:", err);
+      alert("Error reading files. Check console for details.");
+    });
+}
+
+
+
 
 
 
@@ -3047,58 +3319,118 @@ a{text-decoration:none;color:#2196f3}a:hover{opacity:0.8}img{max-width:100%;heig
 }
 
 
-  function buildTopHeader(){
-    var h = "";
-    h += "<header class='top-header'><div class='logo-wrapper'>";
-    if(heroData.logo){
-      h += "<img src='"+escapeHTML(heroData.logo)+"' alt='Logo'>";
-    }
-    h += "</div><div class='nav-links'>";
-    h += "<a href='#products'>Shop</a>";
-    h += "<a href='#reviews'>Reviews</a>";
-    h += "<a href='#about'>About Us</a>";
-    h += "<a href='#contact'>Contact Us</a>";
-    h += "</div></header>";
-    return h;
+  function buildTopHeaderPreview() {
+  let h = "<header class='top-header'><div class='logo-wrapper'>";
+  // Use .logoPreview for the preview
+  if (heroData.logoPreview) {
+    h += "<img src='" + escapeHTML(heroData.logoPreview) + "' alt='Logo'>";
   }
+  h += "</div><div class='nav-links'>";
+  h += "<a href='#products'>Shop</a>";
+  h += "<a href='#reviews'>Reviews</a>";
+  h += "<a href='#about'>About Us</a>";
+  h += "<a href='#contact'>Contact Us</a>";
+  h += "</div></header>";
+  return h;
+}
 
-  function buildHero(){
-  if(!heroData.banner){
-    // minimal hero
-    var minimal = "";
+function buildTopHeaderFinal() {
+  let h = "<header class='top-header'><div class='logo-wrapper'>";
+  // Use .logoFinal for the final code
+  if (heroData.logoFinal) {
+    h += "<img src='" + escapeHTML(heroData.logoFinal) + "' alt='Logo'>";
+  }
+  h += "</div><div class='nav-links'>";
+  h += "<a href='#products'>Shop</a>";
+  h += "<a href='#reviews'>Reviews</a>";
+  h += "<a href='#about'>About Us</a>";
+  h += "<a href='#contact'>Contact Us</a>";
+  h += "</div></header>";
+  return h;
+}
+
+
+
+  // For the live preview – use the blob URL (heroData.bannerPreview)
+function buildHeroPreview() {
+  if (!heroData.bannerPreview) {
+    // Minimal hero (no banner uploaded)
+    let minimal = "";
     minimal += "<section class='hero-banner' style='background:none; min-height:200px;'>";
     minimal += "<div class='hero-overlay'>";
-    if(heroData.heroText){
-  minimal += "<h1 class='hero-title' style='color:" + (heroData.heroTitleColor || '#000000') + "; font-family:" + heroTitleFont + ";'>" + escapeHTML(heroData.heroText) + "</h1>";
-}
-    if(heroData.ctaText){
-      minimal += "<a class='hero-cta' style='background-color:" + (heroData.ctaBgColor || '#007bff') + "; color:" + (heroData.ctaTextColor || '#ffffff') + ";' href='#products'>" + escapeHTML(heroData.ctaText) + "</a>";
+    if (heroData.heroText) {
+      minimal += "<h1 class='hero-title' style='color:" + (heroData.heroTitleColor || '#000000') +
+                 "; font-family:" + heroTitleFont + ";'>" + escapeHTML(heroData.heroText) + "</h1>";
+    }
+    if (heroData.ctaText) {
+      minimal += "<a class='hero-cta' style='background-color:" + (heroData.ctaBgColor || '#007bff') +
+                 "; color:" + (heroData.ctaTextColor || '#ffffff') + ";' href='#products'>" +
+                 escapeHTML(heroData.ctaText) + "</a>";
     }
     minimal += "</div></section>";
     return minimal;
   }
-  // big hero
-  var bkg = escapeHTML(heroData.banner);
-  var s   = "<section class='hero-banner' style=\"background-image:url('" + bkg + "');\">";
+  // Big hero using the preview URL
+  let bkg = heroData.bannerPreview || "";
+  let s = "<section class='hero-banner' style=\"background-image:url('" + escapeHTML(bkg) + "');\">";
   s += "<div class='hero-overlay'>";
-  if(heroData.heroText){
-  s += "<h1 class='hero-title' style='color:" + (heroData.heroTitleColor || '#000000') + "; font-family:" + heroTitleFont + ";'>" + escapeHTML(heroData.heroText) + "</h1>";
-}
-  if(heroData.ctaText){
-    s += "<a class='hero-cta' style='background-color:" + (heroData.ctaBgColor || '#007bff') + "; color:" + (heroData.ctaTextColor || '#ffffff') + ";' href='#products'>" + escapeHTML(heroData.ctaText) + "</a>";
+  if (heroData.heroText) {
+    s += "<h1 class='hero-title' style='color:" + (heroData.heroTitleColor || '#000000') +
+         "; font-family:" + heroTitleFont + ";'>" + escapeHTML(heroData.heroText) + "</h1>";
+  }
+  if (heroData.ctaText) {
+    s += "<a class='hero-cta' style='background-color:" + (heroData.ctaBgColor || '#007bff') +
+         "; color:" + (heroData.ctaTextColor || '#ffffff') + ";' href='#products'>" +
+         escapeHTML(heroData.ctaText) + "</a>";
   }
   s += "</div></section>";
   return s;
 }
 
-  function buildProductsSection(){
+// For the final generated HTML – use the final image path (heroData.bannerFinal)
+function buildHeroFinal() {
+  if (!heroData.bannerFinal) {
+    // Minimal hero (no banner uploaded)
+    let minimal = "";
+    minimal += "<section class='hero-banner' style='background:none; min-height:200px;'>";
+    minimal += "<div class='hero-overlay'>";
+    if (heroData.heroText) {
+      minimal += "<h1 class='hero-title' style='color:" + (heroData.heroTitleColor || '#000000') +
+                 "; font-family:" + heroTitleFont + ";'>" + escapeHTML(heroData.heroText) + "</h1>";
+    }
+    if (heroData.ctaText) {
+      minimal += "<a class='hero-cta' style='background-color:" + (heroData.ctaBgColor || '#007bff') +
+                 "; color:" + (heroData.ctaTextColor || '#ffffff') + ";' href='#products'>" +
+                 escapeHTML(heroData.ctaText) + "</a>";
+    }
+    minimal += "</div></section>";
+    return minimal;
+  }
+  // Big hero using the final URL
+  let bkg = heroData.bannerFinal || "";
+  let s = "<section class='hero-banner' style=\"background-image:url('" + escapeHTML(bkg) + "');\">";
+  s += "<div class='hero-overlay'>";
+  if (heroData.heroText) {
+    s += "<h1 class='hero-title' style='color:" + (heroData.heroTitleColor || '#000000') +
+         "; font-family:" + heroTitleFont + ";'>" + escapeHTML(heroData.heroText) + "</h1>";
+  }
+  if (heroData.ctaText) {
+    s += "<a class='hero-cta' style='background-color:" + (heroData.ctaBgColor || '#007bff') +
+         "; color:" + (heroData.ctaTextColor || '#ffffff') + ";' href='#products'>" +
+         escapeHTML(heroData.ctaText) + "</a>";
+  }
+  s += "</div></section>";
+  return s;
+}
+
+  function buildProductsSectionFinal(){
     if(products.length === 0){
       return "<section id='products'><div class='products-grid'></div></section>";
     }
     var html = "";
     for(var i=0; i<products.length; i++){
       var p       = products[i];
-      var mainImg = (p.images.length > 0) ? escapeHTML(p.images[0]) : "";
+      var mainImg = (p.images.length > 0) ? escapeHTML(p.images[0].final) : "";
       var symbol  = getCurrencySymbol(p.currency);
 
       html += "<div class='product-item'"+
@@ -3113,9 +3445,9 @@ a{text-decoration:none;color:#2196f3}a:hover{opacity:0.8}img{max-width:100%;heig
         " data-sizeoptions='"+escapeHTML(p.sizeoptions||"")+"'"+
         " data-colorlabel='"+escapeHTML(p.colorLabel||"Color")+"'"+
         " data-sizelabel='"+escapeHTML(p.sizeLabel||"Size")+"'"+
-        " data-images1='"+(p.images[0]||"")+"'"+
-        " data-images2='"+(p.images[1]||"")+"'"+
-        " data-images3='"+(p.images[2]||"")+"'"+
+        " data-images1='"+(p.images[0] ? p.images[0].final : "")+"'"+
+        " data-images2='"+(p.images[1] ? p.images[1].final : "")+"'"+
+        " data-images3='"+(p.images[2] ? p.images[2].final : "")+"'"+
         " data-paymentmethod='"+escapeHTML(p.paymentMethod||"")+"'"+
         " data-paypallink='"+escapeHTML(p.paypalLink||"")+"'"+
         " data-paypalembed='"+escapeHTML(p.paypalEmbed||"")+"'"+
@@ -3132,6 +3464,57 @@ a{text-decoration:none;color:#2196f3}a:hover{opacity:0.8}img{max-width:100%;heig
     }
     return "<section id='products'><div class='products-grid'>"+html+"</div></section>";
   }
+    
+    function buildProductsSectionPreview() {
+  if (products.length === 0) {
+    return "<section id='products'><div class='products-grid'></div></section>";
+  }
+  var html = "";
+  for (var i = 0; i < products.length; i++) {
+    var p = products[i];
+    // Use the preview image (blob URL) if available; otherwise, fallback to final URL.
+    var mainImg = "";
+    if (p.images.length > 0) {
+      mainImg = p.images[0].preview ? escapeHTML(p.images[0].preview)
+                                    : escapeHTML(p.images[0].final);
+    }
+    var symbol = getCurrencySymbol(p.currency);
+    
+    html += "<div class='product-item'" +
+      " data-title='" + escapeHTML(p.title || "") + "'" +
+      " data-sold='" + escapeHTML(p.sold || "") + "'" +
+      " data-price='" + escapeHTML(p.price || "0") + "'" +
+      " data-currency='" + escapeHTML(p.currency || "$") + "'" +
+      " data-description='" + escapeHTML(p.description || "") + "'" +
+      " data-shipping='" + escapeHTML(p.shipping || "FREE") + "'" +
+      " data-returns='" + escapeHTML(p.returns || "Accepted") + "'" +
+      " data-coloroptions='" + escapeHTML(p.coloroptions || "") + "'" +
+      " data-sizeoptions='" + escapeHTML(p.sizeoptions || "") + "'" +
+      " data-colorlabel='" + escapeHTML(p.colorLabel || "Color") + "'" +
+      " data-sizelabel='" + escapeHTML(p.sizeLabel || "Size") + "'" +
+      " data-images1='" + (p.images[0] ? p.images[0].preview : "") + "'" +
+      " data-images2='" + (p.images[1] ? p.images[1].preview : "") + "'" +
+      " data-images3='" + (p.images[2] ? p.images[2].preview : "") + "'" +
+      " data-paymentmethod='" + escapeHTML(p.paymentMethod || "") + "'" +
+      " data-paypallink='" + escapeHTML(p.paypalLink || "") + "'" +
+      " data-paypalembed='" + escapeHTML(p.paypalEmbed || "") + "'" +
+      " data-otherpaymentlink='" + escapeHTML(p.otherPaymentLink || "") + "'" +
+      " data-paypalemail='" + escapeHTML(p.paypalEmail || "") + "'" +
+      ">";
+    
+    html += "<div class='product-img' style=\"background-image:url('" + mainImg + "');\"></div>";
+    html += "<div class='product-content'>";
+    html += (p.title ? "<h3>" + escapeHTML(p.title) + "</h3>" : "<h3>Untitled Product</h3>");
+    html += "<h2>" + symbol + escapeHTML(p.price || "0") + "</h2>";
+    html += "<a class='buy-now' style='background-color:" + productBuyNowBgColor +
+            "; color:" + productBuyNowTextColor +
+            "; border-radius:" + productBuyNowBorderRadius + "px;' href='#'>Buy Now</a>";
+    html += "</div></div>";
+  }
+  return "<section id='products'><div class='products-grid'>" + html + "</div></section>";
+}
+
+
 
   function buildReviewsSection(){
     if(reviews.length === 0) return "";
@@ -3150,64 +3533,136 @@ a{text-decoration:none;color:#2196f3}a:hover{opacity:0.8}img{max-width:100%;heig
     r += "</div></section>";
     return r;
   }
+    function buildReviewsSectionFinal() {
+  return buildReviewsSection();
+}
 
-  function buildAboutSection(){
-  if(!aboutData.title && !aboutData.paragraph && !aboutData.image) return "";
+
+  function buildAboutSectionPreview() {
+  if (!aboutData.title && !aboutData.paragraph && !aboutData.image) return "";
   // Only apply background color on the section
-  var styleAttr = "";
-  if(aboutData.bgColor) { 
-    styleAttr += "background-color:" + aboutData.bgColor + ";"; 
+  let styleAttr = "";
+  if (aboutData.bgColor) {
+    styleAttr += "background-color:" + aboutData.bgColor + ";";
   }
-  var a = "<section class='about-section' id='about' style='" + styleAttr + "'>";
+  let a = "<section class='about-section' id='about' style='" + styleAttr + "'>";
   a += "<div class='about-left'>";
   // Apply text color directly on the heading and paragraph
-  a += "<h2 style='color:" + aboutData.textColor + ";'>" + escapeHTML(aboutData.title||"Who We Are") + "</h2>";
-  a += "<p style='color:" + aboutData.textColor + ";'>" + escapeHTML(aboutData.paragraph||"Our story...") + "</p>";
+  a += "<h2 style='color:" + aboutData.textColor + ";'>" + escapeHTML(aboutData.title || "Who We Are") + "</h2>";
+  a += "<p style='color:" + aboutData.textColor + ";'>" + escapeHTML(aboutData.paragraph || "Our story...") + "</p>";
   a += "</div><div class='about-right'>";
-  if(aboutData.image){
-    a += "<img src='" + escapeHTML(aboutData.image) + "' alt='About Image'>";
+  // Use the preview image (blob URL)
+  if (aboutData.imagePreview) {
+    a += "<img src='" + escapeHTML(aboutData.imagePreview) + "' alt='About Image'>";
+  }
+  a += "</div></section>";
+  return a;
+}
+function buildAboutSectionFinal() {
+  if (!aboutData.title && !aboutData.paragraph && !aboutData.image) return "";
+  // Only apply background color on the section
+  let styleAttr = "";
+  if (aboutData.bgColor) {
+    styleAttr += "background-color:" + aboutData.bgColor + ";";
+  }
+  let a = "<section class='about-section' id='about' style='" + styleAttr + "'>";
+  a += "<div class='about-left'>";
+  // Apply text color directly on the heading and paragraph
+  a += "<h2 style='color:" + aboutData.textColor + ";'>" + escapeHTML(aboutData.title || "Who We Are") + "</h2>";
+  a += "<p style='color:" + aboutData.textColor + ";'>" + escapeHTML(aboutData.paragraph || "Our story...") + "</p>";
+  a += "</div><div class='about-right'>";
+  // Use the final image path here
+  if (aboutData.imageFinal) {
+    a += "<img src='" + escapeHTML(aboutData.imageFinal) + "' alt='About Image'>";
   }
   a += "</div></section>";
   return a;
 }
 
-  function buildContactSection(){
-    var anyFilled = contactData.intro || contactData.instagram || contactData.tiktok ||
-                    contactData.facebook || contactData.xLink || contactData.youtube ||
-                    contactData.email || contactData.formEmbed;
-    if(!anyFilled) return "";
 
-    var c = "<section class='contact-section' id='contact'><div class='contact-left'><div class='contact-logo-left'>";
-    if(heroData.logo){
-      c += "<img src='"+escapeHTML(heroData.logo)+"' alt='Logo'>";
-    }
-    c += "</div>";
-    if(contactData.intro){
-      c += "<p>"+escapeHTML(contactData.intro)+"</p>";
-    }
-    let iconsHTML = "";
-    if(contactData.instagram) iconsHTML+="<a href='"+escapeHTML(contactData.instagram)+"' target='_blank'><img src='https://i.ibb.co/N2yTY0Cj/Bella-73.png' alt='Instagram'></a>";
-    if(contactData.tiktok)    iconsHTML+="<a href='"+escapeHTML(contactData.tiktok)+"' target='_blank'><img src='https://i.ibb.co/2vSmtt0/Bella-49.png' alt='TikTok'></a>";
-    if(contactData.facebook)  iconsHTML+="<a href='"+escapeHTML(contactData.facebook)+"' target='_blank'><img src='https://i.ibb.co/gmDjkH3/Bella-48.png' alt='Facebook'></a>";
-    if(contactData.xLink)     iconsHTML+="<a href='"+escapeHTML(contactData.xLink)+"' target='_blank'><img src='https://i.ibb.co/fqp0KrB/Bella-63.png' alt='X'></a>";
-    if(contactData.youtube)   iconsHTML+="<a href='"+escapeHTML(contactData.youtube)+"' target='_blank'><img src='https://i.ibb.co/hC6CQzs/Bella-62.png' alt='Youtube'></a>";
+  // For the live preview – use blob URL first (if available)
+function buildContactSectionPreview() {
+  var anyFilled = contactData.intro || contactData.instagram || contactData.tiktok ||
+                  contactData.facebook || contactData.xLink || contactData.youtube ||
+                  contactData.email || contactData.formEmbed;
+  if (!anyFilled) return "";
 
-    if(iconsHTML){
-      c += "<div class='contact-social-icons'>"+iconsHTML+"</div>";
-    }
-    if(contactData.email){
-      c += "<div class='contact-email-line'>"+escapeHTML(contactData.email)+"</div>";
-      if(!contactData.formEmbed){
-        c += "<a class='email-btn' href='mailto:"+escapeHTML(contactData.email)+"'>Send Us an Email</a>";
-      }
-    }
-    c += "</div><div class='contact-right'>";
-    if(contactData.formEmbed){
-      c += "<div class='contact-embed'>"+ contactData.formEmbed +"</div>";
-    }
-    c += "</div></section>";
-    return c;
+  var c = "<section class='contact-section' id='contact'><div class='contact-left'><div class='contact-logo-left'>";
+  // In preview, use the blob URL if available
+  var contactLogo = heroData.logoPreview || heroData.logoFinal || "";
+  if (contactLogo) {
+    c += "<img src='" + escapeHTML(contactLogo) + "' alt='Logo'>";
   }
+  c += "</div>";
+  if (contactData.intro) {
+    c += "<p>" + escapeHTML(contactData.intro) + "</p>";
+  }
+  let iconsHTML = "";
+  if (contactData.instagram) iconsHTML += "<a href='" + escapeHTML(contactData.instagram) + "' target='_blank'><img src='https://i.ibb.co/N2yTY0Cj/Bella-73.png' alt='Instagram'></a>";
+  if (contactData.tiktok)    iconsHTML += "<a href='" + escapeHTML(contactData.tiktok) + "' target='_blank'><img src='https://i.ibb.co/2vSmtt0/Bella-49.png' alt='TikTok'></a>";
+  if (contactData.facebook)  iconsHTML += "<a href='" + escapeHTML(contactData.facebook) + "' target='_blank'><img src='https://i.ibb.co/gmDjkH3/Bella-48.png' alt='Facebook'></a>";
+  if (contactData.xLink)     iconsHTML += "<a href='" + escapeHTML(contactData.xLink) + "' target='_blank'><img src='https://i.ibb.co/fqp0KrB/Bella-63.png' alt='X'></a>";
+  if (contactData.youtube)   iconsHTML += "<a href='" + escapeHTML(contactData.youtube) + "' target='_blank'><img src='https://i.ibb.co/hC6CQzs/Bella-62.png' alt='Youtube'></a>";
+
+  if (iconsHTML) {
+    c += "<div class='contact-social-icons'>" + iconsHTML + "</div>";
+  }
+  if (contactData.email) {
+    c += "<div class='contact-email-line'>" + escapeHTML(contactData.email) + "</div>";
+    if (!contactData.formEmbed) {
+      c += "<a class='email-btn' href='mailto:" + escapeHTML(contactData.email) + "'>Send Us an Email</a>";
+    }
+  }
+  c += "</div><div class='contact-right'>";
+  if (contactData.formEmbed) {
+    c += "<div class='contact-embed'>" + contactData.formEmbed + "</div>";
+  }
+  c += "</div></section>";
+  return c;
+}
+
+// For the final generated website – use only the final URL
+function buildContactSectionFinal() {
+  var anyFilled = contactData.intro || contactData.instagram || contactData.tiktok ||
+                  contactData.facebook || contactData.xLink || contactData.youtube ||
+                  contactData.email || contactData.formEmbed;
+  if (!anyFilled) return "";
+
+  var c = "<section class='contact-section' id='contact'><div class='contact-left'><div class='contact-logo-left'>";
+  // In final build, use only the final logo URL
+  var contactLogo = heroData.logoFinal || "";
+  if (contactLogo) {
+    c += "<img src='" + escapeHTML(contactLogo) + "' alt='Logo'>";
+  }
+  c += "</div>";
+  if (contactData.intro) {
+    c += "<p>" + escapeHTML(contactData.intro) + "</p>";
+  }
+  let iconsHTML = "";
+  if (contactData.instagram) iconsHTML += "<a href='" + escapeHTML(contactData.instagram) + "' target='_blank'><img src='https://i.ibb.co/N2yTY0Cj/Bella-73.png' alt='Instagram'></a>";
+  if (contactData.tiktok)    iconsHTML += "<a href='" + escapeHTML(contactData.tiktok) + "' target='_blank'><img src='https://i.ibb.co/2vSmtt0/Bella-49.png' alt='TikTok'></a>";
+  if (contactData.facebook)  iconsHTML += "<a href='" + escapeHTML(contactData.facebook) + "' target='_blank'><img src='https://i.ibb.co/gmDjkH3/Bella-48.png' alt='Facebook'></a>";
+  if (contactData.xLink)     iconsHTML += "<a href='" + escapeHTML(contactData.xLink) + "' target='_blank'><img src='https://i.ibb.co/fqp0KrB/Bella-63.png' alt='X'></a>";
+  if (contactData.youtube)   iconsHTML += "<a href='" + escapeHTML(contactData.youtube) + "' target='_blank'><img src='https://i.ibb.co/hC6CQzs/Bella-62.png' alt='Youtube'></a>";
+
+  if (iconsHTML) {
+    c += "<div class='contact-social-icons'>" + iconsHTML + "</div>";
+  }
+  if (contactData.email) {
+    c += "<div class='contact-email-line'>" + escapeHTML(contactData.email) + "</div>";
+    if (!contactData.formEmbed) {
+      c += "<a class='email-btn' href='mailto:" + escapeHTML(contactData.email) + "'>Send Us an Email</a>";
+    }
+  }
+  c += "</div><div class='contact-right'>";
+  if (contactData.formEmbed) {
+    c += "<div class='contact-embed'>" + contactData.formEmbed + "</div>";
+  }
+  c += "</div></section>";
+  return c;
+}
+
+
 
   // ============== PRODUCT MODAL SCRIPT ==============
 function buildProductModalScript(){
@@ -3851,6 +4306,7 @@ m += "    }\n";
 m += "  };\n";
 m += "})();";
   m += "</scr" + "ipt>";
+
   return m;
 }
     
@@ -3989,10 +4445,6 @@ document.addEventListener('click', function(e) {
         case '&': return '&amp;';
       }
     });
-  }
-
-  function redirectToUpload(){
-    window.open("https://imgbb.com","_blank");
   }
 
   function updateManagementLists(){
@@ -4450,6 +4902,8 @@ window.addEventListener('load',function(){
 });
 document.querySelector('#popupMessage .close').addEventListener('click',closePopup);
 </script>
+  
+  
   <script>
 window.addEventListener('beforeunload', function(e) {
   e.preventDefault();
@@ -4458,6 +4912,8 @@ window.addEventListener('beforeunload', function(e) {
 </script>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-FJEE98DCQM"></script>
+  
+  
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -4466,16 +4922,20 @@ window.addEventListener('beforeunload', function(e) {
   gtag('config', 'G-FJEE98DCQM');
 </script>
 
+  
+  
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Remove duplicate declarations if needed (or move these to one global spot)
+  // Global variables (set only once)
   window.currentUploadField = null;
   window.uploadedImages = {};
   window.backupImages = {};
+  window.uploadedFiles = {};
 
-  // Expose openUploadModal globally:
+  // Expose the upload modal function globally
   window.openUploadModal = function(fieldId) {
     console.log("openUploadModal called for " + fieldId);
+    // If an image is already uploaded for this field, confirm deletion
     if (window.uploadedImages[fieldId]) {
       if (confirm("Do you want to delete the uploaded image?")) {
         delete window.uploadedImages[fieldId];
@@ -4493,100 +4953,152 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('uploadModal').style.display = 'flex';
   };
 
+  // Helper: Get final image URL for download (if file was uploaded)
+  function getFinalImageURL(fieldId, currentURL) {
+    if (window.uploadedFiles && window.uploadedFiles[fieldId]) {
+      // Convert the file name to a safe version
+      return "Images/" + generateSafeFileName(window.uploadedFiles[fieldId].name);
+    }
+    return currentURL;
+  }
+
+  // File input handling (for browsing files)
+  var uploadFileInput = document.getElementById('uploadFileInput');
+  if (uploadFileInput) {
+    uploadFileInput.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      if (!window.currentUploadField) {
+        console.error("No upload field is set!");
+        return;
+      }
+      // Generate and store the unique safe filename if not already set
+      if (!file.safeName) {
+        file.safeName = generateUniqueSafeFileName(file.name);
+      }
+      const objectURL = URL.createObjectURL(file);
+      window.uploadedFiles[window.currentUploadField] = file;
+      window.uploadedImages[window.currentUploadField] = objectURL;
+      updatePreviewForField(window.currentUploadField, objectURL);
+      const btn = document.getElementById(window.currentUploadField);
+      if (btn) {
+        btn.innerHTML = '<i class="fas fa-check" style="color: white;"></i>';
+      }
+      e.target.value = "";
+      closeUploadModal();
+    });
+  }
+
+  // Drag & Drop handling
+  var dropArea = document.getElementById('uploadDropArea');
+  if (dropArea) {
+    dropArea.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.dataTransfer.dropEffect = 'copy';
+      dropArea.style.borderColor = '#2196F3';
+      console.log("Dragover event fired.");
+    });
+
+    dropArea.addEventListener('dragleave', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      dropArea.style.borderColor = '#ccc';
+      console.log("Dragleave event fired.");
+    });
+
+    dropArea.addEventListener('drop', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      dropArea.style.borderColor = '#ccc';
+
+      const file = e.dataTransfer.files[0];
+      console.log("Drop event fired, file:", file);
+
+      if (file && window.currentUploadField) {
+        // ⬇️ Add this line so the file always gets a unique, extension-preserving safeName
+        if (!file.safeName) {
+          file.safeName = generateUniqueSafeFileName(file.name);
+        }
+
+        const objectURL = URL.createObjectURL(file);
+        console.log("Dropped file:", file.name, objectURL);
+
+        window.uploadedFiles[window.currentUploadField] = file;
+        window.uploadedImages[window.currentUploadField] = objectURL;
+        updatePreviewForField(window.currentUploadField, objectURL);
+
+        const btn = document.getElementById(window.currentUploadField);
+        if (btn) {
+          btn.innerHTML = '<i class="fas fa-check" style="color: white;"></i>';
+        }
+        closeUploadModal();
+      }
+    });
+  } else {
+    console.error("Drop area element not found.");
+  }
+
+  // Updates the preview for the given upload field (for preview purposes only)
+  function updatePreviewForField(fieldId, objectURL) {
+    console.log("Updating preview for", fieldId, "with URL", objectURL);
+    switch(fieldId) {
+      case 'uploadLogoBtn':
+        heroData.logoPreview = objectURL;
+        break;
+      case 'uploadBannerBtn':
+        heroData.bannerPreview = objectURL;
+        break;
+      case 'uploadAboutImgBtn':
+        aboutData.imagePreview = objectURL;
+        break;
+      // For product images—make sure these elements exist or update accordingly:
+      case 'uploadImage1Btn':
+        var p1 = document.getElementById('productPreview1');
+        if (p1) { p1.src = objectURL; }
+        break;
+      case 'uploadImage2Btn':
+        var p2 = document.getElementById('productPreview2');
+        if (p2) { p2.src = objectURL; }
+        break;
+      case 'uploadImage3Btn':
+        var p3 = document.getElementById('productPreview3');
+        if (p3) { p3.src = objectURL; }
+        break;
+      default:
+        break;
+    }
+    updatePreview();
+  }
+
+  // Closes the upload modal
   function closeUploadModal() {
     document.getElementById('uploadModal').style.display = 'none';
     window.currentUploadField = null;
   }
 
-  document.getElementById('uploadModalClose').addEventListener('click', closeUploadModal);
-  document.getElementById('browseButton').addEventListener('click', function() {
-    document.getElementById('uploadFileInput').click();
-  });
-
-  // File input handling:
-  document.getElementById('uploadFileInput').addEventListener('change', function(e) {
-  const file = e.target.files[0];
-  if (file && window.currentUploadField) {
-    // Get the correct scale factor based on the current upload field
-    const factor = scaleMapping[window.currentUploadField] || 1;
-    scaleImage(file, factor, function(scaledBase64) {
-      window.uploadedImages[window.currentUploadField] = scaledBase64;
-      updatePreviewForField(window.currentUploadField, scaledBase64);
-      const btn = document.getElementById(window.currentUploadField);
-      if (btn) {
-        btn.innerHTML = '<i class="fas fa-check" style="color: white;"></i>';
-      }
-      closeUploadModal();
+  // Attach the browse button event
+  var browseButton = document.getElementById('browseButton');
+  if (browseButton) {
+    browseButton.addEventListener('click', function() {
+      document.getElementById('uploadFileInput').click();
     });
-    this.value = "";
   }
-});
 
+  // (Make sure updatePreview() is defined elsewhere.)
 
-
-
-  // Drag & drop handling:
-  const dropArea = document.getElementById('uploadDropArea');
-  dropArea.addEventListener('dragover', function(e) {
-    e.preventDefault();
-    dropArea.style.borderColor = '#2196F3';
-  });
-  dropArea.addEventListener('dragleave', function(e) {
-    e.preventDefault();
-    dropArea.style.borderColor = '#ccc';
-  });
-  dropArea.addEventListener('drop', function(e) {
-  e.preventDefault();
-  dropArea.style.borderColor = '#ccc';
-  const file = e.dataTransfer.files[0];
-  if (file && window.currentUploadField) {
-    const factor = scaleMapping[window.currentUploadField] || 1;
-    scaleImage(file, factor, function(scaledBase64) {
-      window.uploadedImages[window.currentUploadField] = scaledBase64;
-      if (window.backupImages[window.currentUploadField]) {
-        delete window.backupImages[window.currentUploadField];
-      }
-      updatePreviewForField(window.currentUploadField, scaledBase64);
-      const btn = document.getElementById(window.currentUploadField);
-      if (btn) {
-        btn.innerHTML = '<i class="fas fa-check" style="color: white;"></i>';
-      }
-      closeUploadModal();
+  // ⬇️ Add the close “X” snippet here, inside the DOMContentLoaded block
+  const closeButton = document.getElementById('uploadModalClose');
+  if (closeButton) {
+    closeButton.addEventListener('click', function() {
+      closeUploadModal(); // calls your existing function
     });
   }
 });
-
-
-  function updatePreviewForField(fieldId, base64String) {
-    const fieldMapping = {
-      'uploadLogoBtn': { input: 'logo', target: 'heroData.logo' },
-      'uploadBannerBtn': { input: 'banner', target: 'heroData.banner' },
-      'uploadImage1Btn': { input: 'image1', target: 'productImage1' },
-      'uploadImage2Btn': { input: 'image2', target: 'productImage2' },
-      'uploadImage3Btn': { input: 'image3', target: 'productImage3' },
-      'uploadAboutImgBtn': { input: 'aboutImage', target: 'aboutData.image' }
-    };
-    const mapping = fieldMapping[fieldId];
-    if (!mapping) return;
-    const inputEl = document.getElementById(mapping.input);
-    if (inputEl && inputEl.value.trim() !== "") {
-      window.backupImages[fieldId] = window.uploadedImages[fieldId] || null;
-      inputEl.value = "";
-    }
-    if(mapping.target === 'heroData.logo') {
-      heroData.logo = base64String;
-    } else if(mapping.target === 'heroData.banner') {
-      heroData.banner = base64String;
-    } else if(mapping.target === 'aboutData.image') {
-      aboutData.image = base64String;
-    }
-    updatePreview();
-  }
-
-  // Make sure updatePreview() is defined (it should be in your other code)
-});
-
 </script>
+
+
+
 
 
   
