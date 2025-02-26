@@ -1,496 +1,2166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Primary Meta Tags -->
-  <title>Boss in Pajamas – eCommerce Website Builder for Quick Online Store Launch</title>
-  <meta name="title" content="Boss in Pajamas – eCommerce Website Builder for Quick Online Store Launch">
-  <meta name="description" content="Build a professional online store in minutes with Boss in Pajamas. Launch your eCommerce website quickly and start selling without any coding experience.">
-  <meta name="keywords" content="eCommerce website builder, online store, quick launch, no coding required, online business, Boss in Pajamas, digital marketplace, sell products online, drop shipping, small business">
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://bossinpajamas.com/">
-  <meta property="og:title" content="Boss in Pajamas – eCommerce Website Builder for Quick Online Store Launch">
-  <meta property="og:description" content="Build a professional online store in minutes with Boss in Pajamas. Launch your eCommerce website quickly and start selling without any coding experience.">
-  <meta property="og:image" content="https://i.ibb.co/XNg8tLy/Bella-89.png">
-  
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://bossinpajamas.com/">
-  <meta property="twitter:title" content="Boss in Pajamas – eCommerce Website Builder for Quick Online Store Launch">
-  <meta property="twitter:description" content="Build a professional online store in minutes with Boss in Pajamas. Launch your eCommerce website quickly and start selling without any coding experience.">
-  <meta property="twitter:image" content="https://i.ibb.co/XNg8tLy/Bella-89.png">
-  
-  <!-- Canonical Link -->
-  <link rel="canonical" href="https://bossinpajamas.com/" />
-  
-  <!-- Organization Schema (JSON-LD) -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Boss in Pajamas",
-      "url": "https://bossinpajamas.com/",
-      "logo": "https://i.ibb.co/XNg8tLy/Bella-89.png",
-      "sameAs": [
-        "https://facebook.com/your-company",
-        "https://twitter.com/your-company",
-        "https://instagram.com/your-company",
-        "https://linkedin.com/company/your-company"
-      ],
-      "description": "Build a professional online store in minutes with Boss in Pajamas. Launch your eCommerce website quickly and start selling without any coding experience."
-    }
-  </script>
-  
   <meta charset="UTF-8">
+  <title>Boss in Pajamas</title>
+  <!-- Font Awesome 6.0.0 Beta 3 for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Canvas Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Boss in Pajamas Website Builder</title>
-  <!-- Font Awesome CDN for Icons (Version 6.4.0) -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
   <style>
-    body {
+    /* Basic Page Setup */
+    html, body {
       margin: 0;
       padding: 0;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-      background: #faf9ff;
-      color: #333;
-      line-height: 1.6;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle, #ff759b 0%, #ffecf2 100%);
+    }
+    body {
       display: flex;
       flex-direction: column;
-      height: 100vh;
-      overflow: hidden;
-    }
-    /* Navbar Styles */
-    .navbar {
-      width: 100%;
-      height: 60px;
-      background: linear-gradient(to right, #ff3096, #ff8f5a);
-      display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      padding: 0 30px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-      box-sizing: border-box;
-    }
-    .navbar-left, .navbar-center, .navbar-right {
-      display: flex;
-      align-items: center;
-    }
-    .navbar-left .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #fff !important;
-    }
-    .navbar-center {
-      flex: 1;
-      justify-content: center;
-      font-size: 1rem;
       color: #fff;
-      gap: 10px;
-      white-space: nowrap;
+      text-align: center;
     }
-    .navbar-center .fas.fa-mug-hot {
-      color: #fff;
-      font-size: 1.2rem;
+    /* ===== HEADER ===== */
+    .header {
+      margin-top: 20px;
     }
-    .navbar .contact-button {
-      padding: 8px 16px !important;
-      font-size: 1rem !important;
-      font-weight: bold !important;
-      border: none !important;
-      border-radius: 5px !important;
-      background: #fff !important;
-      color: #ff3096 !important;
-      cursor: pointer !important;
-      transition: background 0.3s ease, color 0.3s ease !important;
-      white-space: nowrap !important;
+    /* Container for the small nav bar */
+.top-nav {
+  width: 700px;
+  margin: 20px auto 0; /* adjust margin as needed */
+  padding: 10px 20px;
+  background: #fff;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Left side: logo + text */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-logo {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.nav-title {
+  font-size: 18px;
+  color: #000;
+  font-weight: normal;
+}
+
+/* Right side: contact, support, settings icons */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.nav-icon {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+
+    .time {
+      font-size: 65px;
+      line-height: 1.2;
+      margin-bottom: 3px;
+      margin-top: 20px;
     }
-    .navbar .contact-button:hover {
-      background: #fe2c55 !important;
-      color: #fff !important;
+    .date {
+      font-size: 17px;
     }
-    /* Main Content Styles */
-    .main-content {
-      flex: 1;
+    .icon-row {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 80px 60px;
-      box-sizing: border-box;
-      overflow: auto;
-      position: relative;
-      z-index: 2;
-    }
-    .left-container {
-      max-width: 50%;
-      text-align: left;
-      position: relative;
-      z-index: 3;
-    }
-    .hero h1 {
-      font-size: 3rem !important;
-      margin-bottom: 25px !important;
-      background: linear-gradient(to right, #ff3096, #ff8f5a) !important;
-      -webkit-background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-      opacity: 0;
-      transform: translateX(-50px);
-      animation: titleSlide 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-    @keyframes titleSlide {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-    .hero h1 span {
-      color: black !important;
-      font-weight: bold !important;
-    }
-    .hero p {
-      font-size: 1.5rem !important;
-      color: #555 !important;
-      margin-bottom: 50px !important;
-      opacity: 0;
-      animation: fadeIn 1s ease 0.3s forwards;
-    }
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-    .button-container {
-      display: flex !important;
-      gap: 20px !important;
-      opacity: 0;
-      animation: buttonEntrance 1s ease 0.6s forwards;
-    }
-    @keyframes buttonEntrance {
-      from { transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    /* Button Styles */
-    .button, .outline-button {
-      width: 260px !important;
-      padding: 10px 20px !important;
-      height: 65px !important;
-      font-size: 1.2rem !important;
-      font-weight: bold !important;
-      border-radius: 10px !important;
-      cursor: pointer !important;
-      display: inline-flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      gap: 8px !important;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-      white-space: nowrap !important;
-      box-sizing: border-box !important;
-    }
-    .button {
-      color: #fff;
-      border: none;
-      background: linear-gradient(45deg, #fe2c55, #ff3096, #ff8f5a);
-      background-size: 400% 400%;
-      animation: gradientAnimation 3s infinite linear;
-    }
-    @keyframes gradientAnimation {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    .outline-button {
-      color: #fe2c55 !important;
-      border: 2px solid #fe2c55 !important;
-      background: transparent !important;
-    }
-    .outline-button:hover {
-      background: #ff0000 !important;
-      color: white !important;
-      border-color: #ff0000 !important;
-      transform: translateY(-2px) !important;
-    }
-    /* YouTube Icon Style */
-    .youtube-icon {
-      width: 30px !important;
-      height: 30px !important;
-    }
-    /* Video Container & Videos */
-    .video-container {
-      display: flex;
-      flex-direction: column; /* Header on top, then videos row */
-      gap: 20px !important;
-      width: 100% !important;
-      max-width: 500px !important;
-      background: rgba(255, 255, 255, 0.9) !important;
-      border: 2px solid rgba(101, 97, 224, 0.15) !important;
-      border-radius: 20px !important;
-      padding: 30px !important;
-      backdrop-filter: blur(12px) !important;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
-      position: relative !important;
-      z-index: 1 !important;
-    }
-    .videos-row {
-      display: flex;
-      flex-direction: row;
       gap: 20px;
+      margin: 40px 0 30px;
+      justify-content: center;
+    }
+    .icon {
+      width: 80px;
+      height: 80px;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 12px;
+      display: flex;
       align-items: center;
+      justify-content: center;
+      color: #000;
+      user-select: none;
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
     }
-    /* Ensure each video retains its original (max) size and fades in */
-    .videos-row video {
-      flex: 0 0 auto;
-      max-width: 150px;
-      border-radius: 10px;
+    .icon:hover {
+      transform: scale(1.05);
+    }
+    .icon i {
+      font-size: 36px;
+    }
+    .icon-text {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    /* ===== IMAGE UPLOAD CARDS ===== */
+    .image-row {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 20px;
+      margin-bottom: 40px;
+      justify-content: center;
+    }
+    .upload-slot {
+      position: relative;
+      width: 194px;
+      height: 242px;
+      border: 2px solid rgba(255,255,255,0.6);
+      border-radius: 12px;
+      background-color: transparent;
+      box-sizing: content-box;
+      overflow: hidden;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .upload-slot.has-image {
+      border: none;
+    }
+    .slot-content {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      box-sizing: border-box;
+      padding: 10px;
       pointer-events: none;
+    }
+    .slot-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 6px;
+      word-wrap: break-word;
+      color: #777;
+    }
+    .slot-desc {
+      font-size: 11px;
+      line-height: 1.3;
+      margin-bottom: 8px;
+      word-wrap: break-word;
+      color: #666;
+    }
+    .slot-upload-icon {
+      font-size: 20px;
+      margin-top: 4px;
+      color: #fff;
+    }
+    .file-input {
+      display: none;
+    }
+    .upload-slot img {
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
+      object-fit: cover;
+      border-radius: inherit;
+      display: none;
+    }
+    /* ===== FOOTER ===== */
+    .footer {
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #fff;
+    }
+    .footer a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+    /* ===== MAIN TIMER MODAL & BACKDROP ===== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      backdrop-filter: blur(9px);
+      visibility: hidden;
       opacity: 0;
-      animation: fadeInVideo 1.5s forwards;
-      animation-delay: 0.5s;
+      transition: opacity 0.3s ease;
+      display: flex; 
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
     }
-    @keyframes fadeInVideo {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    .modal-backdrop.show {
+      visibility: visible;
+      opacity: 1;
     }
-    /* Profile image style for the TikTok GIF */
-    .profile-image {
+    .modal-timer {
+      background: transparent;
+      border-radius: 12px;
+      color: white;
+      padding: 40px;
+      position: relative;
+      transform: scale(0);
+      transform-origin: center;
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 400px;
+    }
+    .modal-timer.show {
+      transform: scale(1);
+    }
+    #timerDisplay {
+      font-size: 200px;
+      font-weight: 100;
+      margin: 0 0 20px;
+    }
+    .timer-buttons {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .timer-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: none;
+      background: #fff;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .timer-btn:active {
+      transform: scale(0.92);
+    }
+    .timer-btn:hover {
+      background: #ccc;
+    }
+    /* Pastel Aesthetics for main timer controls */
+    #startBtn {
+      background: #a2ffa0;
+      color: black;
+    }
+    #startBtn:hover {
+      background: #82d980;
+    }
+    #stopBtn {
+      background: #ff4848;
+      color: white;
+    }
+    #stopBtn:hover {
+      background: #d02323;
+    }
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      color: #333;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .modal-close:hover {
+      color: #666;
+    }
+    /* ===== SET TIMER MODAL (SECOND Modal) ===== */
+    .modal-set-timer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(4px);
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .modal-set-timer-backdrop.show {
+      visibility: visible;
+      opacity: 1;
+    }
+    .modal-set-timer {
+      background: #fff;
+      border-radius: 8px;
+      color: #000;
+      padding: 20px;
+      min-width: 320px;
+      position: relative;
+      transform: scale(0);
+      transition: transform 0.3s ease;
+    }
+    .modal-set-timer.show {
+      transform: scale(1);
+    }
+    .modal-set-timer h2 {
+      margin: 0 0 10px;
+      font-size: 24px;
+    }
+    .set-timer-inputs {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+    }
+    .set-timer-inputs input,
+    .set-timer-inputs select {
+      padding: 8px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .set-timer-inputs button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: #ddd;
+      color: #333;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .set-timer-inputs button:active {
+      transform: scale(0.9);
+    }
+    .set-timer-inputs button:hover {
+      background: #ccc;
+    }
+    .modal-set-timer .modal-close {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 20px;
+      color: #333;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .modal-set-timer .modal-close:hover {
+      color: #666;
+    }
+    /* ===== NOTIFICATION BAR ===== */
+    .notification-bar {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background: rgba(255,255,255,0.95);
+      color: #000;
+      padding: 8px 12px;
+      border-radius: 8px;
+      z-index: 1100;
+      font-size: 16px;
+      display: none;
+      align-items: center;
+      gap: 8px;
+    }
+    .notification-bar button {
+      /* Increase size so text fits */
       width: 50px;
       height: 50px;
       border-radius: 50%;
-      object-fit: cover;
+      border: none;
+      font-size: 11px;
+      cursor: pointer;
+      padding: 0;
     }
-    /* Footer Styles */
-    .footer {
-      position: fixed !important;
-      bottom: 0 !important;
-      left: 0 !important;
-      width: 100% !important;
-      height: 30px !important;
-      background: transparent !important;
-      display: flex !important;
-      justify-content: center !important;
-      align-items: center !important;
-      color: #888 !important;
-      font-size: 0.8rem !important;
-      z-index: 1000 !important;
+    /* Specific button colors for notification bar */
+    #notifStartBtn {
+      background: #a2ffa0;
+      color: black;
     }
-    @media only screen and (max-width: 480px) {
-      body {
-        flex-direction: column !important;
-        height: auto !important;
-        overflow-y: auto !important;
-      }
-      .navbar {
-        height: 50px !important;
-        padding: 0 15px !important;
-      }
-      .navbar-left .logo {
-        font-size: 1.2rem !important;
-      }
-      .navbar-center {
-        font-size: 0.9rem !important;
-        gap: 5px !important;
-      }
-      .navbar .contact-button {
-        padding: 6px 12px !important;
-        font-size: 0.9rem !important;
-      }
-      .main-content {
-        flex-direction: column !important;
-        padding: 60px 20px !important;
-        align-items: center !important;
-      }
-      .left-container {
-        max-width: 100% !important;
-        text-align: center !important;
-        margin-bottom: 20px !important;
-      }
-      .hero h1 {
-        font-size: 2rem !important;
-        margin-bottom: 15px !important;
-      }
-      .hero p {
-        font-size: 1.2rem !important;
-        margin-bottom: 30px !important;
-      }
-      .button-container {
-        flex-direction: column !important;
-        gap: 10px !important;
-      }
-      .video-container {
-        width: 90% !important;
-        margin: 0 auto !important;
-      }
-      .footer {
-        font-size: 0.7rem !important;
-        height: 25px !important;
-      }
+    #notifStartBtn:hover {
+      background: #82d980;
     }
-      
-    @media only screen and (max-width: 768px) {
-      /* Hide everything except the mobile message on small screens */
-      body > *:not(.mobile-message) {
-        display: none !important;
-      }
-      body {
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        height: 100vh !important;
-        background: #faf9ff !important;
-        text-align: center !important;
-        padding: 20px !important;
-      }
-      .mobile-message {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        max-width: 90% !important;
-      }
-      .mobile-message img {
-        width: 60px !important;
-        height: 60px !important;
-        margin-bottom: 20px !important;
-      }
-      .mobile-message h1 {
-        font-size: 1.5rem !important;
-        color: #6561e0 !important;
-        margin-bottom: 10px !important;
-      }
-      .mobile-message p {
-        font-size: 1rem !important;
-        color: #333 !important;
-      }
+    #notifStopBtn {
+      background: #ff4848;
+      color: white;
     }
-      
-    @media only screen and (min-width: 769px) {
-      .mobile-message {
-        display: none !important;
-      }
+    #notifStopBtn:hover {
+      background: #d02323;
     }
+    #notifCloseBtn {
+      background: black;
+      color: white;
+    }
+    #notifCloseBtn:hover {
+      background: #333;
+    }
+    
+    /* ===== CHECKLIST MODAL (UPDATED with HERO BANNER) ===== */
+.modal-checklist-backdrop {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(8px);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+}
+.modal-checklist-backdrop.show {
+  visibility: visible;
+  opacity: 1;
+}
+.modal-checklist {
+  background: #fff;
+  border-radius: 12px;
+  color: #000;
+  padding: 20px;
+  width: 500px;
+  max-width: 90%;
+  position: relative;
+  transform: scale(0);
+  transition: transform 0.3s ease;
+}
+.modal-checklist.show {
+  transform: scale(1);
+}
+/* Hero Banner Area */
+.checklist-hero {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  border: 2px solid #ffecf2;
+}
+.checklist-hero:hover {
+  border-color: #ff759b;
+}
+.hero-placeholder {
+  color: #999;
+  font-size: 16px;
+}
+.hero-banner {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+/* Editable title input with no border */
+#checklistTitle {
+  width: 100%;
+  font-size: 24px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  outline: none;
+}
+.checklist-container {
+  max-height: 450px;
+  overflow-y: auto;
+  text-align: left;
+}
+#checklistItems {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px;
+}
+#checklistItems li {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  /* Remove divider lines */
+  border-bottom: none;
+}
+    #checklistItems li input[type="checkbox"] {
+  margin-right: 10px;
+  accent-color: #ffbed3;
+}
+
+.checklist-add {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.checklist-add input {
+  flex: 1;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.checklist-add button {
+  padding: 8px 16px;
+  font-size: 16px;
+  background: #ff69b4;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.checklist-add button:hover {
+  background: #ff85c2;
+}
+.modal-checklist .modal-close {
+  position: absolute;
+  top: -10px; /* Increased from 8px to move it further down */
+  right: -30px;
+  font-size: 24px;
+  color: #ff759b;
+  background: transparent;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.modal-checklist .modal-close:hover {
+  color: #fff;
+}
+    
+    /* ===== YOUTUBE MODAL (Full-Page & Pink Aesthetic, Slightly Smaller) ===== */
+.modal-youtube-backdrop {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(9px);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+.modal-youtube-backdrop.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-youtube {
+  background: #ffe0f0; /* Soft pink background */
+  border-radius: 10px; /* Slightly smaller corners */
+  color: #333;
+  padding: 16px;       /* Reduced padding */
+  position: relative;
+  transform: scale(0);
+  transition: transform 0.3s ease;
+  width: 85vw;         /* Was 90vw */
+  height: 85vh;        /* Was 90vh */
+  overflow: hidden;    /* Prevent modal scrolling */
+}
+.modal-youtube.show {
+  transform: scale(1);
+}
+
+/* Header: Positioned above the video playback area */
+.youtube-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;           /* Slightly smaller gap */
+  margin-bottom: -20px; /* Was 20px */
+  padding-bottom: 8px; /* Was 10px */
+  margin-top: -20px;
+}
+.youtube-logo {
+  width: 120px;         /* Was 90px */
+  height: 120px;        /* Was 90px */
+  object-fit: contain;
+}
+.youtube-input-bar {
+  display: flex;
+  gap: 10px;
+}
+.youtube-input-bar input {
+  width: 350px;        /* Was 400px */
+  padding: 10px;       /* Was 12px */
+  border: 1px solid #ff85c2;
+  border-radius: 6px;  /* Was 8px */
+  font-size: 14px;     /* Was 16px */
+}
+.youtube-input-bar button {
+  padding: 10px 18px;  /* Slightly smaller than 12px 20px */
+  background: #ff69b4;
+  border: none;
+  color: #fff;
+  border-radius: 6px;  /* Was 8px */
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 14px;     /* Was 16px */
+}
+.youtube-input-bar button:hover {
+  background: #ff85c2;
+}
+
+.youtube-modal-content {
+  display: flex;
+  gap: 16px;
+  height: 518px; /* Example: Fixed height */
+  align-items: stretch;
+}
+
+.youtube-display-area {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  border: 1.5px solid #ff69b4; /* Was 2px */
+  border-radius: 20px;          /* Was 12px */
+  background: #fff0f7;
+  padding: 8px;                 /* Was 10px */
+  min-height: 0;
+}
+
+.youtube-video-container {
+  flex: 1;
+  display: flex;
+  border-radius: 18px;  /* Was 12px */
+  overflow: hidden;
+  margin-bottom: 8px;   /* Was 10px */
+}
+.youtube-video-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.youtube-video-title {
+  max-width: 100%;
+  font-size: 16px;       /* Was 16px */
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.youtube-video-list {
+  flex: 1;
+  max-height: 100%;
+  overflow-y: auto;
+  background: #fff0f7;
+  border-radius: 10px;          /* Was 12px */
+  padding: 8px;                 /* Was 10px */
+  border: 1.5px solid #ff69b4;  /* Was 2px */
+}
+
+.youtube-video-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;  /* Was 10px */
+  padding: 4px;        /* Was 5px */
+  border-bottom: 1px solid #ffe0f0;
+  cursor: pointer;
+}
+
+/* Updated thumbnail rule for bigger images */
+.youtube-video-item img {
+  width: 150px !important;  /* Increased thumbnail width */
+  height: 83px !important;  /* Increased thumbnail height */
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.youtube-video-item span {
+  margin-left: 8px;   /* Was 10px */
+  flex: 1;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.youtube-video-item button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #ff4848;
+}
+    
+    /* ===== SETTINGS MODAL STYLES ===== */
+.modal-settings-backdrop {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(9px);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+.modal-settings-backdrop.show {
+  visibility: visible;
+  opacity: 1;
+}
+.modal-settings {
+  background: #fff;
+  border-radius: 12px;
+  color: #000;
+  padding: 20px;
+  min-width: 320px;
+  position: relative;
+  transform: scale(0);
+  transition: transform 0.3s ease;
+}
+.modal-settings.show {
+  transform: scale(1);
+}
+.modal-settings h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+.wallpaper-options {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+.wallpaper-option {
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: border 0.3s;
+}
+.wallpaper-option:hover {
+  border: 3px solid #666;
+}
+.wallpaper-option.active {
+  border: 3px solid #333;
+}
+    
+    /* ===== CONTACT MODAL STYLES (updated) ===== */
+.modal-contact-backdrop {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(9px);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+.modal-contact-backdrop.show {
+  visibility: visible;
+  opacity: 1;
+}
+.modal-contact {
+  background: #fff;
+  border-radius: 12px;
+  color: #000;
+  /* Extra padding for breathing room */
+  padding: 30px; 
+  /* Control how wide the modal can get */
+  max-width: 450px; 
+  margin: 0 20px; /* helps on smaller screens */
+  position: relative;
+  transform: scale(0);
+  transition: transform 0.3s ease;
+}
+.modal-contact.show {
+  transform: scale(1);
+}
+.modal-contact h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+.modal-contact p {
+  margin: 0 0 15px;
+  font-size: 16px;
+}
+/* Form container */
+.modal-contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  /* Fix a max-width so button & inputs line up */
+  max-width: 100%;
+  /* or you could do: max-width: 350px; margin: 0 auto; */
+}
+/* Make inputs & button share the same width */
+.modal-contact form input,
+.modal-contact form textarea,
+.modal-contact form button {
+  width: 100%;
+  box-sizing: border-box; /* ensures padding doesn't break the width */
+}
+/* Style inputs/textarea to reduce 'tallness' */
+.modal-contact form input,
+.modal-contact form textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.modal-contact form textarea {
+  resize: vertical;
+  height: 80px; /* smaller default height if you want */
+}
+/* Style the button */
+.modal-contact form button {
+  padding: 10px;
+  background: #ff69b4;
+  border: none;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.modal-contact form button:hover {
+  background: #ff85c2;
+}
+    
+    /* Mobile view styles */
+.mobile-message {
+  display: none; /* Hide by default on larger screens */
+}
+
+@media only screen and (max-width: 768px) {
+  /* Hide everything except the mobile-message */
+  body > *:not(.mobile-message) {
+    display: none;
+  }
+  
+  /* Show the mobile-message on small screens */
+  .mobile-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh;
+    background: radial-gradient(circle, #ff759b 0%, #ffecf2 100%);
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .mobile-message img {
+    max-width: 70px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+}
+
+
+
+    
+    
+    
   </style>
 </head>
-<script>
-  // Create a new link element for the favicon
-  const faviconLink = document.createElement('link');
-  faviconLink.rel = 'icon';
-  faviconLink.type = 'image/png';
-  faviconLink.href = 'https://i.ibb.co/r2dwry1t/Bella-2025-02-14-T170359-184.png';
-  document.head.appendChild(faviconLink);
-
-  // Ensure videos keep playing by re-triggering play when the page becomes visible
-  document.addEventListener("visibilitychange", function() {
-    if (!document.hidden) {
-      document.querySelectorAll("video").forEach(video => {
-        if (video.paused) {
-          video.play().catch(e => {
-            // Sometimes play() might be blocked by autoplay policies
-            console.error("Video play failed:", e);
-          });
-        }
-      });
-    }
-  });
-</script>
   <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('video').forEach(video => {
-      video.muted = true;
-      video.volume = 0;
-    });
-  });
-</script>
-
+    // Favicon setup
+    const faviconLink = document.createElement('link');
+    faviconLink.rel = 'icon';
+    faviconLink.type = 'image/png';
+    faviconLink.href = 'https://i.ibb.co/r2dwry1t/Bella-2025-02-14-T170359-184.png';
+    document.head.appendChild(faviconLink);
+  </script>
 <body>
-  <div class="mobile-message">
+
+<div class="mobile-message">
     <img src="https://i.ibb.co/r2dwry1t/Bella-2025-02-14-T170359-184.png" alt="Boss in Pajamas Logo">
     <h1>Boss in Pajamas</h1>
     <p>Ops! Creating a great website requires using a computer, so please switch to your computer. Happy building!</p>
   </div>
+  
+  <!-- HEADER -->
+  <div class="header">
+    <!-- REPLACE your old <img class="logo" ...> with this snippet -->
+<nav class="top-nav">
+  <!-- Left side: new logo + text -->
+  <div class="nav-left">
+    <img
+      src="https://i.ibb.co/3PxTv2B/Bella-2025-02-23-T155544-355.png"
+      alt="Logo"
+      class="nav-logo"
+    />
+    <span class="nav-title">Boss in Pajamas</span>
+  </div>
 
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="navbar-left">
-      <div class="logo">Boss in Pajamas</div>
+  <!-- Right side: contact, support, settings icons -->
+  <div class="nav-right">
+    <img
+    src="https://cdn.jsdelivr.net/gh/joypixels/emoji-assets/png/64/1f4e9.png"
+    alt="Contact"
+    class="nav-icon"
+    id="contactButton"
+  />
+    <img
+    src="https://i.ibb.co/BpqSf33/Bella-2025-02-23-T155702-429.png"
+    alt="Settings"
+    class="nav-icon"
+    id="settingsButton"
+  />
+  </div>
+</nav>
+    <div class="time" id="time">--:--</div>
+    <div class="date" id="date">Loading...</div>
+    <div class="icon-row">
+      <div class="icon" id="timerButton"><i class="fas fa-history"></i></div>
+      <div class="icon icon-text" onclick="window.location.href='builder.html';">Create Website</div>
+      <div class="icon" id="CheckListButton"><i class="fas fa-check-circle"></i></div>
+      <div class="icon" id="YoutubeButton"><i class="fab fa-youtube"></i></div>
     </div>
-    <div class="navbar-center">
-      <span>Grab your favorite drink and create your website</span>
-      <i class="fas fa-mug-hot" aria-hidden="true"></i>
-    </div>
-    <div class="navbar-right">
-      <button class="contact-button" onclick="location.href='contact.html'">Contact</button>
-    </div>
-  </nav>
+  </div>
 
-  <!-- Main Content -->
-  <div class="main-content">
-    <div class="left-container">
-      <div class="hero">
-        <h1>Build Your Dream Website <span>for just €12</span></h1>
-        <p>No monthly fees, no subscriptions, just 12€ and you own your website forever. Unlimited products, full control, easy setup in minutes.</p>
+  <!-- IMAGE UPLOAD CARDS -->
+  <div class="image-row">
+    <!-- Card 1 -->
+    <div class="upload-slot">
+      <div class="slot-content">
+        <div class="slot-title">Inspiration & Vision</div>
+        <div class="slot-desc">Upload an image that inspires your brand vision.</div>
+        <div class="slot-upload-icon"><i class="fas fa-cloud-arrow-up"></i></div>
       </div>
-      <div class="button-container">
-        <button class="button" onclick="location.href='builder.html'">Create Your Website</button>
-        <button class="outline-button" onclick="location.href=''">
-          <img src="https://i.ibb.co/hC6CQzs/Bella-62.png" alt="YouTube" class="youtube-icon"> Soon..!
-        </button>
-      </div>
+      <img alt="Preview">
+      <input class="file-input" type="file" accept="image/*">
     </div>
-    <!-- Video Container with Header and Videos Row -->
-    <div class="video-container">
-      <!-- Video Header -->
-      <div class="video-header" style="display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-bottom: 20px; padding: 10px;">
-        <div class="profile-row" style="display: flex; align-items: center; gap: 10px;">
-          <!-- Profile image now uses the .profile-image class for object-fit: cover -->
-          <img class="profile-image" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjFja3c0eDdtYjVlcW1qYmZhNjBmanl5cm55NmQ1YW04c3lkZTljdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QC1Gp8ZTABAyzYhraI/giphy.gif" alt="Profile Image">
-          <span style="font-size: 1.2rem; font-weight: bold;">Boss in Pajamas</span>
-        </div>
-        <button style="background-color: #fe2c55; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;" onclick="window.open('https://www.tiktok.com/@bossinpajamas.com', '_blank');">
-  Watch my TikTok videos
-</button>
-        <div class="stats" style="display: flex; gap: 15px; font-size: 1rem;">
-          <span><strong>5</strong> Following</span>
-          <span><strong>981</strong> Followers</span>
-          <span><strong>8327</strong> Likes</span>
-        </div>
-        <p class="bio" style="font-size: 1rem; margin: 0;">👋☺️ Create your website in Minutes</p>
+    <!-- Card 2 -->
+    <div class="upload-slot">
+      <div class="slot-content">
+        <div class="slot-title">Products & Offerings</div>
+        <div class="slot-desc">Highlight your best products or services.</div>
+        <div class="slot-upload-icon"><i class="fas fa-cloud-arrow-up"></i></div>
       </div>
-      <!-- Videos Row: 3 Videos in the Same Row at Original Size -->
-      <div class="videos-row">
-        <video preload="auto" src="https://raw.githubusercontent.com/fitnesscreator/builder/main/Videos/Snaptik.app_7471215684647767318.mp4" autoplay loop muted playsinline></video>
-        <video preload="auto" src="https://raw.githubusercontent.com/fitnesscreator/builder/main/Videos/ssstik.io_%40bossinpajamas.com_1739543735125.mp4" autoplay loop muted playsinline></video>
-        <video preload="auto" src="https://raw.githubusercontent.com/fitnesscreator/builder/main/Videos/ssstik.io_%40bossinpajamas.com_1739543781343.mp4" autoplay loop muted playsinline></video>
+      <img alt="Preview">
+      <input class="file-input" type="file" accept="image/*">
+    </div>
+    <!-- Card 3 -->
+    <div class="upload-slot">
+      <div class="slot-content">
+        <div class="slot-title">Lifestyle & Brand Identity</div>
+        <div class="slot-desc">Show your brand’s vibe or lifestyle.</div>
+        <div class="slot-upload-icon"><i class="fas fa-cloud-arrow-up"></i></div>
+      </div>
+      <img alt="Preview">
+      <input class="file-input" type="file" accept="image/*">
+    </div>
+    <!-- Card 4 -->
+    <div class="upload-slot">
+      <div class="slot-content">
+        <div class="slot-title">Behind the Scenes</div>
+        <div class="slot-desc">A picture of your cute workspace.</div>
+        <div class="slot-upload-icon"><i class="fas fa-cloud-arrow-up"></i></div>
+      </div>
+      <img alt="Preview">
+      <input class="file-input" type="file" accept="image/*">
+    </div>
+    <!-- Card 5 -->
+    <div class="upload-slot">
+      <div class="slot-content">
+        <div class="slot-title">Dreams & Goals</div>
+        <div class="slot-desc">Visualize your dreams and goals for your business and life.</div>
+        <div class="slot-upload-icon"><i class="fas fa-cloud-arrow-up"></i></div>
+      </div>
+      <img alt="Preview">
+      <input class="file-input" type="file" accept="image/*">
+    </div>
+    <!-- Card 6 -->
+    <div class="upload-slot">
+      <div class="slot-content">
+        <div class="slot-title">Brand Colors & Aesthetics</div>
+        <div class="slot-desc">Upload an image that reflects your brand colors.</div>
+        <div class="slot-upload-icon"><i class="fas fa-cloud-arrow-up"></i></div>
+      </div>
+      <img alt="Preview">
+      <input class="file-input" type="file" accept="image/*">
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    2025 Boss in Pajamas
+  </div>
+
+  <!-- MAIN TIMER MODAL -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal-timer" id="modalTimer">
+      <i class="fas fa-times modal-close" id="closeModal"></i>
+      <h1 id="timerDisplay">00:00:00</h1>
+      <div class="timer-buttons">
+        <button class="timer-btn" id="startBtn">Start</button>
+        <button class="timer-btn" id="stopBtn">Stop</button>
+        <button class="timer-btn" id="setTimeBtn">Set</button>
       </div>
     </div>
   </div>
 
-  <!-- Footer with Clickable Links -->
-  <footer class="footer">
-    &copy; 2025 Boss in Pajamas | 
-    <a href="terms-of-service.html" style="color: #ff3096; text-decoration: underline;">Terms</a> | 
-    <a href="privacy-policy.html" style="color: #ff3096; text-decoration: underline;">Policy</a>
-  </footer>
+  <!-- SET TIMER MODAL (SECOND Modal) -->
+  <div class="modal-set-timer-backdrop" id="setTimerModalBackdrop">
+    <div class="modal-set-timer" id="setTimerModal">
+      <i class="fas fa-times modal-close" id="closeSetTimerModal"></i>
+      <h2>Set Timer Limit</h2>
+      <div class="set-timer-inputs">
+        <input type="number" id="setTimeInput" placeholder="Enter value" min="0">
+        <select id="timeUnitSelect">
+          <option value="seconds">Seconds</option>
+          <option value="minutes">Minutes</option>
+          <option value="hours">Hours</option>
+        </select>
+        <button id="confirmSetTimeBtn">Go</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- CHECKLIST MODAL -->
+<div class="modal-checklist-backdrop" id="checklistModalBackdrop">
+  <div class="modal-checklist" id="checklistModal">
+    <!-- Fancier close icon -->
+    <i class="fas fa-times-circle modal-close" id="closeChecklistModal"></i>
+    
+    <!-- Hero Banner Area -->
+    <div class="checklist-hero" id="checklistHero">
+      <p class="hero-placeholder">Drag and drop a banner image here or click to select</p>
+      <img class="hero-banner" id="heroBanner" alt="Banner" style="display:none;">
+      <input type="file" id="heroFileInput" accept="image/*" style="display:none;">
+    </div>
+    
+    <!-- Editable Checklist Title -->
+    <input type="text" id="checklistTitle" placeholder="Checklist Name" maxlength="30">
+    
+    <!-- Checklist Container -->
+    <div class="checklist-container">
+      <ul id="checklistItems">
+        <!-- Checklist items will appear here -->
+      </ul>
+      <div class="checklist-add">
+        <input type="text" id="newTaskInput" placeholder="Add new task...">
+        <button id="addTaskBtn">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <!-- YOUTUBE MODAL (Full-Page Pink Vibe with Logo & Input Above Video) -->
+<div class="modal-youtube-backdrop" id="youtubeModalBackdrop">
+  <div class="modal-youtube" id="youtubeModal">
+    <i class="fas fa-times modal-close" id="closeYoutubeModal"></i>
+    
+    <!-- Header: YouTube logo and input bar appear above the video playback area -->
+    <div class="youtube-header">
+      <img src="https://i.ibb.co/5g3rzmGM/Bella-2025-02-23-T181037-521.png" alt="YouTube Logo" class="youtube-logo">
+      <div class="youtube-input-bar">
+         <input type="text" id="youtubeLinkInput" placeholder="Paste YouTube video link here">
+         <button id="addYoutubeBtn">Add</button>
+      </div>
+    </div>
+    
+    <div class="youtube-modal-content">
+      <div class="youtube-display-area">
+         <!-- Video playback area; always visible even if empty -->
+         <div class="youtube-video-container" id="youtubeVideoContainer">
+           <!-- Video embed will appear here -->
+         </div>
+         <div class="youtube-video-title" id="youtubeVideoTitle">
+           <!-- Video title shows here when a video is added -->
+         </div>
+      </div>
+      <div class="youtube-video-list" id="youtubeVideoList">
+         <!-- List of added videos with delete buttons -->
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <!-- SETTINGS MODAL -->
+<div class="modal-settings-backdrop" id="settingsModalBackdrop">
+  <div class="modal-settings" id="settingsModal">
+    <i class="fas fa-times modal-close" id="closeSettingsModal"></i>
+    <h2>Wallpaper Color</h2>
+    <div class="wallpaper-options">
+      <!-- Default wallpaper (active by default) -->
+      <div class="wallpaper-option active" id="wallpaperDefault" style="background: radial-gradient(circle, #ff759b 0%, #ffecf2 100%);"></div>
+      <!-- Alternate wallpaper -->
+      <div class="wallpaper-option" id="wallpaperAlt" style="background: radial-gradient(circle, #8fd879 0%, #edffec 100%);"></div>
+    </div>
+  </div>
+</div>
+  
+  <!-- CONTACT MODAL -->
+<div class="modal-contact-backdrop" id="contactModalBackdrop">
+  <div class="modal-contact" id="contactModal">
+    <i class="fas fa-times modal-close" id="closeContactModal"></i>
+    <h2>Contact Me</h2>
+    <p>Got a question or just wanna say hi? Drop your deets below!</p>
+    
 
-  <!-- Analytics Scripts -->
+    
+    <form id="contactForm" class="contact-form">
+        <div>
+          <input type="text" id="contactName" name="name" placeholder="Your name" required />
+        </div>
+        <div>
+          <input type="email" id="contactEmail" name="email" placeholder="Your email" required />
+        </div>
+        <div>
+          <textarea id="contactMessage" name="message" placeholder="Your message" required></textarea>
+        </div>
+        <button type="submit" id="sendContactBtn" class="send-button">Send</button>
+      </form>
+    
+    
+  </div>
+</div>
+  
+  
+  
+  <!-- NOTIFICATION BAR -->
+  <div id="notificationBar" class="notification-bar">
+    <span id="notificationTimer">00:00:00</span>
+    <button id="notifStartBtn">Pause</button>
+    <button id="notifStopBtn">Stop</button>
+    <button id="notifCloseBtn">X</button>
+  </div>
+
+  <script>
+    /* ===== LIVE TIME/DATE ===== */
+    const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    const months = ["January","February","March","April","May","June",
+                    "July","August","September","October","November","December"];
+    function updateTimeAndDate() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, "0");
+      const minutes = String(now.getMinutes()).padStart(2, "0");
+      document.getElementById("time").textContent = `${hours}:${minutes}`;
+      const dayName = days[now.getDay()];
+      const monthName = months[now.getMonth()];
+      const dateNum = now.getDate();
+      document.getElementById("date").textContent = `${dayName}, ${monthName} ${dateNum}`;
+    }
+    updateTimeAndDate();
+    setInterval(updateTimeAndDate, 1000);
+
+    // ========== IndexedDB Setup ==========
+let db;
+const dbRequest = indexedDB.open("ImageUploadDB", 1);
+dbRequest.onupgradeneeded = function (event) {
+  db = event.target.result;
+  if (!db.objectStoreNames.contains("images")) {
+    db.createObjectStore("images", { keyPath: "slotId" });
+  }
+};
+dbRequest.onsuccess = function (event) {
+  db = event.target.result;
+  loadSavedImages(); // Load any stored images on page load
+};
+dbRequest.onerror = function (event) {
+  console.error("IndexedDB error:", event.target.error);
+};
+
+// ========== Load Saved Images ==========
+function loadSavedImages() {
+  uploadSlots.forEach((slot) => {
+    const slotId = Number(slot.dataset.slotId);
+    const transaction = db.transaction(["images"], "readonly");
+    const store = transaction.objectStore("images");
+    const getRequest = store.get(slotId);
+    getRequest.onsuccess = function () {
+      if (getRequest.result) {
+        const imageData = getRequest.result.imageData;
+        const previewImg = slot.querySelector("img");
+        const slotContent = slot.querySelector(".slot-content");
+        previewImg.src = imageData;
+        previewImg.style.display = "block";
+        slotContent.style.display = "none";
+        slot.classList.add("has-image");
+      }
+    };
+  });
+}
+
+// ========== Save Image to IndexedDB ==========
+function saveImageToIndexedDB(slotId, dataUrl) {
+  const transaction = db.transaction(["images"], "readwrite");
+  const store = transaction.objectStore("images");
+  const imageRecord = { slotId: Number(slotId), imageData: dataUrl };
+  const putRequest = store.put(imageRecord); // 'put' auto-overwrites existing data
+  putRequest.onsuccess = function () {
+    console.log(`Image saved for slot ${slotId}`);
+  };
+  putRequest.onerror = function (e) {
+    console.error("Error saving image:", e.target.error);
+  };
+}
+
+// ========== IMAGE UPLOAD SLOTS ==========
+const uploadSlots = document.querySelectorAll('.upload-slot');
+// Give each slot a unique ID so we can store/retrieve images for each one
+uploadSlots.forEach((slot, index) => {
+  slot.dataset.slotId = index; // Assign unique slot id
+
+  const fileInput = slot.querySelector('.file-input');
+  const previewImg = slot.querySelector('img');
+  const slotContent = slot.querySelector('.slot-content');
+
+  slot.addEventListener('click', () => fileInput.click());
+
+  fileInput.addEventListener('change', () => {
+    if (fileInput.files && fileInput.files[0]) {
+      readAndDisplayImage(fileInput.files[0], slot, previewImg, slotContent);
+    }
+  });
+
+  slot.addEventListener('dragover', e => {
+    e.preventDefault();
+    slot.style.borderColor = 'rgba(255,255,255,0.9)';
+  });
+
+  slot.addEventListener('dragleave', () => {
+    if (!slot.classList.contains('has-image')) {
+      slot.style.borderColor = 'rgba(255,255,255,0.6)';
+    }
+  });
+
+  slot.addEventListener('drop', e => {
+    e.preventDefault();
+    if (!slot.classList.contains('has-image')) {
+      slot.style.borderColor = 'rgba(255,255,255,0.6)';
+    }
+    const droppedFile = e.dataTransfer.files[0];
+    if (droppedFile) {
+      fileInput.files = e.dataTransfer.files;
+      readAndDisplayImage(droppedFile, slot, previewImg, slotContent);
+    }
+  });
+});
+
+// ========== Compress, Display, and Save Image ==========
+function readAndDisplayImage(file, slot, previewImg, slotContent) {
+  const reader = new FileReader();
+  reader.onload = e => {
+    const originalDataUrl = e.target.result;
+    const img = new Image();
+    img.onload = function () {
+      // Create a canvas to scale down the image to 70%
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width * 0.7;
+      canvas.height = img.height * 0.7;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      // Compress the image (using JPEG quality of 0.7 for extra savings)
+      const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.7);
+
+      // Save the compressed image in IndexedDB (overwriting any previous one)
+      const slotId = slot.dataset.slotId;
+      saveImageToIndexedDB(slotId, compressedDataUrl);
+
+      // Update the UI
+      previewImg.src = compressedDataUrl;
+      previewImg.style.display = 'block';
+      slotContent.style.display = 'none';
+      slot.classList.add('has-image');
+    };
+    img.src = originalDataUrl;
+  };
+  reader.readAsDataURL(file);
+}
+
+
+    /* ===== MAIN TIMER MODAL FUNCTIONALITY ===== */
+    const timerButton = document.getElementById('timerButton');
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const modalTimer = document.getElementById('modalTimer');
+    const timerDisplay = document.getElementById('timerDisplay');
+    const closeModalBtn = document.getElementById('closeModal');
+    const startBtn = document.getElementById('startBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    const setTimeBtn = document.getElementById('setTimeBtn');
+    let timerInterval = null;
+    let totalSeconds = 0;
+    let maxSeconds = null; // Timer limit in seconds
+    let isPaused = false;
+    let confettiDone = false;
+    function openTimerModal() {
+      modalBackdrop.classList.add('show');
+      requestAnimationFrame(() => {
+        modalTimer.classList.add('show');
+      });
+      hideNotificationBar();
+    }
+    function closeTimerModal() {
+      modalTimer.classList.remove('show');
+      setTimeout(() => {
+        modalBackdrop.classList.remove('show');
+        if (timerInterval) { showNotificationBar(); }
+      }, 300);
+    }
+    timerButton.addEventListener('click', openTimerModal);
+    closeModalBtn.addEventListener('click', closeTimerModal);
+    function updateTimerDisplay() {
+      const hrs = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+      const mins = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+      const secs = String(totalSeconds % 60).padStart(2, '0');
+      timerDisplay.textContent = `${hrs}:${mins}:${secs}`;
+      updateNotificationDisplay(`${hrs}:${mins}:${secs}`);
+      if (maxSeconds !== null && totalSeconds >= maxSeconds) {
+        stopTimer();
+        if (!confettiDone) {
+          runConfetti();
+          confettiDone = true;
+        }
+      }
+    }
+    function startOrToggleTimer() {
+      if (!timerInterval) {
+        confettiDone = false;
+        timerInterval = setInterval(() => {
+          if (!isPaused) {
+            totalSeconds++;
+            updateTimerDisplay();
+          }
+        }, 1000);
+        isPaused = false;
+        startBtn.textContent = "Pause";
+        notifStartBtn.textContent = "Pause";
+      } else {
+        if (!isPaused) {
+          isPaused = true;
+          startBtn.textContent = "Resume";
+          notifStartBtn.textContent = "Resume";
+        } else {
+          isPaused = false;
+          startBtn.textContent = "Pause";
+          notifStartBtn.textContent = "Pause";
+        }
+      }
+    }
+    function stopTimer() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      totalSeconds = 0;
+      isPaused = false;
+      updateTimerDisplay();
+      startBtn.textContent = "Start";
+      notifStartBtn.textContent = "Start";
+      hideNotificationBar();
+    }
+    startBtn.addEventListener('click', startOrToggleTimer);
+    stopBtn.addEventListener('click', stopTimer);
+
+    /* ===== SET TIMER MODAL FUNCTIONALITY ===== */
+    const setTimerModalBackdrop = document.getElementById('setTimerModalBackdrop');
+    const setTimerModal = document.getElementById('setTimerModal');
+    const closeSetTimerModalBtn = document.getElementById('closeSetTimerModal');
+    const setTimeInput = document.getElementById('setTimeInput');
+    const timeUnitSelect = document.getElementById('timeUnitSelect');
+    const confirmSetTimeBtn = document.getElementById('confirmSetTimeBtn');
+    function openSetTimerModal() {
+      setTimerModalBackdrop.classList.add('show');
+      requestAnimationFrame(() => {
+        setTimerModal.classList.add('show');
+      });
+    }
+    function closeSetTimerModal() {
+      setTimerModal.classList.remove('show');
+      setTimeout(() => {
+        setTimerModalBackdrop.classList.remove('show');
+      }, 300);
+    }
+    setTimeBtn.addEventListener('click', openSetTimerModal);
+    closeSetTimerModalBtn.addEventListener('click', closeSetTimerModal);
+    confirmSetTimeBtn.addEventListener('click', () => {
+      const inputVal = parseInt(setTimeInput.value, 10);
+      if (!isNaN(inputVal) && inputVal >= 0) {
+        const unit = timeUnitSelect.value;
+        if (unit === 'minutes') {
+          maxSeconds = inputVal * 60;
+        } else if (unit === 'hours') {
+          maxSeconds = inputVal * 3600;
+        } else {
+          maxSeconds = inputVal;
+        }
+        stopTimer();
+        totalSeconds = 0;
+        updateTimerDisplay();
+        closeSetTimerModal();
+        startOrToggleTimer();
+      } else {
+        alert('Please enter a valid number.');
+      }
+    });
+    updateTimerDisplay();
+
+    /* ===== CONFETTI ANIMATION WHEN TIMER FINISHES ===== */
+    function runConfetti() {
+      var duration = 3000;
+      var animationEnd = Date.now() + duration;
+      var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1001 };
+      function randomInRange(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+      var interval = setInterval(function() {
+        var timeLeft = animationEnd - Date.now();
+        if (timeLeft <= 0) {
+          clearInterval(interval);
+          return;
+        }
+        var particleCount = 50 * (timeLeft / duration);
+        confetti(Object.assign({}, defaults, { 
+          particleCount, 
+          origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+        }));
+        confetti(Object.assign({}, defaults, { 
+          particleCount, 
+          origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+        }));
+      }, 250);
+    }
+
+    /* ===== NOTIFICATION BAR FUNCTIONALITY ===== */
+    const notificationBar = document.getElementById("notificationBar");
+    function showNotificationBar() {
+      if (timerInterval) {
+        notificationBar.style.display = "flex";
+        updateNotificationDisplay(timerDisplay.textContent);
+      }
+    }
+    function hideNotificationBar() {
+      notificationBar.style.display = "none";
+    }
+    function updateNotificationDisplay(text) {
+      document.getElementById("notificationTimer").textContent = text;
+    }
+    const notifStartBtn = document.getElementById("notifStartBtn");
+    const notifStopBtn = document.getElementById("notifStopBtn");
+    const notifCloseBtn = document.getElementById("notifCloseBtn");
+    notifStartBtn.addEventListener("click", () => {
+      startOrToggleTimer();
+    });
+    notifStopBtn.addEventListener("click", () => {
+      stopTimer();
+      hideNotificationBar();
+    });
+    notifCloseBtn.addEventListener("click", () => {
+      hideNotificationBar();
+    });
+    
+    // ===== IndexedDB Setup for Checklist, Hero Image & Title =====
+let checklistDB;
+const checklistDBRequest = indexedDB.open("ChecklistDB", 2); // Using version 2 to add title store
+checklistDBRequest.onupgradeneeded = function(event) {
+  checklistDB = event.target.result;
+  // Create an object store for tasks (to-do items)
+  if (!checklistDB.objectStoreNames.contains("tasks")) {
+    checklistDB.createObjectStore("tasks", { keyPath: "id", autoIncrement: true });
+  }
+  // Create an object store for the hero banner image; we use a fixed key 'hero'
+  if (!checklistDB.objectStoreNames.contains("hero")) {
+    checklistDB.createObjectStore("hero", { keyPath: "id" });
+  }
+  // Create an object store for the checklist title; fixed key 'checklistTitle'
+  if (!checklistDB.objectStoreNames.contains("title")) {
+    checklistDB.createObjectStore("title", { keyPath: "id" });
+  }
+};
+checklistDBRequest.onsuccess = function(event) {
+  checklistDB = event.target.result;
+  loadSavedChecklistTitle();
+  loadSavedTasks();
+  loadSavedHero();
+};
+checklistDBRequest.onerror = function(event) {
+  console.error("Checklist DB error:", event.target.error);
+};
+
+// ===== Celebration Confetti Function (with high z-index) =====
+function runConfetti() {
+  const duration = 3000;
+  const animationEnd = Date.now() + duration;
+  const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
+  function randomInRange(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+  const interval = setInterval(function() {
+    const timeLeft = animationEnd - Date.now();
+    if (timeLeft <= 0) {
+      clearInterval(interval);
+      return;
+    }
+    const particleCount = 50 * (timeLeft / duration);
+    confetti(Object.assign({}, defaults, { 
+      particleCount, 
+      origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+    }));
+    confetti(Object.assign({}, defaults, { 
+      particleCount, 
+      origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+    }));
+  }, 250);
+}
+
+// ===== CHECKLIST MODAL ELEMENTS =====
+const checklistModalBackdrop = document.getElementById('checklistModalBackdrop');
+const checklistModal = document.getElementById('checklistModal');
+const closeChecklistModalBtn = document.getElementById('closeChecklistModal');
+const addTaskBtn = document.getElementById('addTaskBtn');
+const newTaskInput = document.getElementById('newTaskInput');
+const checklistItems = document.getElementById('checklistItems');
+const checklistTitle = document.getElementById('checklistTitle');
+
+// ===== HERO BANNER ELEMENTS =====
+const checklistHero = document.getElementById('checklistHero');
+const heroFileInput = document.getElementById('heroFileInput');
+const heroBanner = document.getElementById('heroBanner');
+const heroPlaceholder = checklistHero.querySelector('.hero-placeholder');
+
+// ===== OPEN & CLOSE MODAL FUNCTIONS =====
+function openChecklistModal() {
+  checklistModalBackdrop.classList.add('show');
+  checklistModal.classList.add('show');
+}
+function closeChecklistModal() {
+  checklistModal.classList.remove('show');
+  setTimeout(() => {
+    checklistModalBackdrop.classList.remove('show');
+  }, 300);
+}
+const checkListButton = document.getElementById('CheckListButton');
+if (checkListButton) {
+  checkListButton.addEventListener('click', openChecklistModal);
+}
+closeChecklistModalBtn.addEventListener('click', closeChecklistModal);
+
+// ===== HERO BANNER DRAG & DROP & CLICK =====
+checklistHero.addEventListener('click', () => {
+  heroFileInput.click();
+});
+checklistHero.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  checklistHero.style.borderColor = '#aaa';
+});
+checklistHero.addEventListener('dragleave', () => {
+  checklistHero.style.borderColor = '#ccc';
+});
+checklistHero.addEventListener('drop', (e) => {
+  e.preventDefault();
+  checklistHero.style.borderColor = '#ccc';
+  if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+    handleHeroFile(e.dataTransfer.files[0]);
+  }
+});
+heroFileInput.addEventListener('change', () => {
+  if (heroFileInput.files && heroFileInput.files[0]) {
+    handleHeroFile(heroFileInput.files[0]);
+  }
+});
+
+// ===== Handle Hero Banner File (Scale to 70% & Save) =====
+function handleHeroFile(file) {
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const originalDataUrl = e.target.result;
+    const img = new Image();
+    img.onload = function() {
+      // Create a canvas to scale the image down to 70%
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width * 0.7;
+      canvas.height = img.height * 0.7;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      // Compress the image (using JPEG quality 0.7)
+      const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.7);
+      // Update UI
+      heroBanner.src = compressedDataUrl;
+      heroBanner.style.display = 'block';
+      heroPlaceholder.style.display = 'none';
+      // Save/update hero image in IndexedDB (fixed key 'hero')
+      const transaction = checklistDB.transaction(["hero"], "readwrite");
+      const store = transaction.objectStore("hero");
+      store.put({ id: 'hero', imageData: compressedDataUrl });
+    };
+    img.src = originalDataUrl;
+  };
+  reader.readAsDataURL(file);
+}
+function loadSavedHero() {
+  const transaction = checklistDB.transaction(["hero"], "readonly");
+  const store = transaction.objectStore("hero");
+  const getRequest = store.get('hero');
+  getRequest.onsuccess = function() {
+    if (getRequest.result) {
+      const imageData = getRequest.result.imageData;
+      heroBanner.src = imageData;
+      heroBanner.style.display = 'block';
+      heroPlaceholder.style.display = 'none';
+    }
+  };
+}
+
+// ===== TASK (TO-DO) FUNCTIONALITY =====
+function addTask() {
+  const taskText = newTaskInput.value.trim();
+  if (taskText === '') return;
+  
+  // Create list item elements
+  const li = document.createElement('li');
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.style.marginRight = '10px';
+  
+  const span = document.createElement('span');
+  span.textContent = taskText;
+  
+  const deleteBtn = document.createElement('button');
+  deleteBtn.innerHTML = '<i class="fas fa-times-circle" style="color: #fdd2e0;"></i>';
+  deleteBtn.style.background = 'transparent';
+  deleteBtn.style.border = 'none';
+  deleteBtn.style.cursor = 'pointer';
+  
+  li.appendChild(checkbox);
+  li.appendChild(span);
+  li.appendChild(deleteBtn);
+  checklistItems.appendChild(li);
+  
+  // Save task to IndexedDB and attach its generated id to the li element
+  const transaction = checklistDB.transaction(["tasks"], "readwrite");
+  const store = transaction.objectStore("tasks");
+  const taskRecord = { text: taskText, completed: false };
+  const addRequest = store.add(taskRecord);
+  addRequest.onsuccess = function(e) {
+    li.dataset.id = e.target.result;
+  };
+  
+  // Update task in IndexedDB when checkbox changes state, triggering confetti on check
+  checkbox.addEventListener('change', () => {
+    const taskId = Number(li.dataset.id);
+    const updatedTask = { id: taskId, text: taskText, completed: checkbox.checked };
+    const updateTransaction = checklistDB.transaction(["tasks"], "readwrite");
+    const updateStore = updateTransaction.objectStore("tasks");
+    updateStore.put(updatedTask);
+    if (checkbox.checked) {
+      runConfetti();
+    }
+  });
+  
+  // Delete task from DOM and IndexedDB in real time when deleteBtn is clicked
+  deleteBtn.addEventListener('click', () => {
+    checklistItems.removeChild(li);
+    const taskId = Number(li.dataset.id);
+    if (taskId) {
+      const delTransaction = checklistDB.transaction(["tasks"], "readwrite");
+      const delStore = delTransaction.objectStore("tasks");
+      delStore.delete(taskId);
+    }
+  });
+  
+  newTaskInput.value = '';
+}
+function loadSavedTasks() {
+  const transaction = checklistDB.transaction(["tasks"], "readonly");
+  const store = transaction.objectStore("tasks");
+  const getAllRequest = store.getAll();
+  getAllRequest.onsuccess = function() {
+    const tasks = getAllRequest.result;
+    tasks.forEach(task => {
+      const li = document.createElement('li');
+      li.dataset.id = task.id;
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.style.marginRight = '10px';
+      checkbox.checked = task.completed;
+      
+      const span = document.createElement('span');
+      span.textContent = task.text;
+      
+      const deleteBtn = document.createElement('button');
+      deleteBtn.innerHTML = '<i class="fas fa-times-circle" style="color: #fdd2e0;"></i>';
+      deleteBtn.style.background = 'transparent';
+      deleteBtn.style.border = 'none';
+      deleteBtn.style.cursor = 'pointer';
+      
+      li.appendChild(checkbox);
+      li.appendChild(span);
+      li.appendChild(deleteBtn);
+      checklistItems.appendChild(li);
+      
+      checkbox.addEventListener('change', () => {
+        const updatedTask = { id: task.id, text: task.text, completed: checkbox.checked };
+        const updateTransaction = checklistDB.transaction(["tasks"], "readwrite");
+        const updateStore = updateTransaction.objectStore("tasks");
+        updateStore.put(updatedTask);
+        if (checkbox.checked) {
+          runConfetti();
+        }
+      });
+      
+      deleteBtn.addEventListener('click', () => {
+        checklistItems.removeChild(li);
+        const delTransaction = checklistDB.transaction(["tasks"], "readwrite");
+        const delStore = delTransaction.objectStore("tasks");
+        delStore.delete(task.id);
+      });
+    });
+  };
+}
+
+// ===== SAVE & LOAD CHECKLIST TITLE =====
+function saveChecklistTitle(title) {
+  const transaction = checklistDB.transaction(["title"], "readwrite");
+  const store = transaction.objectStore("title");
+  store.put({ id: 'checklistTitle', text: title });
+}
+function loadSavedChecklistTitle() {
+  const transaction = checklistDB.transaction(["title"], "readonly");
+  const store = transaction.objectStore("title");
+  const getRequest = store.get('checklistTitle');
+  getRequest.onsuccess = function() {
+    if (getRequest.result) {
+      checklistTitle.value = getRequest.result.text;
+    }
+  };
+}
+checklistTitle.addEventListener('change', () => {
+  saveChecklistTitle(checklistTitle.value);
+});
+
+// ===== EVENT LISTENERS FOR TASK ADDITION =====
+addTaskBtn.addEventListener('click', addTask);
+newTaskInput.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    addTask();
+  }
+});
+
+
+    
+    // ===== YOUTUBE MODAL FUNCTIONALITY WITH INDEXEDDB =====
+
+// -- IndexedDB Setup for YouTube Videos --
+let youtubeDB;
+const youtubeDBRequest = indexedDB.open("YoutubeDB", 1);
+youtubeDBRequest.onupgradeneeded = function(event) {
+  youtubeDB = event.target.result;
+  if (!youtubeDB.objectStoreNames.contains("videos")) {
+    youtubeDB.createObjectStore("videos", { keyPath: "videoId" });
+  }
+};
+youtubeDBRequest.onsuccess = function(event) {
+  youtubeDB = event.target.result;
+  loadSavedYoutubeVideos(); // Load saved videos on page load
+};
+youtubeDBRequest.onerror = function(event) {
+  console.error("YouTube DB error:", event.target.error);
+};
+
+// -- DOM Elements --
+const youtubeModalBackdrop = document.getElementById('youtubeModalBackdrop');
+const youtubeModal = document.getElementById('youtubeModal');
+const youtubeButton = document.getElementById('YoutubeButton');
+const closeYoutubeModal = document.getElementById('closeYoutubeModal');
+const youtubeLinkInput = document.getElementById('youtubeLinkInput');
+const addYoutubeBtn = document.getElementById('addYoutubeBtn');
+const youtubeVideoContainer = document.getElementById('youtubeVideoContainer');
+const youtubeVideoTitle = document.getElementById('youtubeVideoTitle');
+const youtubeVideoList = document.getElementById('youtubeVideoList');
+
+// -- Modal Open/Close Functions --
+function openYoutubeModal() {
+  youtubeModalBackdrop.classList.add('show');
+  requestAnimationFrame(() => {
+    youtubeModal.classList.add('show');
+  });
+}
+function closeYoutubeModalFunc() {
+  youtubeModal.classList.remove('show');
+  setTimeout(() => {
+    youtubeModalBackdrop.classList.remove('show');
+  }, 300);
+}
+youtubeButton.addEventListener('click', openYoutubeModal);
+closeYoutubeModal.addEventListener('click', closeYoutubeModalFunc);
+
+// -- Helper: Extract Video ID --
+function extractVideoId(url) {
+  const regex = /(?:youtube\.com\/.*[?&]v=|youtu\.be\/)([^&\n?#]+)/;
+  const match = url.match(regex);
+  return match ? match[1] : null;
+}
+
+// -- Helper: Create and Append Video List Item --
+function addYoutubeVideoItem(videoId, videoTitle) {
+  const videoItem = document.createElement('div');
+  videoItem.classList.add('youtube-video-item');
+  videoItem.dataset.videoId = videoId;
+  videoItem.dataset.videoTitle = videoTitle;
+
+  // Thumbnail image
+  const thumb = document.createElement('img');
+  thumb.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+  thumb.style.width = '80px';
+  thumb.style.height = '45px';
+  thumb.style.objectFit = 'cover';
+  thumb.style.borderRadius = '8px';
+
+  // Title text
+  const titleSpan = document.createElement('span');
+  titleSpan.textContent = videoTitle;
+
+  // Delete button
+  const deleteBtn = document.createElement('button');
+  deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+  deleteBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    youtubeVideoList.removeChild(videoItem);
+    removeYoutubeVideoFromIndexedDB(videoId);
+    // If the deleted video is playing, clear the main display area
+    const currentIframe = youtubeVideoContainer.querySelector('iframe');
+    if (currentIframe && currentIframe.src.includes(videoId)) {
+      youtubeVideoContainer.innerHTML = '';
+      youtubeVideoTitle.textContent = '';
+    }
+  });
+
+  videoItem.appendChild(thumb);
+  videoItem.appendChild(titleSpan);
+  videoItem.appendChild(deleteBtn);
+
+  // Play video on click
+  videoItem.addEventListener('click', () => {
+    const newIframe = document.createElement('iframe');
+    newIframe.width = "100%";
+    newIframe.height = "200";
+    newIframe.src = `https://www.youtube.com/embed/${videoId}`;
+    newIframe.frameBorder = "0";
+    newIframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+    newIframe.allowFullscreen = true;
+
+    youtubeVideoContainer.innerHTML = '';
+    youtubeVideoContainer.appendChild(newIframe);
+    youtubeVideoTitle.textContent = videoTitle;
+  });
+
+  // Prepend so the latest added shows first
+  youtubeVideoList.insertBefore(videoItem, youtubeVideoList.firstChild);
+}
+
+// -- IndexedDB: Save and Remove Videos --
+function saveYoutubeVideoToIndexedDB(videoId, videoTitle) {
+  const transaction = youtubeDB.transaction(["videos"], "readwrite");
+  const store = transaction.objectStore("videos");
+  const videoRecord = { videoId: videoId, videoTitle: videoTitle };
+  const putRequest = store.put(videoRecord); // 'put' will update if exists
+  putRequest.onsuccess = function() {
+    console.log(`Saved video ${videoId} to IndexedDB`);
+  };
+  putRequest.onerror = function(e) {
+    console.error("Error saving video:", e.target.error);
+  };
+}
+function removeYoutubeVideoFromIndexedDB(videoId) {
+  const transaction = youtubeDB.transaction(["videos"], "readwrite");
+  const store = transaction.objectStore("videos");
+  const deleteRequest = store.delete(videoId);
+  deleteRequest.onsuccess = function() {
+    console.log(`Removed video ${videoId} from IndexedDB`);
+  };
+  deleteRequest.onerror = function(e) {
+    console.error("Error removing video:", e.target.error);
+  };
+}
+
+// -- Load Saved Videos on Page Load --
+// Additionally, auto-select the last added video to display in the main area.
+function loadSavedYoutubeVideos() {
+  const transaction = youtubeDB.transaction(["videos"], "readonly");
+  const store = transaction.objectStore("videos");
+  const getAllRequest = store.getAll();
+  getAllRequest.onsuccess = function() {
+    const videos = getAllRequest.result;
+    videos.forEach(video => {
+      addYoutubeVideoItem(video.videoId, video.videoTitle);
+    });
+    // Auto-select the most recently added video (which is at the top)
+    if (youtubeVideoList.children.length > 0) {
+      youtubeVideoList.children[0].click();
+    }
+  };
+}
+
+// -- Add YouTube Video via User Input --
+function addYoutubeVideo() {
+  const url = youtubeLinkInput.value.trim();
+  if (!url) return;
+  const videoId = extractVideoId(url);
+  if (!videoId) {
+    alert('Please enter a valid YouTube link.');
+    return;
+  }
+
+  // Fetch video title using YouTube oEmbed
+  fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`)
+    .then(response => {
+      if (!response.ok) throw new Error('Network response was not ok');
+      return response.json();
+    })
+    .then(data => {
+      const videoTitle = data.title;
+      
+      // Update main display area with the video
+      const iframe = document.createElement('iframe');
+      iframe.width = "100%";
+      iframe.height = "200";
+      iframe.src = `https://www.youtube.com/embed/${videoId}`;
+      iframe.frameBorder = "0";
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      iframe.allowFullscreen = true;
+      
+      youtubeVideoContainer.innerHTML = '';
+      youtubeVideoContainer.appendChild(iframe);
+      youtubeVideoTitle.textContent = videoTitle;
+      
+      // Add video to list and save to IndexedDB
+      addYoutubeVideoItem(videoId, videoTitle);
+      saveYoutubeVideoToIndexedDB(videoId, videoTitle);
+      
+      // Clear input for next round
+      youtubeLinkInput.value = '';
+    })
+    .catch(error => {
+      console.error('Error fetching video title:', error);
+      alert('Error fetching video title. Please try again.');
+    });
+}
+addYoutubeBtn.addEventListener('click', addYoutubeVideo);
+
+
+    
+    // ===== SETTINGS MODAL FUNCTIONALITY =====
+(function(){
+  document.addEventListener('DOMContentLoaded', function(){
+    // ===== SETTINGS MODAL FUNCTIONALITY =====
+    const settingsButton = document.getElementById('settingsButton');
+    const settingsModalBackdrop = document.getElementById('settingsModalBackdrop');
+    const settingsModal = document.getElementById('settingsModal');
+    const closeSettingsModal = document.getElementById('closeSettingsModal');
+
+    function openSettingsModal() {
+      settingsModalBackdrop.classList.add('show');
+      requestAnimationFrame(() => {
+        settingsModal.classList.add('show');
+      });
+    }
+    if (settingsButton) settingsButton.addEventListener('click', openSettingsModal);
+
+    function closeSettingsModalFunc() {
+      settingsModal.classList.remove('show');
+      setTimeout(() => {
+        settingsModalBackdrop.classList.remove('show');
+      }, 300);
+    }
+    if (closeSettingsModal) closeSettingsModal.addEventListener('click', closeSettingsModalFunc);
+
+    // ===== IndexedDB Setup for Wallpaper Settings =====
+    let settingsDB;
+    if (!window.indexedDB) {
+      console.error("IndexedDB is not supported in this browser.");
+      return;
+    }
+    const dbRequest = indexedDB.open("SettingsDB", 1);
+    dbRequest.onupgradeneeded = function(event) {
+      settingsDB = event.target.result;
+      if (!settingsDB.objectStoreNames.contains("settings")) {
+        settingsDB.createObjectStore("settings", { keyPath: "id" });
+      }
+    };
+    dbRequest.onsuccess = function(event) {
+      settingsDB = event.target.result;
+      loadWallpaperSetting();
+    };
+    dbRequest.onerror = function(event) {
+      console.error("IndexedDB error:", event.target.error);
+    };
+
+    // ===== Load & Save Wallpaper Setting =====
+    function loadWallpaperSetting() {
+      const transaction = settingsDB.transaction(["settings"], "readonly");
+      const store = transaction.objectStore("settings");
+      const getRequest = store.get("wallpaper");
+      getRequest.onsuccess = function(event) {
+        const result = event.target.result;
+        if (result && result.value === "alt") {
+          setWallpaperAlt(true);
+        } else {
+          setWallpaperDefault(true);
+        }
+      };
+      getRequest.onerror = function(event) {
+        console.error("Error retrieving wallpaper setting:", event.target.error);
+        setWallpaperDefault(true);
+      };
+    }
+
+    function saveWallpaperSetting(value) {
+      const transaction = settingsDB.transaction(["settings"], "readwrite");
+      const store = transaction.objectStore("settings");
+      store.put({ id: "wallpaper", value });
+    }
+
+    // ===== Wallpaper Background Switching =====
+    const wallpaperDefault = document.getElementById('wallpaperDefault');
+    const wallpaperAlt = document.getElementById('wallpaperAlt');
+
+    function setWallpaperDefault(skipSave) {
+      document.body.style.transition = "background 0.5s ease";
+      document.body.style.background = "radial-gradient(circle, #ff759b 0%, #ffecf2 100%)";
+      if(wallpaperDefault) wallpaperDefault.classList.add('active');
+      if(wallpaperAlt) wallpaperAlt.classList.remove('active');
+      if (!skipSave && settingsDB) saveWallpaperSetting("default");
+    }
+
+    function setWallpaperAlt(skipSave) {
+      document.body.style.transition = "background 0.5s ease";
+      document.body.style.background = "radial-gradient(circle, #8fd879 0%, #edffec 100%)";
+      if(wallpaperAlt) wallpaperAlt.classList.add('active');
+      if(wallpaperDefault) wallpaperDefault.classList.remove('active');
+      if (!skipSave && settingsDB) saveWallpaperSetting("alt");
+    }
+
+    if(wallpaperDefault) wallpaperDefault.addEventListener('click', () => { setWallpaperDefault(); });
+    if(wallpaperAlt) wallpaperAlt.addEventListener('click', () => { setWallpaperAlt(); });
+  });
+})();
+
+    
+    document.addEventListener("DOMContentLoaded", () => {
+  // ===== CONTACT MODAL FUNCTIONALITY =====
+  const contactButton = document.getElementById('contactButton');
+  const contactModalBackdrop = document.getElementById('contactModalBackdrop');
+  const contactModal = document.getElementById('contactModal');
+  const closeContactModal = document.getElementById('closeContactModal');
+  const contactForm = document.getElementById('contactForm');
+
+  // Open contact modal
+  function openContactModal() {
+    contactModalBackdrop.classList.add('show');
+    requestAnimationFrame(() => {
+      contactModal.classList.add('show');
+    });
+  }
+  contactButton.addEventListener('click', openContactModal);
+
+  // Close contact modal
+  function closeContactModalFunc() {
+    contactModal.classList.remove('show');
+    setTimeout(() => {
+      contactModalBackdrop.classList.remove('show');
+    }, 300);
+  }
+  closeContactModal.addEventListener('click', closeContactModalFunc);
+
+  // Contact form submission with basic email validation and async fetch
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const name = document.getElementById('contactName').value.trim();
+      const email = document.getElementById('contactEmail').value.trim();
+      const message = document.getElementById('contactMessage').value.trim();
+
+      // Basic email validation: must include "@" and a period after "@"
+      if (!email.includes('@') || email.indexOf('.') < email.indexOf('@')) {
+        alert('Please enter a valid email address (must contain "@" and a proper domain like .gmail).');
+        return;
+      }
+
+      // Collect form data
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        const response = await fetch(
+          "https://script.google.com/macros/s/AKfycbztpCfWvniRapiv4NSLOLv5_v9vGuWBesKedty55eI6-2sRCnj2wbBFqaZMpaC22qKu/exec",
+          {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: { "Content-Type": "application/json" },
+            mode: "no-cors", // Prevents CORS errors; response is opaque
+          }
+        );
+        alert("Form submitted successfully!");
+        e.target.reset();
+        closeContactModalFunc();
+      } catch (error) {
+        console.error("Error submitting form:", error);
+        alert("An error occurred. Please try again.");
+      }
+    });
+  } else {
+    console.error("contactForm not found!");
+  }
+});
+
+    
+    // ===== SUPPORT MODAL FUNCTIONALITY =====
+const supportButton = document.getElementById('supportButton');
+const supportModalBackdrop = document.getElementById('supportModalBackdrop');
+const supportModal = document.getElementById('supportModal');
+const closeSupportModal = document.getElementById('closeSupportModal');
+const supportPaypalBtn = document.getElementById('supportPaypalBtn');
+
+// Open support modal
+function openSupportModal() {
+  supportModalBackdrop.classList.add('show');
+  requestAnimationFrame(() => {
+    supportModal.classList.add('show');
+  });
+}
+supportButton.addEventListener('click', openSupportModal);
+
+// Close support modal
+function closeSupportModalFunc() {
+  supportModal.classList.remove('show');
+  setTimeout(() => {
+    supportModalBackdrop.classList.remove('show');
+  }, 300);
+}
+closeSupportModal.addEventListener('click', closeSupportModalFunc);
+
+// Handle PayPal button click (replace '#' with your actual PayPal link or code)
+supportPaypalBtn.addEventListener('click', () => {
+  window.open('https://paypal.me/YourPayPalLink', '_blank');
+});
+    
+    
+  </script>
+  
+  <!-- Analytics & Tracking Scripts -->
   <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    (function(c, l, a, r, i, t, y) {
+      c[a] = c[a] || function() { (c[a].q = c[a].q || []).push(arguments) };
+      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
     })(window, document, "clarity", "script", "pyh4snlwpe");
   </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-FJEE98DCQM"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-FJEE98DCQM');
   </script>
+  
+
+  
+  
 </body>
 </html>
