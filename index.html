@@ -420,118 +420,201 @@
 .modal-checklist-backdrop.show {
   visibility: visible;
   opacity: 1;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(5px);     /* Glassmorphism effect */
 }
+
 .modal-checklist {
-  background: #fff;
-  border-radius: 12px;
-  color: #000;
-  padding: 20px;
+  background: linear-gradient(145deg, #fff0f5, #ffe4e1);
+  border-radius: 20px;
+  color: #333;
+  padding: 25px;
   width: 500px;
   max-width: 90%;
+  max-height: 600px;       /* Max height of 600px */
+  overflow: hidden;
   position: relative;
   transform: scale(0);
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s ease;
+  opacity: 0;
+  box-shadow: 0 15px 30px rgba(255, 105, 180, 0.3);
+  border: 1px solid rgba(255, 182, 193, 0.3);
+  display: flex;
+  flex-direction: column;
 }
+
 .modal-checklist.show {
   transform: scale(1);
+  opacity: 1;
 }
+
+/* Checklist Container */
+.checklist-container {
+  flex: 1;
+  overflow-y: auto;
+  text-align: left;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: inset 0 4px 10px rgba(255, 105, 180, 0.1);
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.checklist-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.checklist-container::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 105, 180, 0.4);
+  border-radius: 10px;
+}
+
+.checklist-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 /* Hero Banner Area */
 .checklist-hero {
   position: relative;
   width: 100%;
   height: 180px;
-  border-radius: 12px;
+  border-radius: 20px;
   margin-bottom: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   overflow: hidden;
-  border: 2px solid #ffecf2;
+  border: 2px solid rgba(255, 182, 193, 0.6);
+  background: linear-gradient(135deg, #ffe4e1 0%, #ffc0cb 100%);
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  flex-shrink: 0;
 }
-.checklist-hero:hover {
-  border-color: #ff759b;
-}
-.hero-placeholder {
-  color: #999;
-  font-size: 16px;
-}
-.hero-banner {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 8px;
-}
-/* Editable title input with no border */
+
+/* Editable title input */
 #checklistTitle {
   width: 100%;
-  font-size: 24px;
+  font-size: 28px;
+  font-weight: bold;
   padding: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   border: none;
   outline: none;
+  color: #ff1493;
+  background: none;
+  text-shadow: 0 2px 4px rgba(255, 105, 180, 0.2);
+  transition: text-shadow 0.3s ease;
+  flex-shrink: 0;
 }
+
+#checklistTitle:focus {
+  text-shadow: 0 4px 8px rgba(255, 105, 180, 0.4);
+}
+
+/* Checklist Container */
 .checklist-container {
   max-height: 450px;
   overflow-y: auto;
   text-align: left;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: inset 0 4px 10px rgba(255, 105, 180, 0.1);
+  padding: 15px;
+  margin-bottom: 15px;
 }
+
 #checklistItems {
   list-style: none;
   padding: 0;
-  margin: 0 0 10px;
+  margin: 0;
 }
+
 #checklistItems li {
   display: flex;
   align-items: center;
-  padding: 8px;
-  /* Remove divider lines */
-  border-bottom: none;
-}
-    #checklistItems li input[type="checkbox"] {
-  margin-right: 10px;
-  accent-color: #ffbed3;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: rgba(255, 182, 193, 0.2);
+  border-radius: 10px;
+  transition: background 0.3s ease;
 }
 
+#checklistItems li:hover {
+  background: rgba(255, 182, 193, 0.4);
+}
+
+#checklistItems li input[type="checkbox"] {
+  margin-right: 10px;
+  accent-color: #ff69b4;
+  transform: scale(1.3);
+}
+
+/* Add Item Area */
 .checklist-add {
   display: flex;
   gap: 10px;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
+
 .checklist-add input {
   flex: 1;
-  padding: 8px;
+  padding: 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid rgba(255, 182, 193, 0.4);
+  border-radius: 10px;
+  background: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
+.checklist-add input:focus {
+  border-color: #ff69b4;
+  box-shadow: 0 4px 10px rgba(255, 105, 180, 0.2);
+  outline: none;
+}
+
 .checklist-add button {
-  padding: 8px 16px;
+  padding: 10px 20px;
   font-size: 16px;
-  background: #ff69b4;
+  background: linear-gradient(145deg, #ff69b4, #ff85c2);
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
 }
+
 .checklist-add button:hover {
-  background: #ff85c2;
+  background: linear-gradient(145deg, #ff85c2, #ffa1d0);
+  transform: translateY(-3px);
 }
+
+/* Close Button */
 .modal-checklist .modal-close {
   position: absolute;
-  top: -10px; /* Increased from 8px to move it further down */
-  right: -30px;
-  font-size: 24px;
-  color: #ff759b;
-  background: transparent;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  color: #ff69b4;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: color 0.2s;
+  z-index: 9999;  /* Ensures it is above all other content */
 }
 
 .modal-checklist .modal-close:hover {
   color: #fff;
+  transform: scale(1.1);
 }
+
+
     
     /* ===== YOUTUBE MODAL (Full-Page & Pink Aesthetic, Slightly Smaller) ===== */
 .modal-youtube-backdrop {
@@ -552,143 +635,203 @@
 }
 
 .modal-youtube {
-  background: #ffe0f0; /* Soft pink background */
-  border-radius: 10px; /* Slightly smaller corners */
+  background: linear-gradient(145deg, #ffe0f0, #ffd6e8);
+  border-radius: 20px;
   color: #333;
-  padding: 16px;       /* Reduced padding */
+  padding: 20px;
   position: relative;
   transform: scale(0);
-  transition: transform 0.3s ease;
-  width: 85vw;         /* Was 90vw */
-  height: 85vh;        /* Was 90vh */
-  overflow: hidden;    /* Prevent modal scrolling */
-}
-.modal-youtube.show {
-  transform: scale(1);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  width: 85vw;
+  height: 85vh;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(255, 105, 180, 0.3);
+  opacity: 0;
 }
 
-/* Header: Positioned above the video playback area */
+.modal-youtube.show {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Header */
 .youtube-header {
   display: flex;
   align-items: center;
-  gap: 12px;           /* Slightly smaller gap */
-  margin-bottom: -20px; /* Was 20px */
-  padding-bottom: 8px; /* Was 10px */
-  margin-top: -20px;
+  gap: 12px;
+  margin-bottom: -15px;     /* No space below */
+  padding-bottom: 0;    /* No padding below */
+  margin-top: -15px
 }
+
+
 .youtube-logo {
-  width: 120px;         /* Was 90px */
-  height: 120px;        /* Was 90px */
+  width: 120px;
+  height: 120px;
   object-fit: contain;
+  transition: transform 0.3s ease;
 }
+
+.youtube-logo:hover {
+  transform: scale(1.1);
+}
+
+/* Input Bar */
 .youtube-input-bar {
   display: flex;
   gap: 10px;
 }
+
 .youtube-input-bar input {
-  width: 350px;        /* Was 400px */
-  padding: 10px;       /* Was 12px */
-  border: 1px solid #ff85c2;
-  border-radius: 6px;  /* Was 8px */
-  font-size: 14px;     /* Was 16px */
-}
-.youtube-input-bar button {
-  padding: 10px 18px;  /* Slightly smaller than 12px 20px */
-  background: #ff69b4;
-  border: none;
-  color: #fff;
-  border-radius: 6px;  /* Was 8px */
-  cursor: pointer;
-  transition: background 0.2s;
-  font-size: 14px;     /* Was 16px */
-}
-.youtube-input-bar button:hover {
-  background: #ff85c2;
+  width: 350px;
+  padding: 10px;
+  border: 1px solid rgba(255, 105, 180, 0.3);
+  border-radius: 10px;
+  font-size: 14px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.youtube-input-bar input:focus {
+  border-color: #ff69b4;
+  box-shadow: 0 4px 10px rgba(255, 105, 180, 0.2);
+  outline: none;
+}
+
+.youtube-input-bar button {
+  padding: 10px 18px;
+  background: linear-gradient(145deg, #ff69b4, #ff85c2);
+  border: none;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  font-size: 14px;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+}
+
+.youtube-input-bar button:hover {
+  background: linear-gradient(145deg, #ff85c2, #ffa1d0);
+  transform: translateY(-3px);
+}
+
+/* Modal Content */
 .youtube-modal-content {
   display: flex;
   gap: 16px;
-  height: 518px; /* Example: Fixed height */
+  height: 518px;
   align-items: stretch;
+  margin-top: -15px;
 }
 
+/* Display Area */
 .youtube-display-area {
   flex: 2;
   display: flex;
   flex-direction: column;
-  border: 1.5px solid #ff69b4; /* Was 2px */
-  border-radius: 20px;          /* Was 12px */
+  border: 1.5px solid rgba(255, 105, 180, 0.3);
+  border-radius: 20px;
   background: #fff0f7;
-  padding: 8px;                 /* Was 10px */
-  min-height: 0;
+  padding: 10px;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
+  transition: box-shadow 0.3s ease;
 }
 
+.youtube-display-area:hover {
+  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+}
+
+/* Video Container */
 .youtube-video-container {
   flex: 1;
   display: flex;
-  border-radius: 18px;  /* Was 12px */
+  border-radius: 18px;
   overflow: hidden;
-  margin-bottom: 8px;   /* Was 10px */
+  margin-bottom: 8px;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
 }
+
 .youtube-video-container iframe {
   width: 100%;
   height: 100%;
   border: none;
+  border-radius: 18px;
 }
 
+/* Video Title */
 .youtube-video-title {
   max-width: 100%;
-  font-size: 16px;       /* Was 16px */
+  font-size: 16px;
   font-weight: bold;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
+  color: #ff1493;
+  text-shadow: 0 2px 4px rgba(255, 105, 180, 0.2);
 }
 
+/* Video List */
 .youtube-video-list {
   flex: 1;
   max-height: 100%;
   overflow-y: auto;
   background: #fff0f7;
-  border-radius: 10px;          /* Was 12px */
-  padding: 8px;                 /* Was 10px */
-  border: 1.5px solid #ff69b4;  /* Was 2px */
+  border-radius: 15px;
+  padding: 10px;
+  border: 1.5px solid rgba(255, 105, 180, 0.3);
+  box-shadow: inset 0 4px 10px rgba(255, 105, 180, 0.1);
 }
 
 .youtube-video-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 8px;  /* Was 10px */
-  padding: 4px;        /* Was 5px */
-  border-bottom: 1px solid #ffe0f0;
+  margin-bottom: 8px;
+  padding: 6px;
+  border-bottom: 1px solid rgba(255, 105, 180, 0.2);
   cursor: pointer;
-}
-
-/* Updated thumbnail rule for bigger images */
-.youtube-video-item img {
-  width: 150px !important;  /* Increased thumbnail width */
-  height: 83px !important;  /* Increased thumbnail height */
-  object-fit: cover;
+  transition: background 0.3s ease;
   border-radius: 8px;
 }
 
+.youtube-video-item:hover {
+  background: rgba(255, 105, 180, 0.1);
+}
+
+/* Thumbnail */
+.youtube-video-item img {
+  width: 150px !important;
+  height: 83px !important;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(255, 105, 180, 0.2);
+}
+
 .youtube-video-item span {
-  margin-left: 8px;   /* Was 10px */
+  margin-left: 8px;
   flex: 1;
   max-width: 100px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: #ff69b4;
+  font-weight: bold;
 }
+
+/* Action Button */
 .youtube-video-item button {
   background: transparent;
   border: none;
   cursor: pointer;
   color: #ff4848;
+  font-size: 16px;
+  transition: transform 0.3s ease;
 }
+
+.youtube-video-item button:hover {
+  transform: scale(1.2);
+}
+
     
     /* ===== SETTINGS MODAL STYLES ===== */
 .modal-settings-backdrop {
@@ -708,42 +851,84 @@
   opacity: 1;
 }
 .modal-settings {
-  background: #fff;
-  border-radius: 12px;
-  color: #000;
-  padding: 20px;
+  background: linear-gradient(145deg, #fff0f5, #ffe4e1);
+  border-radius: 20px;
+  color: #333;
+  padding: 25px;
   min-width: 320px;
   position: relative;
   transform: scale(0);
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s ease;
+  opacity: 0;
+  box-shadow: 0 15px 30px rgba(255, 105, 180, 0.3);
+  border: 1px solid rgba(255, 182, 193, 0.3);
+  overflow: hidden;
 }
+
 .modal-settings.show {
   transform: scale(1);
+  opacity: 1;
 }
+
+/* Header */
 .modal-settings h2 {
   margin-top: 0;
-  margin-bottom: 15px;
-  font-size: 24px;
+  margin-bottom: 20px;
+  font-size: 26px;
+  color: #ff1493;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(255, 105, 180, 0.2);
 }
+
+/* Wallpaper Options Area */
 .wallpaper-options {
   display: flex;
   gap: 20px;
   justify-content: center;
+  flex-wrap: wrap;
 }
+
 .wallpaper-option {
   width: 100px;
   height: 100px;
-  border-radius: 12px;
+  border-radius: 15px;
   cursor: pointer;
   border: 3px solid transparent;
-  transition: border 0.3s;
+  transition: border 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
 }
+
 .wallpaper-option:hover {
-  border: 3px solid #666;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
 }
+
 .wallpaper-option.active {
-  border: 3px solid #333;
+  border: 3px solid #ff69b4;
+  box-shadow: 0 0 10px rgba(255, 105, 180, 0.6);
 }
+
+/* Example Backgrounds for Wallpaper Options */
+.wallpaper-option:nth-child(1) {
+  background-image: linear-gradient(145deg, #ffbed3, #ff85c2);
+}
+
+.wallpaper-option:nth-child(2) {
+  background-image: linear-gradient(145deg, #ffc0cb, #ffa1d0);
+}
+
+.wallpaper-option:nth-child(3) {
+  background-image: linear-gradient(145deg, #ffe4e1, #ffc0cb);
+}
+
+.wallpaper-option:nth-child(4) {
+  background-image: linear-gradient(145deg, #ff69b4, #ff85c2);
+}
+
     
     /* ===== CONTACT MODAL STYLES (updated) ===== */
 .modal-contact-backdrop {
@@ -763,72 +948,144 @@
   opacity: 1;
 }
 .modal-contact {
-  background: #fff;
-  border-radius: 12px;
-  color: #000;
-  /* Extra padding for breathing room */
-  padding: 30px; 
-  /* Control how wide the modal can get */
-  max-width: 450px; 
-  margin: 0 20px; /* helps on smaller screens */
+  background: linear-gradient(145deg, #fff0f5, #ffe4e1);
+  border-radius: 20px;
+  color: #333;
+  padding: 30px;
+  max-width: 450px;
+  margin: 0 auto;
   position: relative;
   transform: scale(0);
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.4s ease;
+  opacity: 0;
+  box-shadow: 0 15px 30px rgba(255, 105, 180, 0.3);
+  border: 1px solid rgba(255, 182, 193, 0.3);
+  overflow: hidden;
 }
+
 .modal-contact.show {
   transform: scale(1);
+  opacity: 1;
 }
+
+/* Close Button (Matching Wallpaper Modal) */
+.modal-contact .modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  color: #ff69b4;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+  z-index: 9999;
+}
+
+.modal-contact .modal-close:hover {
+  color: #ff1493;
+  transform: scale(1.2);
+}
+
+/* Header */
 .modal-contact h2 {
   margin-top: 0;
-  margin-bottom: 10px;
-  font-size: 24px;
+  margin-bottom: 15px;
+  font-size: 28px;
+  color: #ff1493;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(255, 105, 180, 0.2);
 }
+
+/* Text Content */
 .modal-contact p {
   margin: 0 0 15px;
   font-size: 16px;
+  color: #666;
+  text-align: center;
 }
-/* Form container */
+
+/* Form Container */
 .modal-contact form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  /* Fix a max-width so button & inputs line up */
+  gap: 15px;
   max-width: 100%;
-  /* or you could do: max-width: 350px; margin: 0 auto; */
+  margin-top: 20px;
 }
-/* Make inputs & button share the same width */
-.modal-contact form input,
-.modal-contact form textarea,
-.modal-contact form button {
-  width: 100%;
-  box-sizing: border-box; /* ensures padding doesn't break the width */
-}
-/* Style inputs/textarea to reduce 'tallness' */
+
+/* Input & Textarea */
 .modal-contact form input,
 .modal-contact form textarea {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
+  width: calc(100% - 30px); /* Adjusted width to prevent edge touching */
+  padding: 12px;
+  border: 1px solid rgba(255, 182, 193, 0.4);
+  border-radius: 10px;
+  background: #fff;
+  font-size: 16px;
+  color: #333;
+  box-shadow: inset 0 4px 8px rgba(255, 105, 180, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
+
+.modal-contact form input:focus,
+.modal-contact form textarea:focus {
+  border-color: #ff69b4;
+  box-shadow: 0 4px 10px rgba(255, 105, 180, 0.2);
+  outline: none;
+}
+
 .modal-contact form textarea {
   resize: vertical;
-  height: 80px; /* smaller default height if you want */
+  min-height: 100px;
+  max-height: 300px;
 }
-/* Style the button */
+
+/* Button */
 .modal-contact form button {
-  padding: 10px;
-  background: #ff69b4;
+  width: calc(100% - 30px); /* Ensures the button matches the input width */
+  padding: 12px;
+  background: linear-gradient(145deg, #ff69b4, #ff85c2);
   border: none;
   color: #fff;
-  border-radius: 6px;
-  font-size: 16px;
+  border-radius: 25px;
+  font-size: 18px;
   cursor: pointer;
-  transition: background 0.2s;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+  transition: background 0.3s ease, transform 0.3s ease;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
+
 .modal-contact form button:hover {
-  background: #ff85c2;
+  background: linear-gradient(145deg, #ff85c2, #ffa1d0);
+  transform: translateY(-3px);
 }
+
+/* Custom Input Focus Outline */
+.modal-contact form input:focus,
+.modal-contact form textarea:focus {
+  outline: 2px solid rgba(255, 105, 180, 0.4);
+}
+
+/* Smooth Scrollbar for Textarea */
+.modal-contact form textarea::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-contact form textarea::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 105, 180, 0.4);
+  border-radius: 10px;
+}
+
+.modal-contact form textarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
     
     /* Mobile view styles */
 .mobile-message {
@@ -860,10 +1117,6 @@
     margin-bottom: 20px;
   }
 }
-
-
-
-    
     
     
   </style>
@@ -2110,35 +2363,6 @@ addYoutubeBtn.addEventListener('click', addYoutubeVideo);
 });
 
     
-    // ===== SUPPORT MODAL FUNCTIONALITY =====
-const supportButton = document.getElementById('supportButton');
-const supportModalBackdrop = document.getElementById('supportModalBackdrop');
-const supportModal = document.getElementById('supportModal');
-const closeSupportModal = document.getElementById('closeSupportModal');
-const supportPaypalBtn = document.getElementById('supportPaypalBtn');
-
-// Open support modal
-function openSupportModal() {
-  supportModalBackdrop.classList.add('show');
-  requestAnimationFrame(() => {
-    supportModal.classList.add('show');
-  });
-}
-supportButton.addEventListener('click', openSupportModal);
-
-// Close support modal
-function closeSupportModalFunc() {
-  supportModal.classList.remove('show');
-  setTimeout(() => {
-    supportModalBackdrop.classList.remove('show');
-  }, 300);
-}
-closeSupportModal.addEventListener('click', closeSupportModalFunc);
-
-// Handle PayPal button click (replace '#' with your actual PayPal link or code)
-supportPaypalBtn.addEventListener('click', () => {
-  window.open('https://paypal.me/YourPayPalLink', '_blank');
-});
     
     
   </script>
