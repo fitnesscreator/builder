@@ -7,6 +7,8 @@
 <meta name="title" content="Boss in Pajamas – eCommerce Website Builder for Quick Online Store Launch">
 <meta name="description" content="Build a professional online store in minutes with Boss in Pajamas. Launch your eCommerce website quickly and start selling without any coding experience.">
 <meta name="keywords" content="eCommerce website builder, online store, quick launch, no coding required, online business, Boss in Pajamas, digital marketplace, sell products online, drop shipping, small business">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
@@ -1111,6 +1113,151 @@
   from { transform: translateY(-20px); opacity: 0; }
   to   { transform: translateY(0); opacity: 1; }
 }
+    
+    @media only screen and (max-width: 768px) {
+  /* Make the main container stack vertically */
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 0 10px;
+  }
+  
+  /* Reorder without touching HTML:
+     Flatten the forms section so its children are direct and then assign order.
+     (display: contents is safe in modern browsers) */
+  .forms-section {
+    display: contents;
+  }
+  .forms-section > form {
+    order: 1;
+    width: 100%;
+    margin: 10px 0;
+  }
+  
+  /* Live preview comes next */
+  .preview-section {
+    order: 2;
+    width: 100%;
+    margin: 10px 0;
+  }
+  
+  /* Download/Payment section goes last */
+  .payment-card {
+    order: 3;
+    width: 100%;
+    margin: 10px 0;
+    padding: 15px;
+    text-align: center;
+  }
+  
+  /* Hero Banner adjustments */
+  .hero-banner {
+    min-height: 200px;
+    background-size: cover;
+    background-position: center;
+  }
+  .hero-overlay {
+    padding: 10px;
+  }
+  .hero-title {
+    font-size: 2rem;
+    text-shadow: none;
+  }
+  .hero-cta {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+  
+  /* Products grid: go for a tighter, more vertical layout */
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    padding: 10px;
+    gap: 10px;
+  }
+  .product-item {
+    margin: 0 auto;
+  }
+  
+  /* Reviews section */
+  .reviews-section {
+    padding: 20px 10px;
+  }
+  .review-item {
+    max-width: 90%;
+    margin: 0 auto;
+    font-size: 0.9rem;
+  }
+  
+  /* About Section */
+  .about-section {
+    flex-direction: column;
+    padding: 20px 10px;
+    text-align: center;
+  }
+  .about-left, 
+  .about-right {
+    margin: 0 auto;
+    padding: 10px;
+    width: 100%;
+  }
+  .about-left h2 {
+    font-size: 1.8rem;
+  }
+  .about-left p {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  .about-right img {
+    max-width: 90%;
+    height: auto;
+  }
+  
+  /* Contact Section */
+  .contact-section {
+    flex-direction: column;
+    padding: 20px 10px;
+    text-align: center;
+  }
+  .contact-left, 
+  .contact-right {
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+  }
+  .contact-social-icons {
+    justify-content: center;
+  }
+  .contact-social-icons img {
+    width: 30px;
+    height: 30px;
+  }
+  .email-btn {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+  
+  /* Payment Card / Download Section */
+  .payment-card h2 {
+    font-size: 1.8rem;
+  }
+  .payment-card p {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  #payBtn {
+    padding: 10px 15px;
+    font-size: 1rem;
+  }
+  
+  /* Global typography tweaks */
+  body {
+    font-size: 16px;
+    padding: 10px 0;
+  }
+}
+
 
 
   
